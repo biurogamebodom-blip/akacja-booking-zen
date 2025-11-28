@@ -101,14 +101,14 @@ const Contact = () => {
           {/* Map Embed */}
           <div className="bg-card rounded-xl shadow-soft overflow-hidden h-[400px] lg:h-auto">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2346.123456789!2d15.5!3d54.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDEyJzAwLjAiTiAxNcKwMzAnMDAuMCJF!5e0!3m2!1spl!2spl!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2346.5!2d15.4869!3d54.2178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa5e5b3d9d6b7b%3A0x8b8b8b8b8b8b8b8b!2sAkacjowa%206%2C%2078-111%20Siano%C5%BC%C4%99ty!5e0!3m2!1spl!2spl!4v1700000000000!5m2!1spl!2spl"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: "400px" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Lokalizacja Apartamenty Akacja na mapie"
+              title="Lokalizacja Apartamenty Akacja - Sianożęty, ul. Akacjowa 6"
             />
           </div>
         </div>
