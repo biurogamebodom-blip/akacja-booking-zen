@@ -26,8 +26,8 @@ serve(async (req) => {
 
     console.log("Generating TTS for text:", text.substring(0, 100) + "...");
 
-    // Use Charlotte voice - warm, friendly female voice optimized for Polish
-    const voiceId = voice || "XB0fDUnXU5powFXDhCwa"; // Charlotte - ciepły kobiecy głos
+    // Use Roger voice - clear, authoritative male voice optimized for Polish
+    const voiceId = voice || "CwhRBWXzGAHq8TQ4Fs17"; // Roger - wyraźny męski głos
 
     // Generate speech from text using Eleven Labs
     // Optimized settings for clear Polish pronunciation
