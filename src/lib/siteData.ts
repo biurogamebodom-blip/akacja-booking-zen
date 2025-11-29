@@ -12,7 +12,8 @@ export const globalSettings = {
 
 export const apartment = {
   namePL: "Odkryj Swój Nadmorski Azyl: Apartamenty Akacja!",
-  addressLine: "Adres Twojego Wymarzonego Wypoczynku: Ustronie Morskie / Sianożęty, ul. Akacjowa 4 i 6.",
+  addressLabel: "Adres Twojego wymarzonego wypoczynku:",
+  addressValue: "Ustronie Morskie / Sianożęty, ul. Akacjowa 4 i 6",
   descriptionPL: `Oderwij się od codzienności i poczuj prawdziwy spokój! Apartamenty Akacja to nie tylko nocleg – to Twoja prywatna, dwupoziomowa oaza stworzona z myślą o pełnym komforcie Twojej rodziny lub grupy przyjaciół (idealne dla 4-5 osób).
 
 Wejdź do środka i zakochaj się w przestrzeni:
