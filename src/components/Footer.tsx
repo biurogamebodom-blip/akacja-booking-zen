@@ -11,11 +11,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <a href="#" aria-label="Apartamenty Akacja - Strona główna">
+            <a href="#" aria-label="Apartamenty Akacja - Strona główna" className="inline-block mb-4">
               <img 
                 src={logoAkacja} 
                 alt="Apartamenty Akacja - Logo" 
-                className="h-20 md:h-24 w-auto mb-4 brightness-0 invert opacity-90"
+                className="h-20 md:h-24 w-auto"
+                style={{ filter: "invert(1) brightness(2)" }}
               />
             </a>
             <p className="text-primary-foreground/80 mb-4">
