@@ -25,6 +25,7 @@ const AIChatAssistant = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<Message[]>(messages);
   const autoPlayVoiceRef = useRef(autoPlayVoice);
+  const playTextAsAudioRef = useRef<((text: string) => void) | null>(null);
   const { toast } = useToast();
 
   // Keep refs in sync with state
@@ -61,6 +62,11 @@ const AIChatAssistant = () => {
     },
   });
 
+  // Keep playTextAsAudio ref updated
+  useEffect(() => {
+    playTextAsAudioRef.current = playTextAsAudio;
+  }, [playTextAsAudio]);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -83,7 +89,7 @@ const AIChatAssistant = () => {
     setIsLoading(true);
 
     try {
-      console.log("Sending message to AI:", text);
+      console.log("AI Chat: Sending message to AI:", text);
       const response = await supabase.functions.invoke("ai-assistant", {
         body: { messages: [...currentMessages, userMessage] },
       });
@@ -98,13 +104,14 @@ const AIChatAssistant = () => {
       };
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Auto-play voice response if enabled - use ref for current value
-      console.log("AutoPlayVoice ref value:", autoPlayVoiceRef.current);
-      console.log("Reply:", response.data.reply?.substring(0, 50));
+      // Auto-play voice response if enabled - use refs for current values
+      console.log("AI Chat: AutoPlayVoice ref value:", autoPlayVoiceRef.current);
+      console.log("AI Chat: Reply:", response.data.reply?.substring(0, 50));
+      console.log("AI Chat: playTextAsAudioRef.current exists:", !!playTextAsAudioRef.current);
       
-      if (autoPlayVoiceRef.current && response.data.reply) {
-        console.log("Calling playTextAsAudio for response");
-        playTextAsAudio(response.data.reply);
+      if (autoPlayVoiceRef.current && response.data.reply && playTextAsAudioRef.current) {
+        console.log("AI Chat: Calling playTextAsAudio via ref for response");
+        playTextAsAudioRef.current(response.data.reply);
       }
     } catch (error) {
       console.error("AI Assistant error:", error);
@@ -119,7 +126,7 @@ const AIChatAssistant = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [playTextAsAudio]);
+  }, []); // No dependencies - we use refs for everything
 
   // Keep the ref updated with the latest function
   useEffect(() => {
