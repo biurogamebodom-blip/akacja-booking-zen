@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, Volume2, VolumeX, Accessibility } from "lucide-react";
+import { Menu, X, Volume2, VolumeX, Accessibility, Home, Images, CreditCard, MessageSquare, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { navItems } from "@/lib/siteData";
+import { navItems, globalSettings } from "@/lib/siteData";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +10,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import welcomeAudio from "@/assets/audio/welcome-message.mp3";
 import logoAkacja from "@/assets/logo-akacja.png";
+
+// Icon mapping for nav items
+const navIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "#apartamenty": Home,
+  "#galeria": Images,
+  "#cennik": CreditCard,
+  "#opinie": MessageSquare,
+  "#kontakt": MapPin,
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -171,18 +180,36 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
-            <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
+          <div className="md:hidden absolute left-0 right-0 top-full bg-card/98 backdrop-blur-lg border-b border-border shadow-elevated animate-fade-in">
+            <div className="container-wide mx-auto px-4 py-4">
+              <nav className="flex flex-col gap-1">
+                {navItems.map((item) => {
+                  const IconComponent = navIcons[item.href];
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="flex items-center gap-3 px-4 py-4 text-foreground hover:text-accent hover:bg-accent/10 active:bg-accent/20 transition-all font-medium rounded-xl focus-ring touch-target"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {IconComponent && <IconComponent className="w-5 h-5 text-accent flex-shrink-0" />}
+                      <span className="text-base">{item.label}</span>
+                    </a>
+                  );
+                })}
+              </nav>
+              
+              {/* Mobile CTA */}
+              <div className="mt-4 pt-4 border-t border-border/50">
                 <a
-                  key={item.href}
-                  href={item.href}
-                  className="px-4 py-3 text-foreground hover:text-accent hover:bg-accent/5 transition-colors font-medium rounded-lg focus-ring"
+                  href={`tel:${globalSettings.mainContactPhone.replace(/\s/g, "")}`}
+                  className="flex items-center justify-center gap-3 w-full px-4 py-4 bg-accent text-accent-foreground font-bold rounded-xl shadow-soft hover:bg-accent/90 active:scale-[0.98] transition-all touch-target"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {item.label}
+                  <Phone className="w-5 h-5" />
+                  <span>Zadzwoń: {globalSettings.mainContactPhone}</span>
                 </a>
-              ))}
+              </div>
             </div>
           </div>
         )}
