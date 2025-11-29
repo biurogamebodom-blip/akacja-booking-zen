@@ -1,6 +1,6 @@
 import { Phone, MapPin, Heart } from "lucide-react";
 import { globalSettings, navItems } from "@/lib/siteData";
-import logoAkacja from "@/assets/logo-akacja.png";
+import logoAkacjaWhite from "@/assets/logo-akacja-white.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,10 +13,9 @@ const Footer = () => {
           <div>
             <a href="#" aria-label="Apartamenty Akacja - Strona główna" className="inline-block mb-4">
               <img 
-                src={logoAkacja} 
+                src={logoAkacjaWhite} 
                 alt="Apartamenty Akacja - Logo" 
-                className="h-20 md:h-24 w-auto"
-                style={{ filter: "invert(1) brightness(2)" }}
+                className="h-20 md:h-24 w-auto rounded-lg"
               />
             </a>
             <p className="text-primary-foreground/80 mb-4">
