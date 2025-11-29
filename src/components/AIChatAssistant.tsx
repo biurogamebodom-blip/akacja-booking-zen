@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { MessageCircle, X, Send, Loader2, Mic, Square, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -23,7 +23,18 @@ const AIChatAssistant = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [autoPlayVoice, setAutoPlayVoice] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<Message[]>(messages);
+  const autoPlayVoiceRef = useRef(autoPlayVoice);
   const { toast } = useToast();
+
+  // Keep refs in sync with state
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
+
+  useEffect(() => {
+    autoPlayVoiceRef.current = autoPlayVoice;
+  }, [autoPlayVoice]);
 
   const {
     isRecording,
@@ -36,8 +47,10 @@ const AIChatAssistant = () => {
   } = useVoiceChat({
     onTranscription: (text) => {
       setInput(text);
-      // Auto-send the transcribed message
-      sendMessageWithText(text);
+      // Auto-send the transcribed message - use a small delay to ensure state is updated
+      setTimeout(() => {
+        sendMessageWithTextRef.current?.(text);
+      }, 50);
     },
     onError: (error) => {
       toast({
@@ -56,17 +69,23 @@ const AIChatAssistant = () => {
     scrollToBottom();
   }, [messages]);
 
-  const sendMessageWithText = async (text: string) => {
-    if (!text.trim() || isLoading) return;
+  // Ref for the sendMessageWithText function to avoid stale closures
+  const sendMessageWithTextRef = useRef<((text: string) => Promise<void>) | null>(null);
+
+  const sendMessageWithText = useCallback(async (text: string) => {
+    if (!text.trim()) return;
 
     const userMessage: Message = { role: "user", content: text };
+    const currentMessages = messagesRef.current;
+    
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
 
     try {
+      console.log("Sending message to AI:", text);
       const response = await supabase.functions.invoke("ai-assistant", {
-        body: { messages: [...messages, userMessage] },
+        body: { messages: [...currentMessages, userMessage] },
       });
 
       if (response.error) {
@@ -79,8 +98,12 @@ const AIChatAssistant = () => {
       };
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Auto-play voice response if enabled
-      if (autoPlayVoice && response.data.reply) {
+      // Auto-play voice response if enabled - use ref for current value
+      console.log("AutoPlayVoice ref value:", autoPlayVoiceRef.current);
+      console.log("Reply:", response.data.reply?.substring(0, 50));
+      
+      if (autoPlayVoiceRef.current && response.data.reply) {
+        console.log("Calling playTextAsAudio for response");
         playTextAsAudio(response.data.reply);
       }
     } catch (error) {
@@ -96,7 +119,12 @@ const AIChatAssistant = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [playTextAsAudio]);
+
+  // Keep the ref updated with the latest function
+  useEffect(() => {
+    sendMessageWithTextRef.current = sendMessageWithText;
+  }, [sendMessageWithText]);
 
   const sendMessage = async () => {
     await sendMessageWithText(input);
