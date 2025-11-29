@@ -26,10 +26,11 @@ serve(async (req) => {
 
     console.log("Generating TTS for text:", text.substring(0, 100) + "...");
 
-    // Use Sarah voice (Polish-friendly) or custom voice
-    const voiceId = voice || "EXAVITQu4vr4xnSDxMaL"; // Sarah - natural female voice
+    // Use Charlotte voice - warm, friendly female voice optimized for Polish
+    const voiceId = voice || "XB0fDUnXU5powFXDhCwa"; // Charlotte - ciepły kobiecy głos
 
     // Generate speech from text using Eleven Labs
+    // Optimized settings for clear Polish pronunciation
     const response = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
       {
@@ -42,9 +43,9 @@ serve(async (req) => {
           text: text,
           model_id: "eleven_multilingual_v2",
           voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.75,
-            style: 0.0,
+            stability: 0.65,        // Wyższa stabilność dla wyraźniejszej wymowy
+            similarity_boost: 0.80, // Lepsze odwzorowanie głosu
+            style: 0.15,            // Lekka ekspresja dla naturalności
             use_speaker_boost: true,
           },
         }),
