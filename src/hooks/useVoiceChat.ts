@@ -97,6 +97,18 @@ export const useVoiceChat = ({ onTranscription, onError }: UseVoiceChatProps) =>
       return;
     }
 
+    // Stop any existing audio first
+    if (audioRef.current) {
+      try {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+        audioRef.current.load();
+      } catch (e) {
+        console.log("TTS: Error cleaning up previous audio", e);
+      }
+      audioRef.current = null;
+    }
+
     try {
       setIsPlayingAudio(true);
       console.log("TTS: Generating audio for:", text.substring(0, 100) + "...");
@@ -137,56 +149,79 @@ export const useVoiceChat = ({ onTranscription, onError }: UseVoiceChatProps) =>
 
       console.log("TTS: Audio content received, length:", data.audioContent.length);
 
-      // Stop any existing audio
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-
-      // Create audio element and play
+      // Create new audio element
       const audioSrc = `data:audio/mpeg;base64,${data.audioContent}`;
-      const audio = new Audio(audioSrc);
+      const audio = new Audio();
       audioRef.current = audio;
 
-      audio.onloadeddata = () => {
-        console.log("TTS: Audio loaded successfully, duration:", audio.duration);
-      };
-
+      // Set up event handlers before setting src
       audio.onended = () => {
         console.log("TTS: Audio playback ended");
         setIsPlayingAudio(false);
+        // Clean up
+        if (audioRef.current === audio) {
+          audioRef.current = null;
+        }
       };
 
       audio.onerror = (e) => {
         console.error("TTS: Audio playback error:", e);
         setIsPlayingAudio(false);
-        onError("Błąd odtwarzania audio");
+        if (audioRef.current === audio) {
+          audioRef.current = null;
+        }
       };
 
-      audio.oncanplaythrough = () => {
-        console.log("TTS: Audio can play through, starting playback...");
-      };
+      // Set source and load
+      audio.src = audioSrc;
+      audio.load();
 
+      // Wait for audio to be ready then play
+      await new Promise<void>((resolve, reject) => {
+        audio.oncanplaythrough = () => {
+          console.log("TTS: Audio ready to play");
+          resolve();
+        };
+        audio.onerror = () => {
+          reject(new Error("Audio load error"));
+        };
+        // Timeout after 10 seconds
+        setTimeout(() => reject(new Error("Audio load timeout")), 10000);
+      });
+
+      // Play with retry mechanism
       try {
         await audio.play();
         console.log("TTS: Audio playback started");
-      } catch (playError) {
+      } catch (playError: any) {
         console.error("TTS: Failed to start playback:", playError);
-        setIsPlayingAudio(false);
-        // Try again with user gesture workaround
-        onError("Kliknij, aby włączyć dźwięk - przeglądarka wymaga interakcji użytkownika");
+        
+        // If autoplay is blocked, show a message but don't treat it as fatal
+        if (playError.name === "NotAllowedError") {
+          console.log("TTS: Autoplay blocked by browser, user interaction required");
+          setIsPlayingAudio(false);
+          // Don't show error toast for autoplay block - it's expected behavior
+        } else {
+          setIsPlayingAudio(false);
+          onError("Błąd odtwarzania audio");
+        }
       }
     } catch (err) {
       console.error("TTS: Unexpected error:", err);
       setIsPlayingAudio(false);
-      onError("Nieoczekiwany błąd głosu");
     }
   }, [onError]);
 
   const stopAudio = useCallback(() => {
     if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+      try {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+        audioRef.current.load();
+      } catch (e) {
+        console.log("TTS: Error stopping audio", e);
+      }
+      audioRef.current = null;
       setIsPlayingAudio(false);
     }
   }, []);
