@@ -36,34 +36,24 @@ function formatPhoneNumbers(text: string): string {
 }
 
 // Funkcja rozwijająca polskie skróty dla lepszej wymowy
+// UWAGA: Używamy tylko skrótów z kropką lub bardzo specyficznych wzorców
 function expandPolishAbbreviations(text: string): string {
-  const abbreviations: Record<string, string> = {
-    // Adresy
+  // Skróty z kropką - bezpieczne do zamiany (kropka działa jako delimiter)
+  const abbreviationsWithDot: Record<string, string> = {
     "ul.": "ulica",
     "al.": "aleja",
     "pl.": "plac",
     "os.": "osiedle",
-    "m.": "mieszkanie",
-    "nr": "numer",
     "nr.": "numer",
     "pok.": "pokój",
-    "p.": "piętro",
     "kl.": "klatka",
-    
-    // Kontakt
     "tel.": "telefon",
-    "tel:": "telefon",
-    "e-mail:": "email",
     "godz.": "godzina",
-    
-    // Ogólne
     "np.": "na przykład",
     "itp.": "i tym podobne",
     "itd.": "i tak dalej",
     "tzw.": "tak zwany",
-    "wg": "według",
     "ok.": "około",
-    "ca": "około",
     "max.": "maksymalnie",
     "min.": "minimalnie",
     "pn.": "poniedziałek",
@@ -74,31 +64,33 @@ function expandPolishAbbreviations(text: string): string {
     "sob.": "sobota",
     "niedz.": "niedziela",
     "ndz.": "niedziela",
-    
-    // Jednostki
-    "zł": "złotych",
-    "gr": "groszy",
-    "km": "kilometrów",
-    "m2": "metrów kwadratowych",
-    "m²": "metrów kwadratowych",
-    
-    // Tytuły
-    "mgr": "magister",
-    "dr": "doktor",
     "prof.": "profesor",
     "św.": "świętego",
     "ks.": "księdza",
+    "m.": "mieszkanie",
+    "p.": "piętro",
   };
   
   let result = text;
   
-  // Sortuj od najdłuższych do najkrótszych aby uniknąć częściowych zamian
-  const sortedAbbreviations = Object.entries(abbreviations)
-    .sort((a, b) => b[0].length - a[0].length);
+  // Najpierw zamień skróty z kropką (bezpieczne)
+  for (const [abbr, full] of Object.entries(abbreviationsWithDot)) {
+    // Escape special regex characters and match case-insensitively
+    const escapedAbbr = abbr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(escapedAbbr, 'gi');
+    result = result.replace(regex, full);
+  }
   
-  for (const [abbr, full] of sortedAbbreviations) {
-    // Case-insensitive replacement z zachowaniem granic słów
-    const regex = new RegExp(abbr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  // Skróty bez kropki - wymagają granic słów (\b)
+  const abbreviationsNoBoundary: Array<[RegExp, string]> = [
+    [/\bnr\b/gi, "numer"],
+    [/\bzł\b/gi, "złotych"],
+    [/\bm2\b/gi, "metrów kwadratowych"],
+    [/\bm²\b/gi, "metrów kwadratowych"],
+    [/\bkm\b/gi, "kilometrów"],
+  ];
+  
+  for (const [regex, full] of abbreviationsNoBoundary) {
     result = result.replace(regex, full);
   }
   
@@ -136,8 +128,8 @@ serve(async (req) => {
     console.log("Original text:", text.substring(0, 100) + "...");
     console.log("Processed text:", processedText.substring(0, 150) + "...");
 
-    // Use Aria voice - natural, warm voice that works well with Polish
-    const voiceId = voice || "9BWtsMINqrJLrRacOk9x"; // Aria - naturalny, ciepły głos
+    // Use Sarah voice - warm, natural female voice, excellent for Polish
+    const voiceId = voice || "EXAVITQu4vr4xnSDxMaL"; // Sarah - ciepły, naturalny głos
 
     // Generate speech from text using Eleven Labs
     // Optimized settings for natural Polish pronunciation
@@ -153,9 +145,9 @@ serve(async (req) => {
           text: processedText,
           model_id: "eleven_multilingual_v2",
           voice_settings: {
-            stability: 0.50,        // Niższa stabilność - bardziej naturalny, konwersacyjny ton
-            similarity_boost: 0.75, // Umiarkowane odwzorowanie głosu
-            style: 0.20,            // Lekka ekspresja dla naturalności
+            stability: 0.65,        // Wyższa stabilność dla wyraźniejszej wymowy
+            similarity_boost: 0.80, // Dobre odwzorowanie głosu
+            style: 0.0,             // Brak stylizacji - najbardziej naturalny ton
             use_speaker_boost: true,
           },
           language_code: "pl",
