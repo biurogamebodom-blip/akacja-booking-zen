@@ -58,22 +58,22 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className="mt-6 sm:mt-8 md:mt-12 grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-white/80 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-          <div className="flex items-center justify-center gap-2">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-xs sm:text-sm md:text-base">4-5 osób</span>
+        <div className="mt-6 sm:mt-8 md:mt-12 grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white/90 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">4-5 osób</span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-xs sm:text-sm md:text-base">2 sypialnie</span>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">2 sypialnie i salon</span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-xs sm:text-sm md:text-base">Taras</span>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">Taras</span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-xs sm:text-sm md:text-base">Blisko morza</span>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">Blisko morza</span>
           </div>
         </div>
       </div>
