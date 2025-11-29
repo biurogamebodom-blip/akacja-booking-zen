@@ -95,49 +95,54 @@ const Header = () => {
           </div>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-2">
-            {/* Accessibility Widget */}
+          <div className="flex items-center gap-3">
+            {/* Accessibility Widget - Large for visually impaired */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label="Opcje dostępności"
-                  className="focus-ring"
+                  variant="outline"
+                  size="lg"
+                  aria-label="Opcje dostępności - powiększanie tekstu i wysoki kontrast"
+                  className="focus-ring bg-accent/90 hover:bg-accent text-accent-foreground border-2 border-accent-foreground/20 shadow-soft h-12 w-12 md:h-14 md:w-14 p-0"
                 >
-                  <Accessibility className="h-5 w-5" />
+                  <Accessibility className="h-7 w-7 md:h-8 md:w-8" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuItem onClick={increaseFontSize}>
-                  <span className="text-lg font-bold mr-2">A+</span>
+              <DropdownMenuContent align="end" className="w-64 text-lg">
+                <DropdownMenuItem onClick={increaseFontSize} className="py-3 text-base">
+                  <span className="text-xl font-bold mr-3">A+</span>
                   Zwiększ tekst
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={decreaseFontSize}>
-                  <span className="text-sm font-bold mr-2">A-</span>
+                <DropdownMenuItem onClick={decreaseFontSize} className="py-3 text-base">
+                  <span className="text-base font-bold mr-3">A-</span>
                   Zmniejsz tekst
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => setHighContrast(!highContrast)}
+                  className="py-3 text-base"
                 >
-                  <span className="mr-2">◐</span>
+                  <span className="mr-3 text-xl">◐</span>
                   {highContrast ? "Wyłącz wysoki kontrast" : "Wysoki kontrast"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Audio Welcome */}
+            {/* Audio Welcome - Large for visually impaired */}
             <Button
-              variant="ghost"
-              size="icon"
+              variant="outline"
+              size="lg"
               onClick={toggleWelcomeAudio}
-              aria-label={isPlaying ? "Zatrzymaj powitanie" : "Odtwórz powitanie"}
-              className="focus-ring"
+              aria-label={isPlaying ? "Zatrzymaj odsłuchiwanie strony" : "Odsłuchaj informacje o stronie"}
+              className={`focus-ring border-2 shadow-soft h-12 w-12 md:h-14 md:w-14 p-0 transition-all ${
+                isPlaying 
+                  ? "bg-destructive hover:bg-destructive/90 text-destructive-foreground border-destructive-foreground/20 animate-pulse" 
+                  : "bg-primary hover:bg-primary/90 text-primary-foreground border-primary-foreground/20"
+              }`}
             >
               {isPlaying ? (
-                <VolumeX className="h-5 w-5" />
+                <VolumeX className="h-7 w-7 md:h-8 md:w-8" />
               ) : (
-                <Volume2 className="h-5 w-5" />
+                <Volume2 className="h-7 w-7 md:h-8 md:w-8" />
               )}
             </Button>
 
