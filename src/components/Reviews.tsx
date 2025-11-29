@@ -33,7 +33,7 @@ const Reviews = () => {
         </div>
 
         {/* Reviews Carousel - Tablet optimized */}
-        <div className="px-6 sm:px-8 md:px-12">
+        <div className="px-2 sm:px-8 md:px-12">
           <Carousel
             opts={{
               align: "start",
@@ -88,8 +88,14 @@ const Reviews = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-0 h-10 w-10 sm:h-12 sm:w-12" />
-            <CarouselNext className="right-0 h-10 w-10 sm:h-12 sm:w-12" />
+            
+            {/* Mobile: arrows below carousel, Desktop: arrows on sides */}
+            <div className="flex sm:hidden justify-center gap-4 mt-4">
+              <CarouselPrevious className="static translate-x-0 translate-y-0 h-10 w-10" />
+              <CarouselNext className="static translate-x-0 translate-y-0 h-10 w-10" />
+            </div>
+            <CarouselPrevious className="hidden sm:flex -left-4 md:-left-6 h-10 w-10 sm:h-12 sm:w-12" />
+            <CarouselNext className="hidden sm:flex -right-4 md:-right-6 h-10 w-10 sm:h-12 sm:w-12" />
           </Carousel>
         </div>
 
