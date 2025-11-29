@@ -213,13 +213,23 @@ export const useVoiceChat = ({ onTranscription, onError }: UseVoiceChatProps) =>
     }
 
     console.log("TTS: Adding to queue:", text.substring(0, 50) + "...");
+    console.log("TTS: Current queue length before add:", audioQueueRef.current.length);
+    console.log("TTS: isProcessingQueue:", isProcessingQueueRef.current);
     
     // Add to queue
     audioQueueRef.current.push({ text: text.trim() });
     
-    // Start processing if not already
-    processQueueRef.current?.();
-  }, []);
+    console.log("TTS: Queue length after add:", audioQueueRef.current.length);
+    
+    // Start processing if not already - call directly if ref not set yet
+    if (processQueueRef.current) {
+      console.log("TTS: Calling processQueue via ref");
+      processQueueRef.current();
+    } else {
+      console.log("TTS: Ref not set, calling processAudioQueue directly");
+      processAudioQueue();
+    }
+  }, [processAudioQueue]);
 
   const stopAudio = useCallback(() => {
     // Clear the queue
