@@ -41,7 +41,7 @@ const Pricing = () => {
             Cennik
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Cennik na sezon 2024/2025
+            Cennik na sezon 2025/2026
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
             Ceny orientacyjne. Dokładną wycenę uzyskasz kontaktując się telefonicznie.
