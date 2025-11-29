@@ -136,7 +136,7 @@ const Reviews = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://www.google.com/maps/search/Apartamenty+Akacja+Siano%C5%BC%C4%99ty+Akacjowa"
+              href="https://share.google/IaIgXXGGeDDwpqs7D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 bg-card rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 group"
@@ -150,20 +150,20 @@ const Reviews = () => {
                 </svg>
               </div>
               <div className="text-left">
-                <span className="block text-foreground font-semibold">Znajdź nas w Google Maps</span>
+                <span className="block text-foreground font-semibold">Zobacz opinie Google</span>
                 <span className="block text-sm text-muted-foreground">Apartamenty Akacja</span>
               </div>
               <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
             </a>
 
             <a
-              href="https://www.google.com/search?q=Apartamenty+Akacja+Siano%C5%BC%C4%99ty+opinie"
+              href="https://share.google/IaIgXXGGeDDwpqs7D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-4 bg-accent text-accent-foreground rounded-xl shadow-soft hover:bg-accent/90 transition-all duration-300 font-semibold"
             >
               <Star className="w-5 h-5" />
-              Zobacz opinie Google
+              Zostaw opinię
             </a>
           </div>
         </div>
