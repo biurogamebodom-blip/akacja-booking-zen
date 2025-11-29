@@ -29,7 +29,18 @@ const AIChatAssistant = () => {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
+  const messagesRef = useRef<Message[]>(messages);
+  const autoPlayVoiceRef = useRef(autoPlayVoice);
   const { toast } = useToast();
+
+  // Keep refs in sync with state
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
+
+  useEffect(() => {
+    autoPlayVoiceRef.current = autoPlayVoice;
+  }, [autoPlayVoice]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -120,14 +131,15 @@ const AIChatAssistant = () => {
     setIsPlayingAudio(false);
   };
 
-  // Send message to AI and play response
+  // Send message to AI and play response - uses refs to avoid stale closures
   const sendMessageWithText = async (text: string) => {
     if (!text.trim() || isLoading) return;
 
     const userMessage: Message = { role: "user", content: text };
-    const currentMessages = [...messages, userMessage];
+    const currentMessages = [...messagesRef.current, userMessage];
     
     setMessages(currentMessages);
+    messagesRef.current = currentMessages;
     setInput("");
     setIsLoading(true);
 
@@ -144,21 +156,26 @@ const AIChatAssistant = () => {
       const reply = response.data.reply;
       console.log("AI: Got reply:", reply?.substring(0, 50));
       
-      setMessages(prev => [...prev, { role: "assistant", content: reply }]);
+      const newMessages = [...currentMessages, { role: "assistant" as const, content: reply }];
+      setMessages(newMessages);
+      messagesRef.current = newMessages;
       setIsLoading(false);
 
-      // Queue TTS after state is updated
-      if (autoPlayVoice && reply) {
+      // Queue TTS using ref to get current autoPlayVoice value
+      console.log("AI: autoPlayVoice =", autoPlayVoiceRef.current, "reply exists =", !!reply);
+      if (autoPlayVoiceRef.current && reply) {
         console.log("AI: Queueing TTS for reply");
         queueTTS(reply);
       }
       
     } catch (error) {
       console.error("AI: Error:", error);
-      setMessages(prev => [...prev, {
-        role: "assistant",
+      const errorMessages = [...currentMessages, {
+        role: "assistant" as const,
         content: "Przepraszam, wystąpił błąd. Prosimy o kontakt telefoniczny: 505 445 353",
-      }]);
+      }];
+      setMessages(errorMessages);
+      messagesRef.current = errorMessages;
       setIsLoading(false);
     }
   };
