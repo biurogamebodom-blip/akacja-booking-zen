@@ -205,6 +205,15 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Domyślny rozmiar czcionki na mobile = A+ kliknięte 3x (~130%) */
+    font-size: 130%;
+  }
+
+  /* Na tabletach i większych - standardowy rozmiar */
+  @media (min-width: 768px) {
+    html {
+      font-size: 100%;
+    }
   }
 
   body {
