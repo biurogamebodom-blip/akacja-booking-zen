@@ -14,7 +14,7 @@ export const apartment = {
   namePL: "Apartamenty Akacja",
   descriptionPL: `Odkryj spokój i komfort w Apartamentach Akacja! Apartamenty są dwupoziomowe, oferując komfortowy pobyt dla 4-5 osób. Posiadają oddzielne wejście oraz taras. Na parterze: przestronny salon, TV 32", aneks kuchenny (indukcja, lodówka). Na piętrze: dwie sypialnie. Adres: Ustronie Morskie / Sianożęty, ul. Akacjowa 4 i 6.`,
   checkInTimes: "Zameldowanie: 15:00 - 22:00. Wymeldowanie: do 10:00.",
-  feesPL: "Opłata serwisowa: 200 zł. Opłata klimatyczna: 2 zł/os. Kaucja za brak porządku: 100 zł.",
+  feesPL: "Opłata klimatyczna: 2 zł/os.",
   paymentMethodsPL: ["gotówka", "płatność przelewem"],
   acceptedCurrencies: ["PLN", "USD", "EUR"],
   smokingPolicyPL: "Całkowity zakaz palenia wewnątrz. Wyznaczone miejsca na zewnątrz.",
