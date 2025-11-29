@@ -45,14 +45,14 @@ const Hero = () => {
             asChild
             variant="hero"
             size="xl"
-            className="w-full max-w-md"
+            className="w-full max-w-xs sm:max-w-xl md:max-w-2xl px-6 sm:px-10 md:px-14"
           >
             <a href={phoneLink} aria-label={`Zadzwoń: ${globalSettings.mainContactPhone}`}>
-              <Phone className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-              <span className="flex flex-col sm:flex-row sm:gap-1 items-center">
-                <span>Sprawdź Termin</span>
-                <span className="hidden sm:inline">/</span>
-                <span>ZADZWOŃ: {globalSettings.mainContactPhone}</span>
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+              <span className="flex flex-col sm:flex-row sm:gap-2 items-center text-sm sm:text-base md:text-lg">
+                <span className="font-bold">Sprawdź Termin</span>
+                <span className="hidden sm:inline text-white/70">|</span>
+                <span>Zadzwoń: {globalSettings.mainContactPhone}</span>
               </span>
             </a>
           </Button>
