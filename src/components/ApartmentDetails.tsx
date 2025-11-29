@@ -19,31 +19,31 @@ const ApartmentDetails = () => {
   return (
     <section id="apartamenty" className="section-padding gradient-sand">
       <div className="container-wide mx-auto">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
             O nas
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             {apartment.namePL}
           </h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-3xl mx-auto text-sm sm:text-base md:text-lg px-2">
             {apartment.descriptionPL}
           </p>
         </div>
 
         {/* Features Grid - Tablet optimized */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-6 mb-8 md:mb-12">
           {apartment.features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon];
             return (
               <div
                 key={index}
-                className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target"
+                className="bg-card p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target"
               >
                 {IconComponent && (
-                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mx-auto mb-1.5 sm:mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
                 )}
-                <span className="text-foreground font-medium text-sm sm:text-base">{feature.label}</span>
+                <span className="text-foreground font-medium text-xs sm:text-sm md:text-base leading-tight block">{feature.label}</span>
               </div>
             );
           })}

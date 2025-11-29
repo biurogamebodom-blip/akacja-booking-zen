@@ -106,20 +106,20 @@ const Gallery = () => {
   return (
     <section id="galeria" className="section-padding bg-background content-visibility-auto">
       <div className="container-wide mx-auto">
-        <div className="text-center mb-8 md:mb-12">
-          <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12">
+          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
             Galeria
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Zobacz nasze apartamenty
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
             Zapoznaj się z wnętrzami i otoczeniem Apartamentów Akacja
           </p>
         </div>
 
         {/* Gallery Grid - optimized for tablets */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-5 lg:gap-6">
           {galleryImages.map((image, index) => (
             <GalleryImage 
               key={image.id} 

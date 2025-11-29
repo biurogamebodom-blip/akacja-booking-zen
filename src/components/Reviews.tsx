@@ -20,14 +20,14 @@ const Reviews = () => {
   return (
     <section id="opinie" className="section-padding bg-background">
       <div className="container-wide mx-auto">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
             Opinie z Nocowanie.pl
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             Co mówią nasi goście
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
             Poznaj opinie osób, które spędziły u nas wakacje
           </p>
         </div>

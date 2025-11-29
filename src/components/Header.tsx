@@ -24,7 +24,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [fontSize, setFontSize] = useState(130);
+  const [fontSize, setFontSize] = useState(100); // Changed from 130 to 100
   const [highContrast, setHighContrast] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
