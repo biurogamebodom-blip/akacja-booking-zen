@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Volume2, VolumeX, Accessibility } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { navItems, globalSettings } from "@/lib/siteData";
+import { navItems } from "@/lib/siteData";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import welcomeAudio from "@/assets/audio/welcome-message.mp3";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +16,7 @@ const Header = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [fontSize, setFontSize] = useState(130);
   const [highContrast, setHighContrast] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,21 +38,19 @@ const Header = () => {
     }
   }, [highContrast]);
 
-  const playWelcomeAudio = () => {
-    if (globalSettings.audioWelcomeUrl) {
-      const audio = new Audio(globalSettings.audioWelcomeUrl);
-      audio.play();
-      setIsPlaying(true);
-      audio.onended = () => setIsPlaying(false);
+  const toggleWelcomeAudio = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(welcomeAudio);
+      audioRef.current.loop = false;
+      audioRef.current.onended = () => setIsPlaying(false);
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      // Fallback: use Web Speech API
-      const utterance = new SpeechSynthesisUtterance(
-        "Witamy na stronie Apartamenty Akacja. Oferujemy komfortowe apartamenty nad morzem w Sianożętach."
-      );
-      utterance.lang = "pl-PL";
-      utterance.onend = () => setIsPlaying(false);
+      audioRef.current.play();
       setIsPlaying(true);
-      speechSynthesis.speak(utterance);
     }
   };
 
@@ -130,8 +130,8 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={playWelcomeAudio}
-              aria-label="Odtwórz powitanie"
+              onClick={toggleWelcomeAudio}
+              aria-label={isPlaying ? "Zatrzymaj powitanie" : "Odtwórz powitanie"}
               className="focus-ring"
             >
               {isPlaying ? (
