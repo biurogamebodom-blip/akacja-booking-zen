@@ -34,27 +34,56 @@ export const reviews = [
   {
     rating: "10/10",
     text: "Bardzo polecam. Domek czysty, zgodny z opisem. Sympatyczny i pomocny gospodarz.",
-    author: "Paulina SKONIECZNA-MASTERNAK",
+    author: "Paulina S.M.",
+    source: "Nocowanie.pl",
+  },
+  {
+    rating: "7.3/10",
+    text: "Domki bardzo wygodne z całym wyposażeniem. Byliśmy tam rodzinnie i miło wspominamy ten pobyt. Właściciel bardzo miły i uczynny.",
+    author: "Anna Piotrowska",
+    source: "Nocowanie.pl",
+  },
+  {
+    rating: "9/10",
+    text: "Domki ładne i czyste. Świetne miejsce dla osób lubiących spacery, mili i pomocni właściciele.",
+    author: "Marta",
+    source: "Nocowanie.pl",
+  },
+  {
+    rating: "9.6/10",
+    text: "Dobra miejscówka, dla osób lubiących spacery w sam raz. Przewiewne ustronne miejsce z ładnymi widokami na okolicę.",
+    author: "Bogusia",
+    source: "Nocowanie.pl",
   },
   {
     rating: "10/10",
-    text: "Świetne miejsce, wspaniała lokalizacja (z dala od zgiełku), domki czyste i ładnie urządzone, do morza blisko.",
+    text: "Świetne miejsce, wspaniała lokalizacja (z dala od zgiełku - na ogródkach cisza i spokój), domki czyste i ładnie urządzone, do morza blisko (właściciel podwozi meleksem).",
     author: "Piotr",
+    source: "Nocowanie.pl",
   },
   {
     rating: "10/10",
-    text: "W apartamentach Akacja spędziliśmy długi weekend wraz z dziećmi. Apartamenty świetne, czyste, zadbane. W kuchni sprzęt bardzo dobrej jakości.",
+    text: "W apartamentach Akacja spędziliśmy długi weekend. Apartamenty świetne, czyste, zadbane. W kuchni sprzęt bardzo dobrej jakości, wszystko co potrzeba.",
     author: "Ewa Czajka",
+    source: "Nocowanie.pl",
+  },
+  {
+    rating: "10/10",
+    text: "Polecam bardzo!!!!",
+    author: "Daniel",
+    source: "Nocowanie.pl",
   },
   {
     rating: "10/10",
     text: "Bardzo przyjemne miejsce, z dala od zgiełku. Domki dobrze wyposażone, czyściutkie. Idealne miejsce do wypoczynku.",
     author: "Magdalena",
+    source: "Nocowanie.pl",
   },
   {
-    rating: "9.6/10",
-    text: "Dobra miejscówka, dla osób lubiących spacery w sam raz. Przewiewne ustronne miejsce z ładnymi widokami na okolice.",
-    author: "Bogusia",
+    rating: "10/10",
+    text: "Ładnie urządzone wnętrze, przyjemna atmosfera, możliwość podwózki meleksem nad morze. Wszystko zgodne z ofertą, jesteśmy bardzo zadowoleni i bardzo polecamy!!",
+    author: "Oliwka",
+    source: "Nocowanie.pl",
   },
 ];
 
