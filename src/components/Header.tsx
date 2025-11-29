@@ -13,7 +13,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [fontSize, setFontSize] = useState(100);
+  const [fontSize, setFontSize] = useState(130);
   const [highContrast, setHighContrast] = useState(false);
 
   useEffect(() => {
