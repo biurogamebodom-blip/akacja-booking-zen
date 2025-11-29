@@ -48,35 +48,35 @@ const Pricing = () => {
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Pricing Cards - Tablet optimized */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12">
           {pricingSeasons.map((season, index) => (
             <div
               key={index}
-              className={`relative bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 ${
+              className={`relative bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 ${
                 season.featured
                   ? "border-2 border-accent ring-2 ring-accent/20"
                   : ""
               }`}
             >
               {season.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-accent-foreground text-xs font-semibold rounded-full">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-accent-foreground text-xs font-semibold rounded-full whitespace-nowrap">
                   Najpopularniejszy
                 </span>
               )}
-              <div className="flex items-center gap-2 mb-3">
-                <Calendar className="w-5 h-5 text-accent" />
-                <h3 className="font-serif text-lg font-semibold text-foreground">
+              <div className="flex items-center gap-2 mb-2 md:mb-3">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
+                <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground">
                   {season.name}
                 </h3>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-3 md:mb-4">
                 {season.period}
               </p>
-              <p className="text-2xl font-bold text-accent mb-2">
+              <p className="text-xl sm:text-2xl font-bold text-accent mb-1 md:mb-2">
                 {season.priceRange}
               </p>
-              <p className="text-sm text-muted-foreground">{season.note}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">{season.note}</p>
             </div>
           ))}
         </div>

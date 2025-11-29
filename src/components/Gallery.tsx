@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -55,37 +55,58 @@ const galleryImages = [
   },
 ];
 
+// Memoized gallery image component for performance
+const GalleryImage = memo(({ image, index, onClick }: { 
+  image: typeof galleryImages[0]; 
+  index: number; 
+  onClick: (index: number) => void;
+}) => (
+  <button
+    onClick={() => onClick(index)}
+    className="relative aspect-[4/3] overflow-hidden rounded-xl group focus-ring touch-target"
+    aria-label={`Otwórz zdjęcie: ${image.alt}`}
+  >
+    <img
+      src={image.src}
+      alt={image.alt}
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-focus:scale-105"
+      loading="lazy"
+      decoding="async"
+      fetchPriority={index < 4 ? "high" : "low"}
+    />
+    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 group-focus:bg-navy/20 transition-colors duration-300" />
+  </button>
+));
+
+GalleryImage.displayName = "GalleryImage";
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const openLightbox = (index: number) => {
+  const openLightbox = useCallback((index: number) => {
     setSelectedImage(index);
     document.body.style.overflow = "hidden";
-  };
+  }, []);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setSelectedImage(null);
     document.body.style.overflow = "";
-  };
+  }, []);
 
-  const navigateLightbox = (direction: "prev" | "next") => {
-    if (selectedImage === null) return;
-    
-    if (direction === "prev") {
-      setSelectedImage(
-        selectedImage === 0 ? galleryImages.length - 1 : selectedImage - 1
-      );
-    } else {
-      setSelectedImage(
-        selectedImage === galleryImages.length - 1 ? 0 : selectedImage + 1
-      );
-    }
-  };
+  const navigateLightbox = useCallback((direction: "prev" | "next") => {
+    setSelectedImage(prev => {
+      if (prev === null) return null;
+      if (direction === "prev") {
+        return prev === 0 ? galleryImages.length - 1 : prev - 1;
+      }
+      return prev === galleryImages.length - 1 ? 0 : prev + 1;
+    });
+  }, []);
 
   return (
-    <section id="galeria" className="section-padding bg-background">
+    <section id="galeria" className="section-padding bg-background content-visibility-auto">
       <div className="container-wide mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-accent bg-accent/10 rounded-full">
             Galeria
           </span>
@@ -97,23 +118,15 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        {/* Gallery Grid - optimized for tablets */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {galleryImages.map((image, index) => (
-            <button
-              key={image.id}
-              onClick={() => openLightbox(index)}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl group focus-ring"
-              aria-label={`Otwórz zdjęcie: ${image.alt}`}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 transition-colors duration-300" />
-            </button>
+            <GalleryImage 
+              key={image.id} 
+              image={image} 
+              index={index} 
+              onClick={openLightbox}
+            />
           ))}
         </div>
 
