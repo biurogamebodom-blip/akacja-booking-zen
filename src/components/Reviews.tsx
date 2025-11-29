@@ -136,7 +136,7 @@ const Reviews = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://www.google.com/search?q=Domki+Apartamenty+Akacja+-+Wynajem+domk%C3%B3w+letniskowych+Opinie&rflfq=1&rldimm=3724815992459303274&tbm=lcl&hl=pl-PL#lkt=LocalPoiReviews"
+              href="https://maps.google.com/?cid=3724815992459303274"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 bg-card rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 group"
@@ -157,7 +157,7 @@ const Reviews = () => {
             </a>
 
             <a
-              href="https://www.google.com/search?q=Domki+Apartamenty+Akacja+-+Wynajem+domk%C3%B3w+letniskowych+Opinie&rflfq=1&rldimm=3724815992459303274&tbm=lcl&hl=pl-PL#lkt=LocalPoiReviews"
+              href="https://search.google.com/local/writereview?placeid=ChIJe2udPVteqEcRWlRvJbGVuDM"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-4 bg-accent text-accent-foreground rounded-xl shadow-soft hover:bg-accent/90 transition-all duration-300 font-semibold"
