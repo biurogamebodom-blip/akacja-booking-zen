@@ -109,7 +109,7 @@ const Reviews = () => {
           {/* Link to Nocowanie.pl */}
           <div>
             <a
-              href="https://www.nocowanie.pl/noclegi/ustronie_morskie/apartamenty/215444/"
+              href="https://www.nocowanie.pl/noclegi/ustronie_morskie/domki/192791/opinie,1.html"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-medium"
