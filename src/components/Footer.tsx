@@ -1,5 +1,6 @@
 import { Phone, MapPin, Heart } from "lucide-react";
 import { globalSettings, navItems } from "@/lib/siteData";
+import logoAkacja from "@/assets/logo-akacja.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,9 +11,13 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="font-serif text-2xl font-bold mb-4">
-              Apartamenty <span className="text-sea-light">Akacja</span>
-            </h3>
+            <a href="#" aria-label="Apartamenty Akacja - Strona główna">
+              <img 
+                src={logoAkacja} 
+                alt="Apartamenty Akacja - Logo" 
+                className="h-20 md:h-24 w-auto mb-4 brightness-0 invert opacity-90"
+              />
+            </a>
             <p className="text-primary-foreground/80 mb-4">
               Komfortowe apartamenty dwupoziomowe nad Bałtykiem. 
               Idealne miejsce na wypoczynek dla całej rodziny.
