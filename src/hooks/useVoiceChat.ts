@@ -92,47 +92,96 @@ export const useVoiceChat = ({ onTranscription, onError }: UseVoiceChatProps) =>
   }, [isRecording]);
 
   const playTextAsAudio = useCallback(async (text: string) => {
+    if (!text || text.trim().length === 0) {
+      console.log("TTS: No text provided, skipping");
+      return;
+    }
+
     try {
       setIsPlayingAudio(true);
-      console.log("Generating TTS for:", text.substring(0, 50) + "...");
+      console.log("TTS: Generating audio for:", text.substring(0, 100) + "...");
 
       const { data, error } = await supabase.functions.invoke("text-to-voice", {
-        body: { text },
+        body: { text: text.trim() },
       });
 
+      console.log("TTS: Response received", { hasData: !!data, error });
+
       if (error) {
-        console.error("TTS error:", error);
-        throw new Error(error.message);
+        console.error("TTS: Edge function error:", error);
+        setIsPlayingAudio(false);
+        onError("Błąd generowania głosu: " + error.message);
+        return;
       }
 
-      if (data?.audioContent) {
-        // Create audio element and play
-        const audioSrc = `data:audio/mpeg;base64,${data.audioContent}`;
-        
-        if (audioRef.current) {
-          audioRef.current.pause();
-        }
-        
-        const audio = new Audio(audioSrc);
-        audioRef.current = audio;
-        
-        audio.onended = () => {
-          setIsPlayingAudio(false);
-        };
-        
-        audio.onerror = () => {
-          console.error("Audio playback error");
-          setIsPlayingAudio(false);
-        };
+      if (!data) {
+        console.error("TTS: No data returned from edge function");
+        setIsPlayingAudio(false);
+        onError("Nie otrzymano odpowiedzi audio");
+        return;
+      }
 
+      if (data.error) {
+        console.error("TTS: API error:", data.error);
+        setIsPlayingAudio(false);
+        onError("Błąd API głosu: " + data.error);
+        return;
+      }
+
+      if (!data.audioContent) {
+        console.error("TTS: No audio content in response", data);
+        setIsPlayingAudio(false);
+        onError("Brak danych audio w odpowiedzi");
+        return;
+      }
+
+      console.log("TTS: Audio content received, length:", data.audioContent.length);
+
+      // Stop any existing audio
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+
+      // Create audio element and play
+      const audioSrc = `data:audio/mpeg;base64,${data.audioContent}`;
+      const audio = new Audio(audioSrc);
+      audioRef.current = audio;
+
+      audio.onloadeddata = () => {
+        console.log("TTS: Audio loaded successfully, duration:", audio.duration);
+      };
+
+      audio.onended = () => {
+        console.log("TTS: Audio playback ended");
+        setIsPlayingAudio(false);
+      };
+
+      audio.onerror = (e) => {
+        console.error("TTS: Audio playback error:", e);
+        setIsPlayingAudio(false);
+        onError("Błąd odtwarzania audio");
+      };
+
+      audio.oncanplaythrough = () => {
+        console.log("TTS: Audio can play through, starting playback...");
+      };
+
+      try {
         await audio.play();
-        console.log("Playing audio response");
+        console.log("TTS: Audio playback started");
+      } catch (playError) {
+        console.error("TTS: Failed to start playback:", playError);
+        setIsPlayingAudio(false);
+        // Try again with user gesture workaround
+        onError("Kliknij, aby włączyć dźwięk - przeglądarka wymaga interakcji użytkownika");
       }
     } catch (err) {
-      console.error("TTS playback error:", err);
+      console.error("TTS: Unexpected error:", err);
       setIsPlayingAudio(false);
+      onError("Nieoczekiwany błąd głosu");
     }
-  }, []);
+  }, [onError]);
 
   const stopAudio = useCallback(() => {
     if (audioRef.current) {
