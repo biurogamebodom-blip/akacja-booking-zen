@@ -24,12 +24,13 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  // Default: 130% for desktop (like 3x A+), 100% for mobile
+  // Default: 130% for mobile (like 3x A+), 100% for desktop/tablet
   const [fontSize, setFontSize] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth >= 768 ? 130 : 100;
+      // Mobile (<768px) gets 130% by default, desktop/tablet gets 100%
+      return window.innerWidth < 768 ? 130 : 100;
     }
-    return 100;
+    return 130; // Default to mobile-friendly size
   });
   const [highContrast, setHighContrast] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
