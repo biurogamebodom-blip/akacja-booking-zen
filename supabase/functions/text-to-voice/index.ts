@@ -6,6 +6,35 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Funkcja formatująca numery telefonów dla lepszej wymowy
+function formatPhoneNumbers(text: string): string {
+  // Zamień cyfry na słowa dla lepszej wymowy
+  const digitWords: Record<string, string> = {
+    "0": "zero",
+    "1": "jeden",
+    "2": "dwa",
+    "3": "trzy",
+    "4": "cztery",
+    "5": "pięć",
+    "6": "sześć",
+    "7": "siedem",
+    "8": "osiem",
+    "9": "dziewięć",
+  };
+
+  // Znajdź numery telefonów (9 cyfr, z opcjonalnymi spacjami/myślnikami)
+  return text.replace(
+    /(\d{3})[\s-]?(\d{3})[\s-]?(\d{3})/g,
+    (match, g1, g2, g3) => {
+      // Konwertuj każdą grupę cyfr na słowa
+      const group1 = g1.split("").map((d: string) => digitWords[d]).join(" ");
+      const group2 = g2.split("").map((d: string) => digitWords[d]).join(" ");
+      const group3 = g3.split("").map((d: string) => digitWords[d]).join(" ");
+      return `${group1}, ${group2}, ${group3}`;
+    }
+  );
+}
+
 // Funkcja rozwijająca polskie skróty dla lepszej wymowy
 function expandPolishAbbreviations(text: string): string {
   const abbreviations: Record<string, string> = {
@@ -76,6 +105,14 @@ function expandPolishAbbreviations(text: string): string {
   return result;
 }
 
+// Pełne przetwarzanie tekstu dla polskiego TTS
+function preprocessPolishText(text: string): string {
+  let processed = text;
+  processed = expandPolishAbbreviations(processed);
+  processed = formatPhoneNumbers(processed);
+  return processed;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -94,16 +131,16 @@ serve(async (req) => {
       throw new Error("Text is required");
     }
 
-    // Rozwiń polskie skróty przed syntezą mowy
-    const expandedText = expandPolishAbbreviations(text);
+    // Przetwórz tekst dla lepszej wymowy polskiej
+    const processedText = preprocessPolishText(text);
     console.log("Original text:", text.substring(0, 100) + "...");
-    console.log("Expanded text:", expandedText.substring(0, 100) + "...");
+    console.log("Processed text:", processedText.substring(0, 150) + "...");
 
-    // Use Roger voice - clear, authoritative male voice optimized for Polish
-    const voiceId = voice || "CwhRBWXzGAHq8TQ4Fs17"; // Roger - wyraźny męski głos
+    // Use Aria voice - natural, warm voice that works well with Polish
+    const voiceId = voice || "9BWtsMINqrJLrRacOk9x"; // Aria - naturalny, ciepły głos
 
     // Generate speech from text using Eleven Labs
-    // Fully optimized settings for Polish language pronunciation
+    // Optimized settings for natural Polish pronunciation
     const response = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
       {
@@ -113,17 +150,15 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          text: expandedText, // Używamy rozwinięty tekst z polskimi skrótami
-          model_id: "eleven_multilingual_v2", // Najlepszy model dla języków europejskich w tym polskiego
+          text: processedText,
+          model_id: "eleven_multilingual_v2",
           voice_settings: {
-            stability: 0.75,        // Wysoka stabilność - lepsza wymowa polskich spółgłosek (sz, cz, ż, dż)
-            similarity_boost: 0.85, // Wyższe odwzorowanie - naturalniejszy głos
-            style: 0.10,            // Niska ekspresja - unika dziwnej intonacji w polskim
-            use_speaker_boost: true, // Wzmocnienie głosu dla lepszej wyrazistości
+            stability: 0.50,        // Niższa stabilność - bardziej naturalny, konwersacyjny ton
+            similarity_boost: 0.75, // Umiarkowane odwzorowanie głosu
+            style: 0.20,            // Lekka ekspresja dla naturalności
+            use_speaker_boost: true,
           },
-          // Optymalizacja dla polskiego
-          pronunciation_dictionary_locators: [],
-          language_code: "pl", // Wymuszenie polskiego języka
+          language_code: "pl",
         }),
       }
     );
