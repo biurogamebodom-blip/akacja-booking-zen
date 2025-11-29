@@ -102,110 +102,63 @@ export const useVoiceChat = ({ onTranscription, onError }: UseVoiceChatProps) =>
       try {
         audioRef.current.pause();
         audioRef.current.src = "";
-        audioRef.current.load();
       } catch (e) {
         console.log("TTS: Error cleaning up previous audio", e);
       }
       audioRef.current = null;
     }
+    
+    // Reset state
+    setIsPlayingAudio(false);
 
     try {
-      setIsPlayingAudio(true);
       console.log("TTS: Generating audio for:", text.substring(0, 100) + "...");
 
       const { data, error } = await supabase.functions.invoke("text-to-voice", {
         body: { text: text.trim() },
       });
 
-      console.log("TTS: Response received", { hasData: !!data, error });
+      console.log("TTS: Response received", { hasData: !!data, hasError: !!error });
 
       if (error) {
         console.error("TTS: Edge function error:", error);
-        setIsPlayingAudio(false);
         onError("Błąd generowania głosu: " + error.message);
         return;
       }
 
-      if (!data) {
-        console.error("TTS: No data returned from edge function");
-        setIsPlayingAudio(false);
-        onError("Nie otrzymano odpowiedzi audio");
-        return;
-      }
-
-      if (data.error) {
-        console.error("TTS: API error:", data.error);
-        setIsPlayingAudio(false);
-        onError("Błąd API głosu: " + data.error);
-        return;
-      }
-
-      if (!data.audioContent) {
-        console.error("TTS: No audio content in response", data);
-        setIsPlayingAudio(false);
-        onError("Brak danych audio w odpowiedzi");
+      if (!data?.audioContent) {
+        console.error("TTS: No audio content in response");
+        onError(data?.error || "Brak danych audio w odpowiedzi");
         return;
       }
 
       console.log("TTS: Audio content received, length:", data.audioContent.length);
 
-      // Create new audio element
-      const audioSrc = `data:audio/mpeg;base64,${data.audioContent}`;
-      const audio = new Audio();
+      // Create and play audio
+      const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
       audioRef.current = audio;
+      
+      setIsPlayingAudio(true);
 
-      // Set up event handlers before setting src
       audio.onended = () => {
         console.log("TTS: Audio playback ended");
         setIsPlayingAudio(false);
-        // Clean up
-        if (audioRef.current === audio) {
-          audioRef.current = null;
-        }
+        audioRef.current = null;
       };
 
-      audio.onerror = (e) => {
-        console.error("TTS: Audio playback error:", e);
+      audio.onerror = () => {
+        console.error("TTS: Audio playback error");
         setIsPlayingAudio(false);
-        if (audioRef.current === audio) {
-          audioRef.current = null;
-        }
+        audioRef.current = null;
       };
 
-      // Set source and load
-      audio.src = audioSrc;
-      audio.load();
-
-      // Wait for audio to be ready then play
-      await new Promise<void>((resolve, reject) => {
-        audio.oncanplaythrough = () => {
-          console.log("TTS: Audio ready to play");
-          resolve();
-        };
-        audio.onerror = () => {
-          reject(new Error("Audio load error"));
-        };
-        // Timeout after 10 seconds
-        setTimeout(() => reject(new Error("Audio load timeout")), 10000);
+      // Try to play immediately
+      audio.play().catch((playError) => {
+        console.error("TTS: Play failed:", playError.name);
+        setIsPlayingAudio(false);
+        audioRef.current = null;
       });
-
-      // Play with retry mechanism
-      try {
-        await audio.play();
-        console.log("TTS: Audio playback started");
-      } catch (playError: any) {
-        console.error("TTS: Failed to start playback:", playError);
-        
-        // If autoplay is blocked, show a message but don't treat it as fatal
-        if (playError.name === "NotAllowedError") {
-          console.log("TTS: Autoplay blocked by browser, user interaction required");
-          setIsPlayingAudio(false);
-          // Don't show error toast for autoplay block - it's expected behavior
-        } else {
-          setIsPlayingAudio(false);
-          onError("Błąd odtwarzania audio");
-        }
-      }
+      
     } catch (err) {
       console.error("TTS: Unexpected error:", err);
       setIsPlayingAudio(false);
