@@ -26,9 +26,14 @@ const ApartmentDetails = () => {
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             {apartment.namePL}
           </h2>
-          <p className="text-foreground font-semibold max-w-3xl mx-auto text-sm sm:text-base md:text-lg px-2 mb-4">
-            {apartment.addressLine}
-          </p>
+          <div className="max-w-3xl mx-auto mb-4 px-2">
+            <p className="text-foreground font-semibold text-sm sm:text-base md:text-lg">
+              {apartment.addressLabel}
+            </p>
+            <p className="text-accent font-bold text-base sm:text-lg md:text-xl">
+              {apartment.addressValue}
+            </p>
+          </div>
           <p className="text-muted-foreground max-w-3xl mx-auto text-sm sm:text-base md:text-lg px-2 whitespace-pre-line">
             {apartment.descriptionPL}
           </p>
