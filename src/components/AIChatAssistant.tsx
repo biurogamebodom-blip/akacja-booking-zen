@@ -39,60 +39,80 @@ const AIChatAssistant = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Simple TTS function - direct call without queue
-  const playTTS = async (text: string) => {
-    if (!text || !autoPlayVoice) {
-      console.log("TTS: Skipping - no text or autoplay disabled");
+  // TTS function with queue to handle multiple messages
+  const audioQueueRef = useRef<string[]>([]);
+  const isProcessingQueueRef = useRef(false);
+
+  const processAudioQueue = async () => {
+    if (isProcessingQueueRef.current || audioQueueRef.current.length === 0) {
       return;
     }
 
-    console.log("TTS: Starting for text:", text.substring(0, 50) + "...");
+    isProcessingQueueRef.current = true;
     setIsPlayingAudio(true);
 
-    try {
-      const { data, error } = await supabase.functions.invoke("text-to-voice", {
-        body: { text },
-      });
+    while (audioQueueRef.current.length > 0) {
+      const text = audioQueueRef.current.shift()!;
+      console.log("TTS Queue: Processing:", text.substring(0, 30) + "...");
 
-      if (error) {
-        console.error("TTS: API error:", error);
-        setIsPlayingAudio(false);
-        return;
+      try {
+        const { data, error } = await supabase.functions.invoke("text-to-voice", {
+          body: { text },
+        });
+
+        if (error) {
+          console.error("TTS Queue: API error:", error);
+          continue;
+        }
+
+        if (!data?.audioContent) {
+          console.error("TTS Queue: No audio content");
+          continue;
+        }
+
+        console.log("TTS Queue: Got audio, playing...");
+        
+        await new Promise<void>((resolve) => {
+          const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+          currentAudioRef.current = audio;
+          
+          audio.onended = () => {
+            console.log("TTS Queue: Playback ended");
+            currentAudioRef.current = null;
+            resolve();
+          };
+          
+          audio.onerror = (e) => {
+            console.error("TTS Queue: Playback error:", e);
+            currentAudioRef.current = null;
+            resolve();
+          };
+
+          audio.play().catch((err) => {
+            console.error("TTS Queue: Play failed:", err);
+            resolve();
+          });
+        });
+        
+      } catch (err) {
+        console.error("TTS Queue: Unexpected error:", err);
       }
-
-      if (!data?.audioContent) {
-        console.error("TTS: No audio content");
-        setIsPlayingAudio(false);
-        return;
-      }
-
-      console.log("TTS: Got audio, playing...");
-      
-      const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
-      currentAudioRef.current = audio;
-      
-      audio.onended = () => {
-        console.log("TTS: Playback ended");
-        currentAudioRef.current = null;
-        setIsPlayingAudio(false);
-      };
-      
-      audio.onerror = (e) => {
-        console.error("TTS: Playback error:", e);
-        currentAudioRef.current = null;
-        setIsPlayingAudio(false);
-      };
-
-      await audio.play();
-      console.log("TTS: Playing started");
-      
-    } catch (err) {
-      console.error("TTS: Unexpected error:", err);
-      setIsPlayingAudio(false);
     }
+
+    isProcessingQueueRef.current = false;
+    setIsPlayingAudio(false);
+    console.log("TTS Queue: All done");
+  };
+
+  const queueTTS = (text: string) => {
+    console.log("TTS: Queueing text:", text.substring(0, 30) + "...");
+    audioQueueRef.current.push(text);
+    processAudioQueue();
   };
 
   const stopAudio = () => {
+    audioQueueRef.current = [];
+    isProcessingQueueRef.current = false;
     if (currentAudioRef.current) {
       currentAudioRef.current.pause();
       currentAudioRef.current = null;
@@ -127,10 +147,10 @@ const AIChatAssistant = () => {
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
       setIsLoading(false);
 
-      // Play TTS after state is updated
+      // Queue TTS after state is updated
       if (autoPlayVoice && reply) {
-        console.log("AI: Calling playTTS");
-        playTTS(reply);
+        console.log("AI: Queueing TTS for reply");
+        queueTTS(reply);
       }
       
     } catch (error) {
