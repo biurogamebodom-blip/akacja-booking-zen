@@ -186,7 +186,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute left-0 right-0 top-full bg-card/98 backdrop-blur-lg border-b border-border shadow-elevated animate-fade-in">
+          <div className="md:hidden absolute left-0 right-0 top-full bg-card/70 backdrop-blur-xl border-b border-border/50 shadow-elevated animate-fade-in">
             <div className="container-wide mx-auto px-4 py-4">
               <nav className="flex flex-col gap-1">
                 {navItems.map((item) => {
@@ -195,7 +195,7 @@ const Header = () => {
                     <a
                       key={item.href}
                       href={item.href}
-                      className="flex items-center gap-3 px-4 py-4 text-foreground hover:text-accent hover:bg-accent/10 active:bg-accent/20 transition-all font-medium rounded-xl focus-ring touch-target"
+                      className="flex items-center gap-3 px-4 py-4 text-foreground hover:text-accent hover:bg-accent/20 active:bg-accent/30 transition-all font-medium rounded-xl focus-ring touch-target"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {IconComponent && <IconComponent className="w-5 h-5 text-accent flex-shrink-0" />}
@@ -206,10 +206,10 @@ const Header = () => {
               </nav>
               
               {/* Mobile CTA */}
-              <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="mt-4 pt-4 border-t border-border/30">
                 <a
                   href={`tel:${globalSettings.mainContactPhone.replace(/\s/g, "")}`}
-                  className="flex items-center justify-center gap-3 w-full px-4 py-4 bg-accent text-accent-foreground font-bold rounded-xl shadow-soft hover:bg-accent/90 active:scale-[0.98] transition-all touch-target"
+                  className="flex items-center justify-center gap-3 w-full px-4 py-4 bg-accent/90 text-accent-foreground font-bold rounded-xl shadow-soft hover:bg-accent active:scale-[0.98] transition-all touch-target"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Phone className="w-5 h-5" />
