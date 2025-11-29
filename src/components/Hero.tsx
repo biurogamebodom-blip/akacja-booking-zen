@@ -8,10 +8,14 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
+      {/* Background Image - Optimized for LCP */}
+      <img 
+        src={heroBackground}
+        alt=""
+        role="presentation"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        decoding="async"
       />
       
       {/* Dark overlay for text readability */}
@@ -50,22 +54,22 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/80 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <div className="mt-8 md:mt-12 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-white/80 animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent" />
-            <span>4-5 osób</span>
+            <span className="text-sm sm:text-base">4-5 osób</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent" />
-            <span>2 sypialnie</span>
+            <span className="text-sm sm:text-base">2 sypialnie</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent" />
-            <span>Taras</span>
+            <span className="text-sm sm:text-base">Taras</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent" />
-            <span>Blisko morza</span>
+            <span className="text-sm sm:text-base">Blisko morza</span>
           </div>
         </div>
       </div>

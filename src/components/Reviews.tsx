@@ -32,8 +32,8 @@ const Reviews = () => {
           </p>
         </div>
 
-        {/* Reviews Carousel */}
-        <div className="px-12">
+        {/* Reviews Carousel - Tablet optimized */}
+        <div className="px-6 sm:px-8 md:px-12">
           <Carousel
             opts={{
               align: "start",
@@ -41,46 +41,46 @@ const Reviews = () => {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-3 sm:-ml-4">
               {reviews.map((review, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <article className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 relative h-full flex flex-col">
+                <CarouselItem key={index} className="pl-3 sm:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <article className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 relative h-full flex flex-col">
                     {/* Quote Icon */}
-                    <Quote className="absolute top-4 right-4 w-8 h-8 text-accent/20" />
+                    <Quote className="absolute top-3 sm:top-4 right-3 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 text-accent/20" />
                     
                     {/* Rating */}
-                    <div className="flex items-center gap-2 mb-4">
+                    <div className="flex items-center gap-2 mb-3 sm:mb-4">
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-4 h-4 fill-accent text-accent"
+                            className="w-3 h-3 sm:w-4 sm:h-4 fill-accent text-accent"
                           />
                         ))}
                       </div>
-                      <span className="text-sm font-semibold text-accent">
+                      <span className="text-xs sm:text-sm font-semibold text-accent">
                         {review.rating}
                       </span>
                     </div>
 
                     {/* Review Text */}
-                    <blockquote className="text-foreground mb-4 leading-relaxed flex-grow">
+                    <blockquote className="text-foreground mb-3 sm:mb-4 leading-relaxed flex-grow text-sm sm:text-base">
                       "{review.text}"
                     </blockquote>
 
                     {/* Author & Source */}
-                    <footer className="flex items-center justify-between gap-3 mt-auto pt-4 border-t border-border/50">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                          <span className="text-accent font-semibold">
+                    <footer className="flex items-center justify-between gap-2 sm:gap-3 mt-auto pt-3 sm:pt-4 border-t border-border/50">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                          <span className="text-accent font-semibold text-sm sm:text-base">
                             {review.author.charAt(0)}
                           </span>
                         </div>
-                        <cite className="not-italic text-muted-foreground font-medium">
+                        <cite className="not-italic text-muted-foreground font-medium text-sm sm:text-base truncate">
                           {review.author}
                         </cite>
                       </div>
-                      <span className="text-xs text-muted-foreground/70">
+                      <span className="text-xs text-muted-foreground/70 flex-shrink-0">
                         {review.source}
                       </span>
                     </footer>
@@ -88,8 +88,8 @@ const Reviews = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
+            <CarouselPrevious className="left-0 h-10 w-10 sm:h-12 sm:w-12" />
+            <CarouselNext className="right-0 h-10 w-10 sm:h-12 sm:w-12" />
           </Carousel>
         </div>
 

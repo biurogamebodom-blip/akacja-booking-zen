@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Optimized Google Fonts with font-display: swap for faster LCP */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap');
+
+/* Fallback fonts while loading */
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-display: swap;
+}
 
 /* Apartamenty Akacja - Sea/Morze Inspired Design System */
 
@@ -205,15 +217,25 @@
 
 @layer components {
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+    @apply px-4 py-12;
+    @apply sm:px-6 sm:py-16;
+    @apply md:px-8 md:py-20;
+    @apply lg:py-24;
   }
 
   .container-narrow {
-    @apply max-w-4xl mx-auto;
+    @apply max-w-4xl mx-auto px-4 sm:px-6;
   }
 
   .container-wide {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Tablet-specific improvements */
+  @screen md {
+    .touch-target {
+      @apply min-h-[44px] min-w-[44px];
+    }
   }
 
   .gradient-ocean {
@@ -253,6 +275,36 @@
     animation: float 3s ease-in-out infinite;
   }
 
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-float,
+    .animate-bounce {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Content visibility for performance */
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+
+  /* Image optimization utilities */
+  .img-lazy {
+    @apply transition-opacity duration-300;
+  }
+
+  .img-lazy[loading="lazy"] {
+    opacity: 0;
+  }
+
+  .img-lazy.loaded {
+    opacity: 1;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -280,5 +332,28 @@
     50% {
       transform: translateY(-10px);
     }
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Touch-friendly tap targets for mobile/tablet */
+@media (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }

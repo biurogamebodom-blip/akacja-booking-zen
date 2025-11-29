@@ -31,69 +31,69 @@ const ApartmentDetails = () => {
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+        {/* Features Grid - Tablet optimized */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
           {apartment.features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon];
             return (
               <div
                 key={index}
-                className="bg-card p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group"
+                className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target"
               >
                 {IconComponent && (
-                  <IconComponent className="w-8 h-8 mx-auto mb-3 text-accent group-hover:scale-110 transition-transform" />
+                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
                 )}
-                <span className="text-foreground font-medium">{feature.label}</span>
+                <span className="text-foreground font-medium text-sm sm:text-base">{feature.label}</span>
               </div>
             );
           })}
         </div>
 
-        {/* Info Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        {/* Info Cards - Tablet optimized */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
           {/* Check-in Times */}
-          <div className="bg-card p-6 rounded-xl shadow-soft">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft">
+            <div className="flex items-center gap-3 mb-3 md:mb-4">
               <div className="p-2 bg-accent/10 rounded-lg">
-                <Clock className="w-5 h-5 text-accent" />
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-xl font-semibold text-foreground">
+              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground">
                 Godziny
               </h3>
             </div>
-            <p className="text-muted-foreground">{apartment.checkInTimes}</p>
+            <p className="text-muted-foreground text-sm sm:text-base">{apartment.checkInTimes}</p>
           </div>
 
           {/* Fees */}
-          <div className="bg-card p-6 rounded-xl shadow-soft">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft">
+            <div className="flex items-center gap-3 mb-3 md:mb-4">
               <div className="p-2 bg-accent/10 rounded-lg">
-                <CreditCard className="w-5 h-5 text-accent" />
+                <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-xl font-semibold text-foreground">
+              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground">
                 Opłaty
               </h3>
             </div>
-            <p className="text-muted-foreground mb-3">{apartment.feesPL}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground mb-2 md:mb-3 text-sm sm:text-base">{apartment.feesPL}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground">
               <strong>Płatności:</strong> {apartment.paymentMethodsPL.join(", ")}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               <strong>Waluty:</strong> {apartment.acceptedCurrencies.join(", ")}
             </p>
           </div>
 
           {/* Smoking Policy */}
-          <div className="bg-card p-6 rounded-xl shadow-soft">
-            <div className="flex items-center gap-3 mb-4">
+          <div className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 md:col-span-1">
+            <div className="flex items-center gap-3 mb-3 md:mb-4">
               <div className="p-2 bg-accent/10 rounded-lg">
-                <Ban className="w-5 h-5 text-accent" />
+                <Ban className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-xl font-semibold text-foreground">
+              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground">
                 Palenie
               </h3>
             </div>
-            <p className="text-muted-foreground">{apartment.smokingPolicyPL}</p>
+            <p className="text-muted-foreground text-sm sm:text-base">{apartment.smokingPolicyPL}</p>
           </div>
         </div>
 
