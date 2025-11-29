@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, Mic, Square, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { useVoiceChat } from "@/hooks/useVoiceChat";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   role: "user" | "assistant";
@@ -19,7 +21,32 @@ const AIChatAssistant = () => {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [autoPlayVoice, setAutoPlayVoice] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
+
+  const {
+    isRecording,
+    isProcessing,
+    isPlayingAudio,
+    startRecording,
+    stopRecording,
+    playTextAsAudio,
+    stopAudio,
+  } = useVoiceChat({
+    onTranscription: (text) => {
+      setInput(text);
+      // Auto-send the transcribed message
+      sendMessageWithText(text);
+    },
+    onError: (error) => {
+      toast({
+        title: "Błąd głosu",
+        description: error,
+        variant: "destructive",
+      });
+    },
+  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,10 +56,10 @@ const AIChatAssistant = () => {
     scrollToBottom();
   }, [messages]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+  const sendMessageWithText = async (text: string) => {
+    if (!text.trim() || isLoading) return;
 
-    const userMessage: Message = { role: "user", content: input };
+    const userMessage: Message = { role: "user", content: text };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
@@ -51,14 +78,19 @@ const AIChatAssistant = () => {
         content: response.data.reply,
       };
       setMessages((prev) => [...prev, assistantMessage]);
+
+      // Auto-play voice response if enabled
+      if (autoPlayVoice && response.data.reply) {
+        playTextAsAudio(response.data.reply);
+      }
     } catch (error) {
       console.error("AI Assistant error:", error);
+      const errorMessage = "Przepraszam, wystąpił błąd. W celu uzyskania informacji, prosimy o kontakt telefoniczny: 505 445 353";
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content:
-            "Przepraszam, wystąpił błąd. W celu uzyskania informacji, prosimy o kontakt telefoniczny: 505 445 353",
+          content: errorMessage,
         },
       ]);
     } finally {
@@ -66,11 +98,30 @@ const AIChatAssistant = () => {
     }
   };
 
+  const sendMessage = async () => {
+    await sendMessageWithText(input);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
     }
+  };
+
+  const handleMicClick = () => {
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  };
+
+  const toggleAutoPlayVoice = () => {
+    if (isPlayingAudio) {
+      stopAudio();
+    }
+    setAutoPlayVoice(!autoPlayVoice);
   };
 
   return (
@@ -109,15 +160,32 @@ const AIChatAssistant = () => {
                 </p>
               </div>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(false)}
-              className="text-accent-foreground hover:bg-accent-foreground/10"
-              aria-label="Zamknij czat"
-            >
-              <X className="w-5 h-5" />
-            </Button>
+            <div className="flex items-center gap-2">
+              {/* Voice Toggle */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleAutoPlayVoice}
+                className="text-accent-foreground hover:bg-accent-foreground/10"
+                aria-label={autoPlayVoice ? "Wyłącz odpowiedzi głosowe" : "Włącz odpowiedzi głosowe"}
+                title={autoPlayVoice ? "Odpowiedzi głosowe włączone" : "Odpowiedzi głosowe wyłączone"}
+              >
+                {autoPlayVoice ? (
+                  <Volume2 className="w-5 h-5" />
+                ) : (
+                  <VolumeX className="w-5 h-5" />
+                )}
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsOpen(false)}
+                className="text-accent-foreground hover:bg-accent-foreground/10"
+                aria-label="Zamknij czat"
+              >
+                <X className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
 
           {/* Messages */}
@@ -140,10 +208,13 @@ const AIChatAssistant = () => {
                 </div>
               </div>
             ))}
-            {isLoading && (
+            {(isLoading || isProcessing) && (
               <div className="flex justify-start">
-                <div className="bg-muted p-3 rounded-xl rounded-bl-sm">
+                <div className="bg-muted p-3 rounded-xl rounded-bl-sm flex items-center gap-2">
                   <Loader2 className="w-5 h-5 animate-spin text-accent" />
+                  <span className="text-sm text-muted-foreground">
+                    {isProcessing ? "Przetwarzam głos..." : "Piszę..."}
+                  </span>
                 </div>
               </div>
             )}
@@ -153,19 +224,40 @@ const AIChatAssistant = () => {
           {/* Input */}
           <div className="p-4 border-t border-border">
             <div className="flex gap-2">
+              {/* Microphone Button */}
+              <Button
+                onClick={handleMicClick}
+                disabled={isLoading || isProcessing}
+                size="icon"
+                variant={isRecording ? "destructive" : "outline"}
+                className={`shrink-0 transition-all duration-300 ${
+                  isRecording 
+                    ? "animate-pulse bg-destructive hover:bg-destructive/90" 
+                    : "hover:bg-accent hover:text-accent-foreground"
+                }`}
+                aria-label={isRecording ? "Zatrzymaj nagrywanie" : "Rozpocznij nagrywanie wiadomości głosowej"}
+                title={isRecording ? "Kliknij, aby zakończyć nagrywanie" : "Kliknij, aby nagrać wiadomość głosową"}
+              >
+                {isRecording ? (
+                  <Square className="w-4 h-4" />
+                ) : (
+                  <Mic className="w-4 h-4" />
+                )}
+              </Button>
+
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Napisz wiadomość..."
+                placeholder={isRecording ? "Nagrywam..." : "Napisz wiadomość..."}
                 className="flex-1 px-4 py-2 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus-ring text-sm"
-                disabled={isLoading}
+                disabled={isLoading || isRecording || isProcessing}
                 aria-label="Wpisz wiadomość"
               />
               <Button
                 onClick={sendMessage}
-                disabled={!input.trim() || isLoading}
+                disabled={!input.trim() || isLoading || isRecording || isProcessing}
                 size="icon"
                 className="gradient-ocean"
                 aria-label="Wyślij wiadomość"
@@ -173,6 +265,31 @@ const AIChatAssistant = () => {
                 <Send className="w-4 h-4" />
               </Button>
             </div>
+            
+            {/* Recording indicator */}
+            {isRecording && (
+              <div className="mt-2 flex items-center gap-2 text-xs text-destructive">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive"></span>
+                </span>
+                Nagrywanie... Kliknij ponownie, aby zakończyć
+              </div>
+            )}
+
+            {/* Playing audio indicator */}
+            {isPlayingAudio && (
+              <div className="mt-2 flex items-center gap-2 text-xs text-accent">
+                <Volume2 className="w-3 h-3 animate-pulse" />
+                Odtwarzam odpowiedź...
+                <button 
+                  onClick={stopAudio}
+                  className="underline hover:no-underline"
+                >
+                  Zatrzymaj
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

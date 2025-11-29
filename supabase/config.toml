@@ -23,3 +23,9 @@ site_url = "http://127.0.0.1:3000"
 
 [functions.ai-assistant]
 verify_jwt = false
+
+[functions.voice-to-text]
+verify_jwt = false
+
+[functions.text-to-voice]
+verify_jwt = false
