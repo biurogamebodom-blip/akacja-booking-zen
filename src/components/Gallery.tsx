@@ -2,37 +2,56 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Placeholder images - in production, these would come from a CMS or database
+// Gallery images
+import gallery01 from "@/assets/gallery/01-widok-zewnetrzny.png";
+import gallery02 from "@/assets/gallery/02-salon-kuchnia.jpeg";
+import gallery03 from "@/assets/gallery/03-salon-schody.jpeg";
+import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg";
+import gallery05 from "@/assets/gallery/05-sypialnia.jpeg";
+import gallery06 from "@/assets/gallery/06-taras.png";
+import gallery07 from "@/assets/gallery/07-pergola.png";
+import gallery08 from "@/assets/gallery/08-plac-zabaw.png";
+
 const galleryImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
-    alt: "Przestronny salon z widokiem na taras",
+    src: gallery01,
+    alt: "Widok zewnętrzny apartamentów Akacja",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
-    alt: "Nowoczesna kuchnia z pełnym wyposażeniem",
+    src: gallery02,
+    alt: "Salon z aneksem kuchennym i drewnianymi belkami",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80",
-    alt: "Sypialnia z wygodnym łóżkiem",
+    src: gallery03,
+    alt: "Przestronny salon z drewnianymi ścianami i schodami na piętro",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80",
-    alt: "Druga sypialnia na piętrze",
+    src: gallery04,
+    alt: "Kuchnia z jadalnią w drewnianym stylu",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-    alt: "Widok na apartament z zewnątrz",
+    src: gallery05,
+    alt: "Sypialnia na poddaszu z dwoma łóżkami",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-    alt: "Plaża w pobliżu apartamentów",
+    src: gallery06,
+    alt: "Taras z meblami ogrodowymi",
+  },
+  {
+    id: 7,
+    src: gallery07,
+    alt: "Pergola z ławką i widok na osiedle",
+  },
+  {
+    id: 8,
+    src: gallery08,
+    alt: "Plac zabaw dla dzieci z huśtawkami i altaną",
   },
 ];
 
@@ -79,7 +98,7 @@ const Gallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {galleryImages.map((image, index) => (
             <button
               key={image.id}
