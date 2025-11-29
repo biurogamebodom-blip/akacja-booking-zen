@@ -24,7 +24,13 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [fontSize, setFontSize] = useState(100); // Changed from 130 to 100
+  // Default: 130% for desktop (like 3x A+), 100% for mobile
+  const [fontSize, setFontSize] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 768 ? 130 : 100;
+    }
+    return 100;
+  });
   const [highContrast, setHighContrast] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
