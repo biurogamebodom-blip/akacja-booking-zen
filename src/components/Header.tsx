@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import welcomeAudio from "@/assets/audio/welcome-message.mp3";
+import logoAkacja from "@/assets/logo-akacja.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,10 +76,14 @@ const Header = () => {
           {/* Logo */}
           <a
             href="#"
-            className="font-serif text-xl md:text-2xl font-bold text-primary hover:text-accent transition-colors focus-ring rounded"
+            className="flex items-center gap-2 focus-ring rounded"
             aria-label="Apartamenty Akacja - Strona główna"
           >
-            Apartamenty <span className="text-accent">Akacja</span>
+            <img 
+              src={logoAkacja} 
+              alt="Apartamenty Akacja - Logo" 
+              className="h-12 md:h-16 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}
