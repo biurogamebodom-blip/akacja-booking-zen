@@ -23,9 +23,9 @@ export const apartment = {
     { icon: "home", label: "Dwupoziomowy" },
     { icon: "door-open", label: "Oddzielne wejście" },
     { icon: "sun", label: "Taras" },
-    { icon: "tv", label: 'TV 32"' },
+    { icon: "tv", label: 'Smart TV 32"' },
     { icon: "utensils", label: "Aneks kuchenny" },
-    { icon: "bed", label: "2 sypialnie" },
+    { icon: "bed", label: "2 sypialnie i salon" },
     { icon: "car", label: "Parking" },
   ],
 };
