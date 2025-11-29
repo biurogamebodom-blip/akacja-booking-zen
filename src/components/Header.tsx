@@ -100,7 +100,7 @@ const Header = () => {
           </div>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Accessibility Widget - Large for visually impaired */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -108,26 +108,26 @@ const Header = () => {
                   variant="outline"
                   size="lg"
                   aria-label="Opcje dostępności - powiększanie tekstu i wysoki kontrast"
-                  className="focus-ring bg-accent/90 hover:bg-accent text-accent-foreground border-2 border-accent-foreground/20 shadow-soft h-12 w-12 md:h-14 md:w-14 p-0"
+                  className="focus-ring bg-accent/90 hover:bg-accent text-accent-foreground border-2 border-accent-foreground/20 shadow-soft h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 p-0"
                 >
-                  <Accessibility className="h-7 w-7 md:h-8 md:w-8" />
+                  <Accessibility className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-64 text-lg">
-                <DropdownMenuItem onClick={increaseFontSize} className="py-3 text-base">
-                  <span className="text-xl font-bold mr-3">A+</span>
+              <DropdownMenuContent align="end" className="w-56 sm:w-64 text-base sm:text-lg">
+                <DropdownMenuItem onClick={increaseFontSize} className="py-2 sm:py-3 text-sm sm:text-base">
+                  <span className="text-lg sm:text-xl font-bold mr-2 sm:mr-3">A+</span>
                   Zwiększ tekst
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={decreaseFontSize} className="py-3 text-base">
-                  <span className="text-base font-bold mr-3">A-</span>
+                <DropdownMenuItem onClick={decreaseFontSize} className="py-2 sm:py-3 text-sm sm:text-base">
+                  <span className="text-sm sm:text-base font-bold mr-2 sm:mr-3">A-</span>
                   Zmniejsz tekst
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => setHighContrast(!highContrast)}
-                  className="py-3 text-base"
+                  className="py-2 sm:py-3 text-sm sm:text-base"
                 >
-                  <span className="mr-3 text-xl">◐</span>
-                  {highContrast ? "Wyłącz wysoki kontrast" : "Wysoki kontrast"}
+                  <span className="mr-2 sm:mr-3 text-lg sm:text-xl">◐</span>
+                  {highContrast ? "Wyłącz kontrast" : "Wysoki kontrast"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -138,16 +138,16 @@ const Header = () => {
               size="lg"
               onClick={toggleWelcomeAudio}
               aria-label={isPlaying ? "Zatrzymaj odsłuchiwanie strony" : "Odsłuchaj informacje o stronie"}
-              className={`focus-ring border-2 shadow-soft h-12 w-12 md:h-14 md:w-14 p-0 transition-all ${
+              className={`focus-ring border-2 shadow-soft h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 p-0 transition-all ${
                 isPlaying 
                   ? "bg-destructive hover:bg-destructive/90 text-destructive-foreground border-destructive-foreground/20 animate-pulse" 
                   : "bg-primary hover:bg-primary/90 text-primary-foreground border-primary-foreground/20"
               }`}
             >
               {isPlaying ? (
-                <VolumeX className="h-7 w-7 md:h-8 md:w-8" />
+                <VolumeX className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" />
               ) : (
-                <Volume2 className="h-7 w-7 md:h-8 md:w-8" />
+                <Volume2 className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" />
               )}
             </Button>
 
@@ -155,15 +155,15 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden focus-ring"
+              className="md:hidden focus-ring h-10 w-10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
               aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-5 w-5" />
               )}
             </Button>
           </div>
