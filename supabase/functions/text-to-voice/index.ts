@@ -30,7 +30,7 @@ serve(async (req) => {
     const voiceId = voice || "CwhRBWXzGAHq8TQ4Fs17"; // Roger - wyraźny męski głos
 
     // Generate speech from text using Eleven Labs
-    // Optimized settings for clear Polish pronunciation
+    // Fully optimized settings for Polish language pronunciation
     const response = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
       {
@@ -41,13 +41,16 @@ serve(async (req) => {
         },
         body: JSON.stringify({
           text: text,
-          model_id: "eleven_multilingual_v2",
+          model_id: "eleven_multilingual_v2", // Najlepszy model dla języków europejskich w tym polskiego
           voice_settings: {
-            stability: 0.65,        // Wyższa stabilność dla wyraźniejszej wymowy
-            similarity_boost: 0.80, // Lepsze odwzorowanie głosu
-            style: 0.15,            // Lekka ekspresja dla naturalności
-            use_speaker_boost: true,
+            stability: 0.75,        // Wysoka stabilność - lepsza wymowa polskich spółgłosek (sz, cz, ż, dż)
+            similarity_boost: 0.85, // Wyższe odwzorowanie - naturalniejszy głos
+            style: 0.10,            // Niska ekspresja - unika dziwnej intonacji w polskim
+            use_speaker_boost: true, // Wzmocnienie głosu dla lepszej wyrazistości
           },
+          // Optymalizacja dla polskiego
+          pronunciation_dictionary_locators: [],
+          language_code: "pl", // Wymuszenie polskiego języka
         }),
       }
     );
