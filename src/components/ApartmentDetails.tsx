@@ -47,12 +47,12 @@ const ApartmentDetails = () => {
             return (
               <div
                 key={index}
-                className="bg-card p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target"
+                className="bg-card p-2 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[70px] sm:min-h-0 flex flex-col items-center justify-center"
               >
                 {IconComponent && (
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mx-auto mb-1.5 sm:mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
                 )}
-                <span className="text-foreground font-medium text-xs sm:text-sm md:text-base leading-tight block">{feature.label}</span>
+                <span className="text-foreground font-medium text-[10px] sm:text-sm md:text-base leading-tight block break-words hyphens-auto">{feature.label}</span>
               </div>
             );
           })}
