@@ -75,6 +75,7 @@ const AIChatAssistant = () => {
         console.log("TTS Queue: Processing, remaining:", audioQueueRef.current.length);
 
         try {
+          console.log("TTS Queue: Calling text-to-voice API...");
           const { data, error } = await supabase.functions.invoke("text-to-voice", {
             body: { text },
           });
@@ -85,11 +86,11 @@ const AIChatAssistant = () => {
           }
 
           if (!data?.audioContent) {
-            console.error("TTS Queue: No audio content");
+            console.error("TTS Queue: No audio content in response, data:", data);
             continue;
           }
 
-          console.log("TTS Queue: Got audio, playing...");
+          console.log("TTS Queue: Got audio, size:", data.audioContent.length, "chars");
           
           // Play audio with timeout fallback
           await new Promise<void>((resolve) => {
@@ -102,7 +103,10 @@ const AIChatAssistant = () => {
               }
             };
 
-            const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+            const audioDataUrl = `data:audio/mpeg;base64,${data.audioContent}`;
+            console.log("TTS Queue: Creating audio element, data URL length:", audioDataUrl.length);
+            
+            const audio = new Audio();
             currentAudioRef.current = audio;
             
             // Timeout fallback - max 2 minutes per audio
@@ -111,6 +115,21 @@ const AIChatAssistant = () => {
               safeResolve();
             }, 120000);
             
+            audio.oncanplaythrough = () => {
+              console.log("TTS Queue: Audio can play through, duration:", audio.duration);
+            };
+            
+            audio.onloadeddata = () => {
+              console.log("TTS Queue: Audio loaded, playing...");
+              audio.play()
+                .then(() => console.log("TTS Queue: Started playing"))
+                .catch((err) => {
+                  console.error("TTS Queue: Play failed:", err);
+                  clearTimeout(timeoutId);
+                  safeResolve();
+                });
+            };
+            
             audio.onended = () => {
               console.log("TTS Queue: Ended normally");
               clearTimeout(timeoutId);
@@ -118,18 +137,14 @@ const AIChatAssistant = () => {
             };
             
             audio.onerror = (e) => {
-              console.error("TTS Queue: Error:", e);
+              console.error("TTS Queue: Audio error:", e, "readyState:", audio.readyState);
               clearTimeout(timeoutId);
               safeResolve();
             };
 
-            audio.play()
-              .then(() => console.log("TTS Queue: Started playing"))
-              .catch((err) => {
-                console.error("TTS Queue: Play failed:", err);
-                clearTimeout(timeoutId);
-                safeResolve();
-              });
+            // Set source and trigger load
+            audio.src = audioDataUrl;
+            audio.load();
           });
           
         } catch (err) {
