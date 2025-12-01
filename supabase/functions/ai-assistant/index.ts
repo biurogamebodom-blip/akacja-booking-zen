@@ -41,9 +41,9 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 - Ładne, zadbane wnętrza
 
 ### CENNIK (sezon 2025/2026 - ceny orientacyjne):
-1. SEZON NISKI (wrzesień-maj, poza świętami): od 180 zł/noc, minimum 2 noce
+1. SEZON NISKI (wrzesień-maj, poza świętami): od 200 zł/noc, minimum 2 noce
 2. SEZON ŚREDNI (czerwiec, wrzesień): od 250 zł/noc, minimum 3 noce
-3. SEZON WYSOKI (lipiec-sierpień): od 350 zł/noc, minimum 7 nocy - NAJPOPULARNIEJSZY
+3. SEZON WYSOKI (lipiec-sierpień): od 490 zł/noc, minimum 7 nocy - NAJPOPULARNIEJSZY
 4. ŚWIĘTA I DŁUGIE WEEKENDY (Wielkanoc, Majówka, Boże Narodzenie): od 300 zł/noc, minimum 3 noce
 
 ### DODATKOWE OPŁATY:
