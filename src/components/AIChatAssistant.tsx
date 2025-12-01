@@ -65,6 +65,7 @@ const AIChatAssistant = () => {
     }
     
     if (audioQueueRef.current.length === 0) {
+      console.log("TTS Queue: Empty queue, nothing to process");
       return;
     }
 
@@ -75,7 +76,7 @@ const AIChatAssistant = () => {
     try {
       while (audioQueueRef.current.length > 0) {
         const text = audioQueueRef.current.shift()!;
-        console.log("TTS Queue: Processing, remaining:", audioQueueRef.current.length);
+        console.log("TTS Queue: Processing item, remaining:", audioQueueRef.current.length, "text length:", text.length);
 
         try {
           console.log("TTS Queue: Calling text-to-voice API...");
@@ -102,6 +103,7 @@ const AIChatAssistant = () => {
               if (!resolved) {
                 resolved = true;
                 currentAudioRef.current = null;
+                console.log("TTS Queue: Audio promise resolved");
                 resolve();
               }
             };
@@ -156,18 +158,21 @@ const AIChatAssistant = () => {
         
         // Small delay between items
         if (audioQueueRef.current.length > 0) {
+          console.log("TTS Queue: More items in queue, waiting 200ms...");
           await new Promise(r => setTimeout(r, 200));
         }
       }
     } finally {
+      console.log("TTS Queue: Finished processing, checking for new items...");
       isProcessingQueueRef.current = false;
       setIsPlayingAudio(false);
-      console.log("TTS Queue: Done");
       
       // Check if new items were added during processing
       if (audioQueueRef.current.length > 0) {
-        console.log("TTS Queue: New items found, restarting...");
+        console.log("TTS Queue: New items found after processing, restarting...");
         setTimeout(() => processAudioQueue(), 100);
+      } else {
+        console.log("TTS Queue: All done, queue empty");
       }
     }
   };
@@ -177,11 +182,17 @@ const AIChatAssistant = () => {
       console.log("TTS: Empty text, skipping");
       return;
     }
-    console.log("TTS: Queueing, queue length:", audioQueueRef.current.length, "isProcessing:", isProcessingQueueRef.current);
+    console.log("TTS: Queueing text, length:", text.length, "queue length before:", audioQueueRef.current.length, "isProcessing:", isProcessingQueueRef.current);
     audioQueueRef.current.push(text);
+    console.log("TTS: Queue length after push:", audioQueueRef.current.length);
     
-    // Start processing - delay slightly to allow queue to build up
-    setTimeout(() => processAudioQueue(), 50);
+    // Start processing - use shorter delay and ensure it runs
+    const startProcessing = () => {
+      console.log("TTS: Attempting to start processAudioQueue, isProcessing:", isProcessingQueueRef.current, "queue length:", audioQueueRef.current.length);
+      processAudioQueue();
+    };
+    
+    setTimeout(startProcessing, 50);
   };
 
   // Read welcome message when chat opens (must be after queueTTS is defined)
