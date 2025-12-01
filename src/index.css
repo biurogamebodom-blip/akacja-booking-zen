@@ -195,6 +195,34 @@
     background: hsl(0 0% 100%) !important;
     backdrop-filter: none !important;
   }
+
+  /* Text Spacing Enhanced Mode - for dyslexia and visual impairment */
+  .text-spacing-enhanced {
+    --text-spacing-line-height: 1.8;
+    --text-spacing-letter: 0.12em;
+    --text-spacing-word: 0.16em;
+  }
+
+  .text-spacing-enhanced body,
+  .text-spacing-enhanced p,
+  .text-spacing-enhanced li,
+  .text-spacing-enhanced span,
+  .text-spacing-enhanced div {
+    line-height: var(--text-spacing-line-height) !important;
+    letter-spacing: var(--text-spacing-letter) !important;
+    word-spacing: var(--text-spacing-word) !important;
+  }
+
+  .text-spacing-enhanced h1,
+  .text-spacing-enhanced h2,
+  .text-spacing-enhanced h3,
+  .text-spacing-enhanced h4,
+  .text-spacing-enhanced h5,
+  .text-spacing-enhanced h6 {
+    line-height: 1.5 !important;
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.1em !important;
+  }
 }
 
 @layer base {

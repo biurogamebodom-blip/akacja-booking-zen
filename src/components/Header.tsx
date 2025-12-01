@@ -27,6 +27,7 @@ const Header = () => {
   // Default: 130% for all devices (like 3x A+)
   const [fontSize, setFontSize] = useState(130);
   const [highContrast, setHighContrast] = useState(false);
+  const [textSpacing, setTextSpacing] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -48,6 +49,14 @@ const Header = () => {
       document.documentElement.classList.remove("high-contrast");
     }
   }, [highContrast]);
+
+  useEffect(() => {
+    if (textSpacing) {
+      document.documentElement.classList.add("text-spacing-enhanced");
+    } else {
+      document.documentElement.classList.remove("text-spacing-enhanced");
+    }
+  }, [textSpacing]);
 
   const toggleWelcomeAudio = () => {
     if (!audioRef.current) {
@@ -138,6 +147,13 @@ const Header = () => {
                 >
                   <span className="mr-2 sm:mr-3 text-lg sm:text-xl">◐</span>
                   {highContrast ? "Wyłącz kontrast" : "Wysoki kontrast"}
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => setTextSpacing(!textSpacing)}
+                  className="py-2 sm:py-3 text-sm sm:text-base"
+                >
+                  <span className="mr-2 sm:mr-3 text-lg sm:text-xl">⋮⋮</span>
+                  {textSpacing ? "Wyłącz odstępy" : "Większe odstępy"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

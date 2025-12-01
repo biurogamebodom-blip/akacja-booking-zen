@@ -18,8 +18,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Skip to main content link for keyboard/screen reader users */}
+      <a
+        href="#main-content"
+        className="skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-accent focus:text-accent-foreground focus:rounded-lg focus:shadow-elevated focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:font-semibold"
+      >
+        Przejdź do głównej treści
+      </a>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <ApartmentDetails />
         <Gallery />
