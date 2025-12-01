@@ -41,7 +41,7 @@ const ApartmentDetails = () => {
         </div>
 
         {/* Features Grid - Tablet optimized */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-6 mb-8 md:mb-12">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4 mb-8 md:mb-12">
           {apartment.features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon];
             return (
