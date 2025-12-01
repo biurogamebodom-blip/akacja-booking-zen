@@ -9,7 +9,7 @@ import gallery03 from "@/assets/gallery/03-salon-schody.jpeg";
 import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg";
 import gallery05 from "@/assets/gallery/05-sypialnia.jpeg";
 import gallery06 from "@/assets/gallery/06-taras.png";
-import gallery07 from "@/assets/gallery/07-pergola.png";
+import gallery07 from "@/assets/gallery/07-pergola-new.jpg";
 import gallery08 from "@/assets/gallery/08-plac-zabaw.png";
 import gallery09 from "@/assets/gallery/09-jacuzzi.jpg";
 
