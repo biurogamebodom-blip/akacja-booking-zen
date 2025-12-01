@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 // Gallery images
 import gallery01 from "@/assets/gallery/01-widok-zewnetrzny-new.jpg";
-import gallery02 from "@/assets/gallery/02-salon-kuchnia.jpeg";
+import gallery02 from "@/assets/gallery/02-salon-kuchnia-new.png";
 import gallery03 from "@/assets/gallery/03-salon-schody.jpeg";
 import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg";
 import gallery05 from "@/assets/gallery/05-sypialnia.jpeg";
