@@ -142,27 +142,11 @@ const Reviews = () => {
 
           {/* Elfsight Widget Container */}
           <div className="flex justify-center mb-8">
-            <div 
-              className="elfsight-app-placeholder w-full max-w-4xl min-h-[300px] bg-card/50 rounded-xl flex items-center justify-center border border-dashed border-border"
-            >
-              {/* 
-                Wklej tutaj kod Elfsight widget, np:
-                <div class="elfsight-app-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" data-elfsight-app-lazy></div>
-              */}
-              <div className="text-center p-8">
-                <p className="text-muted-foreground mb-4">
-                  Widget Google Reviews zostanie tutaj wyświetlony
-                </p>
-                <a
-                  href="https://share.google/IaIgXXGGeDDwpqs7D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-xl shadow-soft hover:bg-accent/90 transition-all duration-300 font-semibold"
-                >
-                  <Star className="w-5 h-5" />
-                  Zobacz opinie Google
-                </a>
-              </div>
+            <div className="w-full max-w-4xl">
+              <div 
+                className="elfsight-app-6d7734d8-4512-48a3-8162-b5a0e5948b49" 
+                data-elfsight-app-lazy
+              ></div>
             </div>
           </div>
         </div>
