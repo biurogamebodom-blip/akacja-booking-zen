@@ -35,29 +35,61 @@ function formatPhoneNumbers(text: string): string {
   );
 }
 
+// Funkcja konwertująca liczebniki przed rzeczownikami dla lepszej wymowy
+function expandNumbersInContext(text: string): string {
+  let result = text;
+  
+  // Liczebniki przed "noce/nocy/noc" 
+  result = result.replace(/\b2\s+noc[eiy]?\b/gi, "dwie noce");
+  result = result.replace(/\b3\s+noc[eiy]?\b/gi, "trzy noce");
+  result = result.replace(/\b4\s+noc[eiy]?\b/gi, "cztery noce");
+  result = result.replace(/\b5\s+noc[yei]?\b/gi, "pięć nocy");
+  result = result.replace(/\b6\s+noc[yei]?\b/gi, "sześć nocy");
+  result = result.replace(/\b7\s+noc[yei]?\b/gi, "siedem nocy");
+  
+  // Liczebniki przed "osoby/osób"
+  result = result.replace(/\b2\s+osob[yę]?\b/gi, "dwie osoby");
+  result = result.replace(/\b3\s+osob[yę]?\b/gi, "trzy osoby");
+  result = result.replace(/\b4\s+osob[yę]?\b/gi, "cztery osoby");
+  result = result.replace(/\b5\s+osób\b/gi, "pięć osób");
+  result = result.replace(/\b6\s+osób\b/gi, "sześć osób");
+  
+  // Liczebniki przed "dorosłych/dzieci"
+  result = result.replace(/\b2\s+dorosłych\b/gi, "dwóch dorosłych");
+  result = result.replace(/\b3\s+dorosłych\b/gi, "trzech dorosłych");
+  result = result.replace(/\b4\s+dorosłych\b/gi, "czterech dorosłych");
+  
+  return result;
+}
+
 // Funkcja rozwijająca polskie skróty dla lepszej wymowy
-// UWAGA: Używamy tylko skrótów z kropką lub bardzo specyficznych wzorców
 function expandPolishAbbreviations(text: string): string {
   let result = text;
   
-  // NAJPIERW: Specjalne wzorce cenowe (muszą być przed ogólnymi skrótami)
+  // KROK 1: Najpierw rozwiń liczebniki w kontekście
+  result = expandNumbersInContext(result);
+  
+  // KROK 2: Wzorce cenowe (od najbardziej specyficznych do ogólnych)
   // "zł/os." lub "zł/os" -> "złotych za osobę"
   result = result.replace(/zł\s*\/\s*os\.?/gi, "złotych za osobę");
-  
-  // "/os." lub "/os" na końcu ceny -> "za osobę"
-  result = result.replace(/\/\s*os\.?\s*(dziennie|na dzień)?/gi, " za osobę $1");
   
   // "zł/noc" -> "złotych za noc"
   result = result.replace(/zł\s*\/\s*noc/gi, "złotych za noc");
   
-  // "/noc" -> "za noc"
-  result = result.replace(/\/\s*noc/gi, " za noc");
-  
   // "zł/doba" -> "złotych za dobę"
   result = result.replace(/zł\s*\/\s*dob[ęa]/gi, "złotych za dobę");
   
-  // Skróty z kropką - bezpieczne do zamiany (kropka działa jako delimiter)
-  // UWAGA: Usunięto "os." stąd - obsługiwane wyżej w kontekście cenowym
+  // "/os." lub "/os" -> "za osobę"
+  result = result.replace(/\/\s*os\.?\b/gi, " za osobę");
+  
+  // "/noc" -> "za noc" 
+  result = result.replace(/\/\s*noc\b/gi, " za noc");
+  
+  // KROK 3: Samodzielne "zł" - tylko jeśli NIE jest częścią "złotych"
+  // Używamy negative lookahead żeby nie matchować w "złotych"
+  result = result.replace(/\bzł(?!otych)\b/gi, "złotych");
+  
+  // KROK 4: Skróty z kropką
   const abbreviationsWithDot: Record<string, string> = {
     "ul.": "ulica",
     "al.": "aleja",
@@ -73,7 +105,7 @@ function expandPolishAbbreviations(text: string): string {
     "tzw.": "tak zwany",
     "ok.": "około",
     "max.": "maksymalnie",
-    "min.": "minimalnie",
+    "min.": "minimum",
     "pn.": "poniedziałek",
     "wt.": "wtorek",
     "śr.": "środa",
@@ -82,27 +114,18 @@ function expandPolishAbbreviations(text: string): string {
     "sob.": "sobota",
     "niedz.": "niedziela",
     "ndz.": "niedziela",
-    "prof.": "profesor",
-    "św.": "świętego",
-    "ks.": "księdza",
-    "m.": "mieszkanie",
-    "p.": "piętro",
+    "os.": "osobę",
   };
   
-  // Zamień skróty z kropką
   for (const [abbr, full] of Object.entries(abbreviationsWithDot)) {
     const escapedAbbr = abbr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(escapedAbbr, 'gi');
     result = result.replace(regex, full);
   }
   
-  // "os." jako osobę (w kontekście cenowym, jeśli nie złapane wcześniej)
-  result = result.replace(/\bos\.\s*(dziennie|na dzień)?/gi, "osobę $1");
-  
-  // Skróty bez kropki - wymagają granic słów (\b)
+  // KROK 5: Skróty bez kropki (z word boundaries)
   const abbreviationsNoBoundary: Array<[RegExp, string]> = [
     [/\bnr\b/gi, "numer"],
-    [/\bzł\b/gi, "złotych"],
     [/\bm2\b/gi, "metrów kwadratowych"],
     [/\bm²\b/gi, "metrów kwadratowych"],
     [/\bkm\b/gi, "kilometrów"],
