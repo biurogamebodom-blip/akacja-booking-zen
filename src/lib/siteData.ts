@@ -39,6 +39,7 @@ Nie czekaj! Stwórz swoje najlepsze wspomnienia nad Bałtykiem!`,
     { icon: "utensils", label: "Aneks kuchenny" },
     { icon: "bed", label: "2 sypialnie i salon" },
     { icon: "car", label: "Parking" },
+    { icon: "wifi", label: "Internet WiFi" },
   ],
 };
 
