@@ -3,7 +3,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Gallery images
-import gallery01 from "@/assets/gallery/01-widok-zewnetrzny.png";
+import gallery01 from "@/assets/gallery/01-widok-zewnetrzny-new.jpg";
 import gallery02 from "@/assets/gallery/02-salon-kuchnia.jpeg";
 import gallery03 from "@/assets/gallery/03-salon-schody.jpeg";
 import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg";
@@ -11,6 +11,7 @@ import gallery05 from "@/assets/gallery/05-sypialnia.jpeg";
 import gallery06 from "@/assets/gallery/06-taras.png";
 import gallery07 from "@/assets/gallery/07-pergola.png";
 import gallery08 from "@/assets/gallery/08-plac-zabaw.png";
+import gallery09 from "@/assets/gallery/09-jacuzzi.jpg";
 
 const galleryImages = [
   {
@@ -52,6 +53,11 @@ const galleryImages = [
     id: 8,
     src: gallery08,
     alt: "Plac zabaw dla dzieci z huśtawkami i altaną",
+  },
+  {
+    id: 9,
+    src: gallery09,
+    alt: "Jacuzzi zewnętrzne",
   },
 ];
 
@@ -118,8 +124,8 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Gallery Grid - optimized for tablets */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-5 lg:gap-6">
+        {/* Gallery Grid - 3 columns layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {galleryImages.map((image, index) => (
             <GalleryImage 
               key={image.id} 
