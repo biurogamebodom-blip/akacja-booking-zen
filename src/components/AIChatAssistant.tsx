@@ -55,69 +55,96 @@ const AIChatAssistant = () => {
   const isProcessingQueueRef = useRef(false);
 
   const processAudioQueue = async () => {
-    if (isProcessingQueueRef.current || audioQueueRef.current.length === 0) {
+    // Don't start another queue processor if one is running
+    if (isProcessingQueueRef.current) {
+      console.log("TTS Queue: Already processing, will pick up new items in loop");
+      return;
+    }
+    
+    if (audioQueueRef.current.length === 0) {
+      console.log("TTS Queue: Empty queue, nothing to process");
       return;
     }
 
     isProcessingQueueRef.current = true;
     setIsPlayingAudio(true);
+    console.log("TTS Queue: Starting to process, items in queue:", audioQueueRef.current.length);
 
-    while (audioQueueRef.current.length > 0) {
-      const text = audioQueueRef.current.shift()!;
-      console.log("TTS Queue: Processing:", text.substring(0, 30) + "...");
+    try {
+      while (audioQueueRef.current.length > 0) {
+        const text = audioQueueRef.current.shift()!;
+        console.log("TTS Queue: Processing item, remaining:", audioQueueRef.current.length);
 
-      try {
-        const { data, error } = await supabase.functions.invoke("text-to-voice", {
-          body: { text },
-        });
-
-        if (error) {
-          console.error("TTS Queue: API error:", error);
-          continue;
-        }
-
-        if (!data?.audioContent) {
-          console.error("TTS Queue: No audio content");
-          continue;
-        }
-
-        console.log("TTS Queue: Got audio, playing...");
-        
-        await new Promise<void>((resolve) => {
-          const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
-          currentAudioRef.current = audio;
-          
-          audio.onended = () => {
-            console.log("TTS Queue: Playback ended");
-            currentAudioRef.current = null;
-            resolve();
-          };
-          
-          audio.onerror = (e) => {
-            console.error("TTS Queue: Playback error:", e);
-            currentAudioRef.current = null;
-            resolve();
-          };
-
-          audio.play().catch((err) => {
-            console.error("TTS Queue: Play failed:", err);
-            resolve();
+        try {
+          const { data, error } = await supabase.functions.invoke("text-to-voice", {
+            body: { text },
           });
-        });
-        
-      } catch (err) {
-        console.error("TTS Queue: Unexpected error:", err);
-      }
-    }
 
-    isProcessingQueueRef.current = false;
-    setIsPlayingAudio(false);
-    console.log("TTS Queue: All done");
+          if (error) {
+            console.error("TTS Queue: API error:", error);
+            continue;
+          }
+
+          if (!data?.audioContent) {
+            console.error("TTS Queue: No audio content received");
+            continue;
+          }
+
+          console.log("TTS Queue: Got audio content, size:", data.audioContent.length);
+          
+          // Play audio and wait for it to finish
+          await new Promise<void>((resolve) => {
+            const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+            currentAudioRef.current = audio;
+            
+            const cleanup = () => {
+              currentAudioRef.current = null;
+              resolve();
+            };
+            
+            audio.onended = () => {
+              console.log("TTS Queue: Playback ended normally");
+              cleanup();
+            };
+            
+            audio.onerror = (e) => {
+              console.error("TTS Queue: Playback error:", e);
+              cleanup();
+            };
+
+            audio.play()
+              .then(() => console.log("TTS Queue: Playback started"))
+              .catch((err) => {
+                console.error("TTS Queue: Play failed:", err);
+                cleanup();
+              });
+          });
+          
+        } catch (err) {
+          console.error("TTS Queue: Unexpected error processing item:", err);
+        }
+        
+        // Small delay between items to prevent audio overlap
+        if (audioQueueRef.current.length > 0) {
+          await new Promise(r => setTimeout(r, 100));
+        }
+      }
+    } finally {
+      // Always reset state when done
+      isProcessingQueueRef.current = false;
+      setIsPlayingAudio(false);
+      console.log("TTS Queue: Finished processing all items");
+    }
   };
 
   const queueTTS = (text: string) => {
-    console.log("TTS: Queueing text:", text.substring(0, 30) + "...");
+    if (!text || text.trim().length === 0) {
+      console.log("TTS: Empty text, skipping");
+      return;
+    }
+    console.log("TTS: Queueing text, current queue length:", audioQueueRef.current.length);
     audioQueueRef.current.push(text);
+    // Start processing (will be ignored if already running)
     processAudioQueue();
   };
 
