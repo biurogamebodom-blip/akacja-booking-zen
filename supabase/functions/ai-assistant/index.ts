@@ -37,6 +37,7 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 ### UDOGODNIENIA:
 - Parking na miejscu
 - Podwózka meleksem nad morze
+- Internet WiFi
 - Czystość i porządek
 - Ładne, zadbane wnętrza
 
