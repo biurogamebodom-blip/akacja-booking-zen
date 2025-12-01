@@ -73,7 +73,7 @@ const Hero = () => {
           </div>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">Blisko morza</span>
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">15 min spacerem do morza</span>
           </div>
         </div>
       </div>
