@@ -50,6 +50,9 @@ const AIChatAssistant = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Ref for welcome message (will be used after queueTTS is defined)
+  const hasPlayedWelcomeRef = useRef(false);
+
   // TTS function with queue to handle multiple messages
   const audioQueueRef = useRef<string[]>([]);
   const isProcessingQueueRef = useRef(false);
@@ -180,6 +183,18 @@ const AIChatAssistant = () => {
     // Start processing - delay slightly to allow queue to build up
     setTimeout(() => processAudioQueue(), 50);
   };
+
+  // Read welcome message when chat opens (must be after queueTTS is defined)
+  useEffect(() => {
+    if (isOpen && autoPlayVoice && !hasPlayedWelcomeRef.current && messages.length === 1) {
+      hasPlayedWelcomeRef.current = true;
+      // Small delay to ensure chat is visible
+      setTimeout(() => {
+        console.log("TTS: Playing welcome message");
+        queueTTS(messages[0].content);
+      }, 500);
+    }
+  }, [isOpen, autoPlayVoice]);
 
   const stopAudio = () => {
     audioQueueRef.current = [];
