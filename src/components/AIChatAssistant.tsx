@@ -437,6 +437,9 @@ const AIChatAssistant = () => {
 
           {/* Input */}
           <div className="p-4 border-t border-border">
+            <label htmlFor="chat-input" className="block text-xs font-medium text-muted-foreground mb-2">
+              Twoja wiadomość
+            </label>
             <div className="flex gap-2">
               <Button
                 onClick={handleMicClick}
@@ -444,20 +447,24 @@ const AIChatAssistant = () => {
                 size="icon"
                 variant={isRecording ? "destructive" : "outline"}
                 className={`shrink-0 ${isRecording ? "animate-pulse" : ""}`}
-                aria-label={isRecording ? "Zatrzymaj" : "Nagraj"}
+                aria-label={isRecording ? "Zatrzymaj nagrywanie" : "Nagraj wiadomość głosową"}
               >
                 {isRecording ? <Square className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
               </Button>
 
               <input
+                id="chat-input"
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && (e.preventDefault(), sendMessageWithText(input))}
-                placeholder={isRecording ? "Nagrywam..." : "Napisz wiadomość..."}
-                className="flex-1 px-4 py-2 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus-ring text-sm"
+                aria-describedby="chat-input-hint"
+                className="flex-1 px-4 py-2 rounded-lg border border-input bg-background text-foreground focus-ring text-sm"
                 disabled={isLoading || isRecording || isProcessing}
               />
+              <span id="chat-input-hint" className="sr-only">
+                {isRecording ? "Trwa nagrywanie głosu" : "Wpisz wiadomość i naciśnij Enter aby wysłać"}
+              </span>
               
               <Button
                 onClick={() => sendMessageWithText(input)}
