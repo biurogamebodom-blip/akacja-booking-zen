@@ -7,7 +7,7 @@ const Contact = () => {
   const secondaryPhoneLink = `tel:${globalSettings.secondaryContactPhone.replace(/\s/g, "")}`;
 
   return (
-    <section id="kontakt" className="section-padding gradient-sand">
+    <section id="kontakt" className="py-8 sm:py-10 md:py-12 lg:py-14 gradient-sand">
       <div className="container-wide mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
