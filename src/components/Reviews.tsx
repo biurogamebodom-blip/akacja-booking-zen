@@ -127,7 +127,7 @@ const Reviews = () => {
         </div>
 
         {/* Google Reviews Section */}
-        <div className="mt-12 pt-8 border-t border-border/30">
+        <div className="mt-8 pt-6 border-t border-border/30">
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
               Opinie Google
