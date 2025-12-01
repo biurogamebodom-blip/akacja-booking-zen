@@ -8,6 +8,7 @@ import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import AIChatAssistant from "@/components/AIChatAssistant";
+import CookieConsent from "@/components/CookieConsent";
 
 const Index = () => {
   useEffect(() => {
@@ -28,6 +29,7 @@ const Index = () => {
       </main>
       <Footer />
       <AIChatAssistant />
+      <CookieConsent />
     </div>
   );
 };
