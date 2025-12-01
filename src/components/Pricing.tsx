@@ -81,31 +81,6 @@ const Pricing = () => {
           ))}
         </div>
 
-        {/* Additional Fees Info */}
-        <div className="bg-card p-4 sm:p-6 md:p-8 rounded-xl shadow-soft mb-6 sm:mb-8 md:mb-12">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg shrink-0">
-              <Info className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
-            </div>
-            <div>
-              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground mb-1.5 sm:mb-2">
-                Dodatkowe opłaty
-              </h3>
-              <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">{apartment.feesPL}</p>
-              <ul className="space-y-1.5 sm:space-y-2 text-muted-foreground text-xs sm:text-sm md:text-base">
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-accent flex-shrink-0" />
-                  <span>Akceptowane formy płatności: {apartment.paymentMethodsPL.join(", ")}</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-accent flex-shrink-0" />
-                  <span>Akceptowane waluty: {apartment.acceptedCurrencies.join(", ")}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
         {/* CTA */}
         <div className="text-center">
           <p className="text-sm sm:text-base md:text-lg text-foreground mb-4 sm:mb-6">
