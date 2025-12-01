@@ -32,7 +32,7 @@ Nie czekaj! Stwórz swoje najlepsze wspomnienia nad Bałtykiem!`,
   smokingPolicyPL: "Całkowity zakaz palenia wewnątrz. Wyznaczone miejsca na zewnątrz.",
   features: [
     { icon: "users", label: "4-5 osób" },
-    { icon: "home", label: "Dwupoziomowy" },
+    { icon: "bike", label: "Bezpłatne rowery" },
     { icon: "door-open", label: "Oddzielne wejście" },
     { icon: "sun", label: "Taras" },
     { icon: "tv", label: 'Smart TV 32"' },
