@@ -1,4 +1,4 @@
-import { Users, Home, DoorOpen, Sun, Tv, UtensilsCrossed, Bed, Car, Phone, CreditCard, Clock, Ban } from "lucide-react";
+import { Users, Home, DoorOpen, Sun, Tv, UtensilsCrossed, Bed, Car, Phone, CreditCard, Clock, Ban, Wifi } from "lucide-react";
 import { apartment, globalSettings } from "@/lib/siteData";
 import { Button } from "@/components/ui/button";
 
@@ -11,6 +11,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   utensils: UtensilsCrossed,
   bed: Bed,
   car: Car,
+  wifi: Wifi,
 };
 
 const ApartmentDetails = () => {
