@@ -38,12 +38,30 @@ function formatPhoneNumbers(text: string): string {
 // Funkcja rozwijająca polskie skróty dla lepszej wymowy
 // UWAGA: Używamy tylko skrótów z kropką lub bardzo specyficznych wzorców
 function expandPolishAbbreviations(text: string): string {
+  let result = text;
+  
+  // NAJPIERW: Specjalne wzorce cenowe (muszą być przed ogólnymi skrótami)
+  // "zł/os." lub "zł/os" -> "złotych za osobę"
+  result = result.replace(/zł\s*\/\s*os\.?/gi, "złotych za osobę");
+  
+  // "/os." lub "/os" na końcu ceny -> "za osobę"
+  result = result.replace(/\/\s*os\.?\s*(dziennie|na dzień)?/gi, " za osobę $1");
+  
+  // "zł/noc" -> "złotych za noc"
+  result = result.replace(/zł\s*\/\s*noc/gi, "złotych za noc");
+  
+  // "/noc" -> "za noc"
+  result = result.replace(/\/\s*noc/gi, " za noc");
+  
+  // "zł/doba" -> "złotych za dobę"
+  result = result.replace(/zł\s*\/\s*dob[ęa]/gi, "złotych za dobę");
+  
   // Skróty z kropką - bezpieczne do zamiany (kropka działa jako delimiter)
+  // UWAGA: Usunięto "os." stąd - obsługiwane wyżej w kontekście cenowym
   const abbreviationsWithDot: Record<string, string> = {
     "ul.": "ulica",
     "al.": "aleja",
     "pl.": "plac",
-    "os.": "osiedle",
     "nr.": "numer",
     "pok.": "pokój",
     "kl.": "klatka",
@@ -71,15 +89,15 @@ function expandPolishAbbreviations(text: string): string {
     "p.": "piętro",
   };
   
-  let result = text;
-  
-  // Najpierw zamień skróty z kropką (bezpieczne)
+  // Zamień skróty z kropką
   for (const [abbr, full] of Object.entries(abbreviationsWithDot)) {
-    // Escape special regex characters and match case-insensitively
     const escapedAbbr = abbr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(escapedAbbr, 'gi');
     result = result.replace(regex, full);
   }
+  
+  // "os." jako osobę (w kontekście cenowym, jeśli nie złapane wcześniej)
+  result = result.replace(/\bos\.\s*(dziennie|na dzień)?/gi, "osobę $1");
   
   // Skróty bez kropki - wymagają granic słów (\b)
   const abbreviationsNoBoundary: Array<[RegExp, string]> = [
