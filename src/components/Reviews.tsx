@@ -141,7 +141,7 @@ const Reviews = () => {
           </div>
 
           {/* Elfsight Widget Container */}
-          <div className="flex justify-center mb-2">
+          <div className="flex justify-center mb-1">
             <div className="w-full max-w-4xl">
               <div 
                 className="elfsight-app-6d7734d8-4512-48a3-8162-b5a0e5948b49" 
