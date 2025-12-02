@@ -1,13 +1,14 @@
-import { Users, Bike, DoorOpen, Sun, Bath, UtensilsCrossed, Bed, Car, Phone, CreditCard, Clock, Ban, Wifi } from "lucide-react";
+import { Users, Bike, DoorOpen, Sun, UtensilsCrossed, Bed, Car, Phone, CreditCard, Clock, Ban, Wifi } from "lucide-react";
 import { apartment, globalSettings } from "@/lib/siteData";
 import { Button } from "@/components/ui/button";
+import jacuzziIcon from "@/assets/icons/jacuzzi-icon.png";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string }> | string> = {
   users: Users,
   bike: Bike,
   "door-open": DoorOpen,
   sun: Sun,
-  bath: Bath,
+  jacuzzi: jacuzziIcon,
   utensils: UtensilsCrossed,
   bed: Bed,
   car: Car,
@@ -43,13 +44,22 @@ const ApartmentDetails = () => {
         {/* Features Grid - Tablet optimized */}
         <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-8 md:mb-12">
           {apartment.features.map((feature, index) => {
-            const IconComponent = iconMap[feature.icon];
+            const iconValue = iconMap[feature.icon];
+            const isImageIcon = typeof iconValue === 'string';
+            const IconComponent = !isImageIcon ? iconValue as React.ComponentType<{ className?: string }> : null;
+            
             return (
               <div
                 key={index}
                 className="bg-card p-2 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[70px] sm:min-h-0 flex flex-col items-center justify-center"
               >
-                {IconComponent && (
+                {isImageIcon ? (
+                  <img 
+                    src={iconValue as string} 
+                    alt={feature.label}
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform object-contain"
+                  />
+                ) : IconComponent && (
                   <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
                 )}
                 <span className="text-foreground font-medium text-[10px] sm:text-sm md:text-base leading-tight block break-words hyphens-auto">{feature.label}</span>
