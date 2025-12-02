@@ -1,6 +1,7 @@
 import { Phone, MapPin, Heart } from "lucide-react";
 import { globalSettings, navItems } from "@/lib/siteData";
 import logoAkacjaWhite from "@/assets/logo-akacja-white.jpg";
+import euFundingLogos from "@/assets/logos/eu-funding-logos.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -78,8 +79,23 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* EU Funding Section */}
+        <div className="pt-6 md:pt-8 border-t border-primary-foreground/20">
+          <div className="bg-white rounded-lg p-4 md:p-6 mb-6">
+            <img 
+              src={euFundingLogos} 
+              alt="Logotypy: Krajowy Plan Odbudowy, Unia Europejska NextGenerationEU, PARP Grupa PFR, Polska Fundacja Przedsiębiorczości" 
+              className="w-full max-w-3xl mx-auto h-auto"
+              loading="lazy"
+            />
+            <p className="text-gray-700 text-xs sm:text-sm text-center mt-4 leading-relaxed">
+              Przedsięwzięcie MŚP sfinansowane przez Unię Europejską ze środków Krajowego Planu Odbudowy i Zwiększania Odporności.
+            </p>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-6 md:pt-8 border-t border-primary-foreground/20 text-center">
+        <div className="pt-4 md:pt-6 border-t border-primary-foreground/20 text-center">
           <p className="text-primary-foreground/60 text-xs sm:text-sm">
             © {currentYear} Apartamenty Akacja. Wszelkie prawa zastrzeżone.
           </p>
