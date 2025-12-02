@@ -1,4 +1,4 @@
-import { Phone, MapPin, Mail } from "lucide-react";
+import { Phone, MapPin, ShoppingCart, UtensilsCrossed, Waves, TreePine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { globalSettings } from "@/lib/siteData";
 
@@ -110,6 +110,67 @@ const Contact = () => {
               referrerPolicy="no-referrer-when-downgrade"
               title="Lokalizacja Apartamenty Akacja - Sianożęty, ul. Akacjowa 6"
             />
+          </div>
+        </div>
+
+        {/* Points of Interest */}
+        <div className="mt-8 sm:mt-10 md:mt-12">
+          <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">
+            📌 Co w okolicy?
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {/* Sklepy */}
+            <article className="bg-card p-4 sm:p-5 rounded-xl shadow-soft">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-accent/10 rounded-lg">
+                  <ShoppingCart className="w-5 h-5 text-accent" aria-hidden="true" />
+                </div>
+                <h4 className="font-serif font-semibold text-foreground">Sklepy</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Lista sklepów w okolicy">
+                <li>Lidl, Dino: <span className="font-medium text-foreground">150m</span></li>
+                <li>Biedronka: <span className="font-medium text-foreground">1 km</span></li>
+              </ul>
+            </article>
+
+            {/* Gastronomia */}
+            <article className="bg-card p-4 sm:p-5 rounded-xl shadow-soft">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-accent/10 rounded-lg">
+                  <UtensilsCrossed className="w-5 h-5 text-accent" aria-hidden="true" />
+                </div>
+                <h4 className="font-serif font-semibold text-foreground">Gastronomia</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Lista restauracji w okolicy">
+                <li>Kabaczek Pico Bello: <span className="font-medium text-foreground">1 km</span></li>
+              </ul>
+            </article>
+
+            {/* Plaża */}
+            <article className="bg-card p-4 sm:p-5 rounded-xl shadow-soft">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-accent/10 rounded-lg">
+                  <Waves className="w-5 h-5 text-accent" aria-hidden="true" />
+                </div>
+                <h4 className="font-serif font-semibold text-foreground">Plaża</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Odległość do plaży">
+                <li>Zejście nr 5: <span className="font-medium text-foreground">1 km</span></li>
+              </ul>
+            </article>
+
+            {/* Rekreacja */}
+            <article className="bg-card p-4 sm:p-5 rounded-xl shadow-soft">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="p-2 bg-accent/10 rounded-lg">
+                  <TreePine className="w-5 h-5 text-accent" aria-hidden="true" />
+                </div>
+                <h4 className="font-serif font-semibold text-foreground">Rekreacja</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Miejsca rekreacyjne">
+                <li>Pola Golfowe: <span className="font-medium text-foreground">3 km</span></li>
+              </ul>
+            </article>
           </div>
         </div>
       </div>
