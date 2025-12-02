@@ -51,13 +51,13 @@ const ApartmentDetails = () => {
                 key={index}
                 className="bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[90px] sm:min-h-[100px] flex flex-col items-center justify-center"
               >
-                <div className={`flex items-center justify-center mb-2 sm:mb-3 ${isCustomIcon ? "h-6 sm:h-8 md:h-10" : "h-8 sm:h-10 md:h-12"}`}>
+                <div className={`flex items-center justify-center mb-2 sm:mb-3 ${isCustomIcon ? "h-5 sm:h-6 md:h-8" : "h-8 sm:h-10 md:h-12"}`}>
                   {IconComponent && (
                     isCustomIcon ? (
                       <img 
                         src={IconComponent} 
                         alt={feature.label} 
-                        className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 group-hover:scale-110 transition-transform object-contain"
+                        className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform object-contain"
                       />
                     ) : (
                       <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent group-hover:scale-110 transition-transform" />
