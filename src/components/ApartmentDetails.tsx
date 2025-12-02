@@ -50,9 +50,9 @@ const ApartmentDetails = () => {
             return (
               <div
                 key={index}
-                className="bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[90px] sm:min-h-[100px] flex flex-col items-center justify-center"
+                className="bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[90px] sm:min-h-[100px] flex flex-col items-center"
               >
-                <div className="h-8 sm:h-10 md:h-12 flex items-end justify-center mb-2 sm:mb-3">
+                <div className="h-12 sm:h-14 md:h-16 flex items-center justify-center">
                   {IconComponent && (
                     isCustomIcon ? (
                       <img 
@@ -69,7 +69,7 @@ const ApartmentDetails = () => {
                     )
                   )}
                 </div>
-                <span className="text-foreground font-medium text-xs sm:text-sm md:text-base leading-tight block whitespace-nowrap">
+                <span className="text-foreground font-medium text-xs sm:text-sm md:text-base leading-tight block whitespace-nowrap mt-auto">
                   {feature.label}
                   {feature.sublabel && <span className="text-muted-foreground font-normal block text-[10px] sm:text-xs md:text-sm mt-0.5">{feature.sublabel}</span>}
                 </span>
