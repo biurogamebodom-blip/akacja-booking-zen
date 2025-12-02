@@ -103,6 +103,13 @@ const Footer = () => {
             Stworzone z <Heart className="w-3 h-3 text-sea-light" /> nad Bałtykiem
           </p>
         </div>
+
+        {/* Legal Disclaimer */}
+        <div className="pt-4 md:pt-6 mt-4 border-t border-primary-foreground/10 text-center">
+          <p className="text-primary-foreground/40 text-[10px] sm:text-xs leading-relaxed max-w-3xl mx-auto">
+            Prezentowane treści mają charakter wyłącznie informacyjny i nie stanowią oferty handlowej w rozumieniu art. 66 § 1 Kodeksu cywilnego.
+          </p>
+        </div>
       </div>
     </footer>
   );
