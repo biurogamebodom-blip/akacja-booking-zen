@@ -46,30 +46,25 @@ const ApartmentDetails = () => {
           {apartment.features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon];
             const isCustomIcon = typeof IconComponent === "string";
-            const isJacuzzi = feature.icon === "jacuzzi";
             return (
               <div
                 key={index}
                 className="bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[90px] sm:min-h-[100px] flex flex-col items-center justify-center"
               >
-                <div className={`flex items-end justify-center mb-2 sm:mb-3 ${isJacuzzi ? "h-6 sm:h-8 md:h-10" : "h-8 sm:h-10 md:h-12"}`}>
+                <div className="flex items-center justify-center mb-2 sm:mb-3 h-8 sm:h-10 md:h-12">
                   {IconComponent && (
                     isCustomIcon ? (
                       <img 
                         src={IconComponent} 
                         alt={feature.label} 
-                        className={`group-hover:scale-110 transition-transform object-contain ${
-                          isJacuzzi 
-                            ? "w-12 h-12 sm:w-16 sm:h-16 md:w-[72px] md:h-[72px]" 
-                            : "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
-                        }`} 
+                        className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 group-hover:scale-110 transition-transform object-contain"
                       />
                     ) : (
                       <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent group-hover:scale-110 transition-transform" />
                     )
                   )}
                 </div>
-                <span className="text-foreground font-medium text-xs sm:text-sm md:text-base leading-tight block whitespace-nowrap">
+                <span className="text-foreground font-medium text-xs sm:text-sm md:text-base leading-tight block">
                   {feature.label}
                   {feature.sublabel && <span className="text-muted-foreground font-normal block text-[10px] sm:text-xs md:text-sm mt-0.5">{feature.sublabel}</span>}
                 </span>
