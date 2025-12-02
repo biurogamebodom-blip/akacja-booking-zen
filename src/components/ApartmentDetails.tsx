@@ -53,7 +53,7 @@ const ApartmentDetails = () => {
               >
                 {IconComponent && (
                   isCustomIcon ? (
-                    <img src={IconComponent} alt={feature.label} className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform object-contain" />
+                    <img src={IconComponent} alt={feature.label} className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform object-contain" />
                   ) : (
                     <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
                   )
