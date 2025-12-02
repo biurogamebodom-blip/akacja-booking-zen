@@ -68,7 +68,7 @@ const ApartmentDetails = () => {
         </div>
 
         {/* Info Cards - Mobile optimized */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
           {/* Check-in Times */}
           <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft overflow-hidden">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
@@ -102,7 +102,7 @@ const ApartmentDetails = () => {
           </div>
 
           {/* Smoking Policy */}
-          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 md:col-span-1 overflow-hidden">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 lg:col-span-1 overflow-hidden">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
               <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <Ban className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
