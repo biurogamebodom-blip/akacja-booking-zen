@@ -54,11 +54,13 @@ const ApartmentDetails = () => {
                 className="bg-card p-2 sm:p-4 md:p-6 rounded-lg sm:rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[70px] sm:min-h-0 flex flex-col items-center justify-center"
               >
                 {isImageIcon ? (
-                  <img 
-                    src={iconValue as string} 
-                    alt={feature.label}
-                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform object-contain bg-white rounded-md p-0.5 sm:p-1"
-                  />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1 sm:mb-2 md:mb-3 bg-white rounded-lg p-1.5 sm:p-2 flex items-center justify-center border border-gray-200">
+                    <img 
+                      src={iconValue as string} 
+                      alt={feature.label}
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                    />
+                  </div>
                 ) : IconComponent && (
                   <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2 md:mb-3 text-accent group-hover:scale-110 transition-transform" />
                 )}
