@@ -70,12 +70,12 @@ const ApartmentDetails = () => {
         {/* Info Cards - Mobile optimized */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
           {/* Check-in Times */}
-          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft overflow-hidden">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
               <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground truncate">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground">
                 Godziny
               </h3>
             </div>
@@ -83,12 +83,12 @@ const ApartmentDetails = () => {
           </div>
 
           {/* Fees */}
-          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft overflow-hidden">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
               <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground truncate">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground">
                 Opłaty
               </h3>
             </div>
@@ -102,12 +102,12 @@ const ApartmentDetails = () => {
           </div>
 
           {/* Smoking Policy */}
-          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 md:col-span-1 overflow-hidden">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
               <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <Ban className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground truncate">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground">
                 Palenie
               </h3>
             </div>
