@@ -1,5 +1,6 @@
 import { Star, Quote, ExternalLink } from "lucide-react";
 import { reviews } from "@/lib/siteData";
+import { useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -7,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
 const Reviews = () => {
   // Calculate average rating
   const avgRating = (
@@ -16,6 +16,19 @@ const Reviews = () => {
       return acc + num;
     }, 0) / reviews.length
   ).toFixed(1);
+
+  // Load Trustindex widget script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.trustindex.io/loader.js?4abc86a59cf05165442637645a5';
+    script.defer = true;
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section id="opinie" className="section-padding bg-background">
@@ -140,13 +153,10 @@ const Reviews = () => {
             </p>
           </div>
 
-          {/* Elfsight Widget Container */}
+          {/* Trustindex Widget Container */}
           <div className="flex justify-center mb-1">
             <div className="w-full max-w-4xl">
-              <div 
-                className="elfsight-app-6d7734d8-4512-48a3-8162-b5a0e5948b49" 
-                data-elfsight-app-lazy
-              ></div>
+              {/* Trustindex widget will be automatically loaded here */}
             </div>
           </div>
         </div>
