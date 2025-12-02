@@ -52,7 +52,7 @@ const ApartmentDetails = () => {
                 key={index}
                 className="bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group touch-target min-h-[90px] sm:min-h-[100px] flex flex-col items-center justify-center"
               >
-                <div className={`flex items-end justify-center mb-2 sm:mb-3 ${isJacuzzi ? "h-2 sm:h-4 md:h-6" : "h-8 sm:h-10 md:h-12"}`}>
+                <div className={`flex items-end justify-center mb-2 sm:mb-3 ${isJacuzzi ? "h-6 sm:h-8 md:h-10" : "h-8 sm:h-10 md:h-12"}`}>
                   {IconComponent && (
                     isCustomIcon ? (
                       <img 
