@@ -67,51 +67,51 @@ const ApartmentDetails = () => {
           })}
         </div>
 
-        {/* Info Cards - Tablet optimized */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+        {/* Info Cards - Mobile optimized */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-12">
           {/* Check-in Times */}
-          <div className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft">
-            <div className="flex items-center gap-3 mb-3 md:mb-4">
-              <div className="p-2 bg-accent/10 rounded-lg">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft overflow-hidden">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground truncate">
                 Godziny
               </h3>
             </div>
-            <p className="text-muted-foreground text-sm sm:text-base">{apartment.checkInTimes}</p>
+            <p className="text-muted-foreground text-xs sm:text-sm md:text-base">{apartment.checkInTimes}</p>
           </div>
 
           {/* Fees */}
-          <div className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft">
-            <div className="flex items-center gap-3 mb-3 md:mb-4">
-              <div className="p-2 bg-accent/10 rounded-lg">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft overflow-hidden">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground truncate">
                 Opłaty
               </h3>
             </div>
-            <p className="text-muted-foreground mb-2 md:mb-3 text-sm sm:text-base">{apartment.feesPL}</p>
-            <p className="text-xs sm:text-sm text-muted-foreground">
+            <p className="text-muted-foreground mb-2 md:mb-3 text-xs sm:text-sm md:text-base">{apartment.feesPL}</p>
+            <p className="text-[11px] sm:text-xs md:text-sm text-muted-foreground">
               <strong>Płatności:</strong> {apartment.paymentMethodsPL.join(", ")}
             </p>
-            <p className="text-xs sm:text-sm text-muted-foreground">
+            <p className="text-[11px] sm:text-xs md:text-sm text-muted-foreground">
               <strong>Waluty:</strong> {apartment.acceptedCurrencies.join(", ")}
             </p>
           </div>
 
           {/* Smoking Policy */}
-          <div className="bg-card p-4 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 md:col-span-1">
-            <div className="flex items-center gap-3 mb-3 md:mb-4">
-              <div className="p-2 bg-accent/10 rounded-lg">
+          <div className="bg-card p-3 sm:p-5 md:p-6 rounded-xl shadow-soft sm:col-span-2 md:col-span-1 overflow-hidden">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
+              <div className="p-1.5 sm:p-2 bg-accent/10 rounded-lg flex-shrink-0">
                 <Ban className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground truncate">
                 Palenie
               </h3>
             </div>
-            <p className="text-muted-foreground text-sm sm:text-base">{apartment.smokingPolicyPL}</p>
+            <p className="text-muted-foreground text-xs sm:text-sm md:text-base">{apartment.smokingPolicyPL}</p>
           </div>
         </div>
 
