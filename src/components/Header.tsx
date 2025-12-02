@@ -90,12 +90,12 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <nav className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="container-wide mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-2 focus-ring rounded"
+            className="flex items-center gap-2 focus-ring rounded flex-shrink-0"
             aria-label="Apartamenty Akacja - Strona główna"
           >
             <img 
@@ -106,12 +106,12 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-foreground hover:text-accent transition-colors font-medium focus-ring rounded"
+                className="px-3 xl:px-4 py-2 text-foreground hover:text-accent transition-colors font-medium focus-ring rounded text-sm xl:text-base whitespace-nowrap"
               >
                 {item.label}
               </a>
@@ -181,7 +181,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden focus-ring h-10 w-10"
+              className="lg:hidden focus-ring h-10 w-10"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
               aria-expanded={isMobileMenuOpen}
@@ -197,7 +197,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute left-0 right-0 top-full bg-card/70 backdrop-blur-xl border-b border-border/50 shadow-elevated animate-fade-in">
+          <div className="lg:hidden absolute left-0 right-0 top-full bg-card/70 backdrop-blur-xl border-b border-border/50 shadow-elevated animate-fade-in">
             <div className="container-wide mx-auto px-4 py-4">
               <nav className="flex flex-col gap-1">
                 {navItems.map((item) => {
