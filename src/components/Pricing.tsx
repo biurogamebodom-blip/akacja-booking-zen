@@ -6,13 +6,13 @@ const pricingSeasons = [
   {
     name: "Sezon niski",
     period: "Wrzesień - Maj (poza świętami)",
-    priceRange: "od 200 zł / noc",
+    priceRange: "od 220 zł / noc",
     note: "Minimum 2 noce",
   },
   {
     name: "Sezon średni",
     period: "Czerwiec, Wrzesień",
-    priceRange: "od 250 zł / noc",
+    priceRange: "od 300 zł / noc",
     note: "Minimum 3 noce",
   },
   {
@@ -25,7 +25,7 @@ const pricingSeasons = [
   {
     name: "Święta i długie weekendy",
     period: "Wielkanoc, Majówka, Boże Narodzenie",
-    priceRange: "od 300 zł / noc",
+    priceRange: "od 350 zł / noc",
     note: "Minimum 3 noce",
   },
 ];
