@@ -1,50 +1,52 @@
-import { Phone, Calendar, Info } from "lucide-react";
+import { Phone, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { globalSettings, apartment } from "@/lib/siteData";
-
-const pricingSeasons = [
-  {
-    name: "Sezon niski",
-    period: "Wrzesień - Maj (poza świętami)",
-    priceRange: "od 220 zł / noc",
-    note: "Minimum 2 noce",
-  },
-  {
-    name: "Sezon średni",
-    period: "Czerwiec, Wrzesień",
-    priceRange: "od 300 zł / noc",
-    note: "Minimum 3 noce",
-  },
-  {
-    name: "Sezon wysoki",
-    period: "Lipiec - Sierpień",
-    priceRange: "od 490 zł / noc",
-    note: "Minimum 7 nocy",
-    featured: true,
-  },
-  {
-    name: "Święta i długie weekendy",
-    period: "Wielkanoc, Majówka, Boże Narodzenie",
-    priceRange: "od 350 zł / noc",
-    note: "Minimum 3 noce",
-  },
-];
+import { globalSettings } from "@/lib/siteData";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Pricing = () => {
+  const { t } = useLanguage();
   const phoneLink = `tel:${globalSettings.mainContactPhone.replace(/\s/g, "")}`;
+
+  const pricingSeasons = [
+    {
+      name: t("pricing.lowSeason"),
+      period: t("pricing.lowSeasonPeriod"),
+      priceRange: t("pricing.lowSeasonPrice"),
+      note: t("pricing.lowSeasonNote"),
+    },
+    {
+      name: t("pricing.midSeason"),
+      period: t("pricing.midSeasonPeriod"),
+      priceRange: t("pricing.midSeasonPrice"),
+      note: t("pricing.midSeasonNote"),
+    },
+    {
+      name: t("pricing.highSeason"),
+      period: t("pricing.highSeasonPeriod"),
+      priceRange: t("pricing.highSeasonPrice"),
+      note: t("pricing.highSeasonNote"),
+      featured: true,
+    },
+    {
+      name: t("pricing.holidays"),
+      period: t("pricing.holidaysPeriod"),
+      priceRange: t("pricing.holidaysPrice"),
+      note: t("pricing.holidaysNote"),
+    },
+  ];
 
   return (
     <section id="cennik" className="section-padding gradient-sand">
       <div className="container-wide mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
-            Cennik
+            {t("pricing.badge")}
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Cennik na sezon 2025/2026
+            {t("pricing.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
-            Ceny orientacyjne. Dokładną wycenę uzyskasz kontaktując się telefonicznie.
+            {t("pricing.subtitle")}
           </p>
         </div>
 
@@ -61,7 +63,7 @@ const Pricing = () => {
             >
               {season.featured && (
                 <span className="absolute -top-2.5 sm:-top-3 left-1/2 -translate-x-1/2 px-2 sm:px-3 py-0.5 sm:py-1 bg-accent text-accent-foreground text-[10px] sm:text-xs font-semibold rounded-full whitespace-nowrap">
-                  Najpopularniejszy
+                  {t("pricing.mostPopular")}
                 </span>
               )}
               <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 md:mb-3">
@@ -84,12 +86,12 @@ const Pricing = () => {
         {/* CTA */}
         <div className="text-center">
           <p className="text-sm sm:text-base md:text-lg text-foreground mb-4 sm:mb-6">
-            Zapytaj o dokładną cenę i dostępność terminów
+            {t("pricing.cta")}
           </p>
           <Button asChild variant="hero" size="xl">
             <a href={phoneLink}>
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span>Zadzwoń: {globalSettings.mainContactPhone}</span>
+              <span>{t("pricing.call")}: {globalSettings.mainContactPhone}</span>
             </a>
           </Button>
         </div>

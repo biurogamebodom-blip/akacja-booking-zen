@@ -1,5 +1,6 @@
 import { Users, Bike, DoorOpen, Sun, UtensilsCrossed, Bed, Car, Phone, CreditCard, Clock, Ban, Wifi } from "lucide-react";
-import { apartment, globalSettings } from "@/lib/siteData";
+import { globalSettings } from "@/lib/siteData";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import jacuzziIcon from "@/assets/icons/jacuzzi-icon.png";
 
@@ -16,34 +17,47 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }> | stri
 };
 
 const ApartmentDetails = () => {
+  const { t } = useLanguage();
   const phoneLink = `tel:${globalSettings.mainContactPhone.replace(/\s/g, "")}`;
+
+  const features = [
+    { icon: "users", label: t("feature.guests") },
+    { icon: "bike", label: t("feature.bikes") },
+    { icon: "door-open", label: t("feature.entrance") },
+    { icon: "sun", label: t("feature.terrace") },
+    { icon: "jacuzzi", label: t("feature.jacuzzi"), sublabel: t("feature.jacuzziSeason") },
+    { icon: "utensils", label: t("feature.kitchen") },
+    { icon: "bed", label: t("feature.bedrooms") },
+    { icon: "car", label: t("feature.parking") },
+    { icon: "wifi", label: t("feature.wifi") },
+  ];
 
   return (
     <section id="apartamenty" className="section-padding gradient-sand overflow-x-hidden">
       <div className="container-wide mx-auto px-4">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
-            O nas
+            {t("apartment.badge")}
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            {apartment.namePL}
+            {t("apartment.title")}
           </h2>
           <div className="max-w-3xl mx-auto mb-4 px-2">
             <p className="text-foreground font-semibold text-sm sm:text-base md:text-lg">
-              {apartment.addressLabel}
+              {t("apartment.addressLabel")}
             </p>
             <p className="text-accent font-bold text-base sm:text-lg md:text-xl">
-              {apartment.addressValue}
+              {t("apartment.addressValue")}
             </p>
           </div>
           <p className="text-muted-foreground max-w-3xl mx-auto text-sm sm:text-base md:text-lg px-2 whitespace-pre-line">
-            {apartment.descriptionPL}
+            {t("apartment.description")}
           </p>
         </div>
 
         {/* Features Grid - Mobile optimized */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 mb-8 md:mb-12">
-          {apartment.features.map((feature, index) => {
+          {features.map((feature, index) => {
             const IconComponent = iconMap[feature.icon];
             const isCustomIcon = typeof IconComponent === "string";
             return (
@@ -82,10 +96,10 @@ const ApartmentDetails = () => {
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
               <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground">
-                Godziny
+                {t("apartment.hours")}
               </h3>
             </div>
-            <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-words">{apartment.checkInTimes}</p>
+            <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-words">{t("apartment.checkInTimes")}</p>
           </div>
 
           {/* Fees */}
@@ -95,15 +109,15 @@ const ApartmentDetails = () => {
                 <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
               <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground">
-                Opłaty
+                {t("apartment.fees")}
               </h3>
             </div>
-            <p className="text-muted-foreground mb-2 md:mb-3 text-xs sm:text-sm md:text-base break-words">{apartment.feesPL}</p>
+            <p className="text-muted-foreground mb-2 md:mb-3 text-xs sm:text-sm md:text-base break-words">{t("apartment.feesText")}</p>
             <p className="text-[11px] sm:text-xs md:text-sm text-muted-foreground break-words">
-              <strong>Płatności:</strong> {apartment.paymentMethodsPL.join(", ")}
+              <strong>{t("apartment.payments")}:</strong> {t("apartment.paymentMethods")}
             </p>
             <p className="text-[11px] sm:text-xs md:text-sm text-muted-foreground break-words">
-              <strong>Waluty:</strong> {apartment.acceptedCurrencies.join(", ")}
+              <strong>{t("apartment.currencies")}:</strong> PLN, USD, EUR
             </p>
           </div>
 
@@ -114,10 +128,10 @@ const ApartmentDetails = () => {
                 <Ban className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
               <h3 className="font-serif text-base sm:text-lg md:text-xl font-semibold text-foreground">
-                Palenie
+                {t("apartment.smoking")}
               </h3>
             </div>
-            <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-words">{apartment.smokingPolicyPL}</p>
+            <p className="text-muted-foreground text-xs sm:text-sm md:text-base break-words">{t("apartment.smokingPolicy")}</p>
           </div>
         </div>
 
@@ -126,7 +140,7 @@ const ApartmentDetails = () => {
           <Button asChild variant="cta" size="xl">
             <a href={phoneLink}>
               <Phone className="w-5 h-5" />
-              Zadzwoń: {globalSettings.mainContactPhone}
+              {t("apartment.call")}: {globalSettings.mainContactPhone}
             </a>
           </Button>
         </div>

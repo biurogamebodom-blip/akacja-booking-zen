@@ -1,5 +1,6 @@
 import { Star, Quote, ExternalLink } from "lucide-react";
 import { reviews } from "@/lib/siteData";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useEffect } from "react";
 import {
   Carousel,
@@ -10,6 +11,8 @@ import {
 } from "@/components/ui/carousel";
 
 const Reviews = () => {
+  const { t } = useLanguage();
+  
   // Calculate average rating
   const avgRating = (
     reviews.reduce((acc, r) => {
@@ -46,13 +49,13 @@ const Reviews = () => {
         <div className="mb-16">
           <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
-              Opinie z Nocowanie.pl
+              {t("reviews.badge")}
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-              Co mówią nasi goście
+              {t("reviews.title")}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
-              Poznaj opinie osób, które spędziły u nas wakacje
+              {t("reviews.subtitle")}
             </p>
           </div>
 
@@ -132,7 +135,7 @@ const Reviews = () => {
                 ))}
               </div>
               <span className="text-foreground font-semibold">
-                Średnia ocena: {avgRating}/10 ({reviews.length} opinii)
+                {t("reviews.avgRating")}: {avgRating}/10 ({reviews.length} {t("reviews.reviewsCount")})
               </span>
             </div>
             
@@ -144,7 +147,7 @@ const Reviews = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors font-medium"
               >
-                Zobacz wszystkie opinie na Nocowanie.pl
+                {t("reviews.seeAll")}
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>
@@ -155,13 +158,13 @@ const Reviews = () => {
         <div className="pt-8 border-t border-border/30">
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-2 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
-              Opinie Google
+              {t("reviews.googleBadge")}
             </span>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Sprawdź nasze opinie w Google
+              {t("reviews.googleTitle")}
             </h3>
             <p className="text-muted-foreground max-w-xl mx-auto mb-6">
-              Cenimy zdanie naszych gości. Zobacz, co piszą o nas na Google!
+              {t("reviews.googleSubtitle")}
             </p>
           </div>
 

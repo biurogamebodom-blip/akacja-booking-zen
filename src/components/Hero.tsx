@@ -1,9 +1,11 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { globalSettings } from "@/lib/siteData";
+import { useLanguage } from "@/contexts/LanguageContext";
 import heroBackground from "@/assets/hero-beach.jpg";
 
 const Hero = () => {
+  const { t } = useLanguage();
   const phoneLink = `tel:${globalSettings.mainContactPhone.replace(/\s/g, "")}`;
 
   return (
@@ -27,17 +29,16 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container-narrow mx-auto px-4 sm:px-6 text-center pt-20 pb-24 sm:pb-20">
         <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6 text-xs sm:text-sm font-medium text-accent-foreground bg-accent/90 rounded-full animate-fade-in shadow-soft">
-          Sianożęty / Ustronie Morskie
+          {t("hero.location")}
         </span>
         
         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 animate-slide-up drop-shadow-lg leading-tight">
-          Apartamenty{" "}
-          <span className="text-accent">Akacja</span>
+          {t("hero.title")}{" "}
+          <span className="text-accent">{t("hero.titleAccent")}</span>
         </h1>
         
         <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-6 sm:mb-8 animate-slide-up drop-shadow-md px-2" style={{ animationDelay: "0.2s" }}>
-          Komfortowe apartamenty dwupoziomowe nad Bałtykiem. 
-          Idealne miejsce na wypoczynek dla całej rodziny.
+          {t("hero.subtitle")}
         </p>
 
         <div className="flex flex-col gap-4 justify-center items-center animate-slide-up px-2" style={{ animationDelay: "0.4s" }}>
@@ -47,12 +48,12 @@ const Hero = () => {
             size="xl"
             className="w-full max-w-xs sm:max-w-xl md:max-w-2xl px-6 sm:px-10 md:px-14"
           >
-            <a href={phoneLink} aria-label={`Zadzwoń: ${globalSettings.mainContactPhone}`}>
+            <a href={phoneLink} aria-label={`${t("hero.call")}: ${globalSettings.mainContactPhone}`}>
               <Phone className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               <span className="flex flex-col sm:flex-row sm:gap-2 items-center text-sm sm:text-base md:text-lg">
-                <span className="font-bold">Sprawdź Termin</span>
+                <span className="font-bold">{t("hero.checkAvailability")}</span>
                 <span className="hidden sm:inline text-white/70">|</span>
-                <span>Zadzwoń: {globalSettings.mainContactPhone}</span>
+                <span>{t("hero.call")}: {globalSettings.mainContactPhone}</span>
               </span>
             </a>
           </Button>
@@ -61,19 +62,19 @@ const Hero = () => {
         <div className="mt-6 sm:mt-8 md:mt-12 grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-white/90 animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">4-5 osób</span>
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t("hero.guests")}</span>
           </div>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">2 sypialnie i salon</span>
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t("hero.bedrooms")}</span>
           </div>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">Taras</span>
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t("hero.terrace")}</span>
           </div>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 rounded-full bg-accent flex-shrink-0" />
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">15 min spacerem do morza</span>
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-medium">{t("hero.beach")}</span>
           </div>
         </div>
       </div>

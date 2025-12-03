@@ -1,8 +1,10 @@
 import { Phone, MapPin, ShoppingCart, UtensilsCrossed, Waves, TreePine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { globalSettings } from "@/lib/siteData";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const phoneLink = `tel:${globalSettings.mainContactPhone.replace(/\s/g, "")}`;
   const secondaryPhoneLink = `tel:${globalSettings.secondaryContactPhone.replace(/\s/g, "")}`;
 
@@ -11,13 +13,13 @@ const Contact = () => {
       <div className="container-wide mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
-            Kontakt
+            {t("contact.badge")}
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Skontaktuj się z nami
+            {t("contact.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
-            Chętnie odpowiemy na wszystkie pytania i pomożemy zarezerwować termin
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -32,7 +34,7 @@ const Contact = () => {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground mb-1">
-                    Telefon główny
+                    {t("contact.mainPhone")}
                   </h3>
                   <a
                     href={phoneLink}
@@ -51,7 +53,7 @@ const Contact = () => {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground mb-1">
-                    Telefon dodatkowy
+                    {t("contact.secondaryPhone")}
                   </h3>
                   <a
                     href={secondaryPhoneLink}
@@ -71,7 +73,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-serif text-base sm:text-lg font-semibold text-foreground mb-1">
-                    Adres
+                    {t("contact.address")}
                   </h3>
                   <p className="text-muted-foreground mb-3 text-sm sm:text-base">
                     {globalSettings.address}
@@ -82,7 +84,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Zobacz na mapie
+                      {t("contact.seeOnMap")}
                     </a>
                   </Button>
                 </div>
@@ -93,7 +95,7 @@ const Contact = () => {
             <Button asChild variant="hero" size="xl" className="w-full touch-target">
               <a href={phoneLink}>
                 <Phone className="w-5 h-5" />
-                <span className="truncate">Zadzwoń teraz: {globalSettings.mainContactPhone}</span>
+                <span className="truncate">{t("contact.callNow")}: {globalSettings.mainContactPhone}</span>
               </a>
             </Button>
           </div>
@@ -116,7 +118,7 @@ const Contact = () => {
         {/* Points of Interest */}
         <div className="mt-8 sm:mt-10 md:mt-12">
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">
-            📌 Co w okolicy?
+            📌 {t("contact.nearby")}
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Sklepy */}
@@ -125,9 +127,9 @@ const Contact = () => {
                 <div className="p-2 bg-accent/10 rounded-lg">
                   <ShoppingCart className="w-5 h-5 text-accent" aria-hidden="true" />
                 </div>
-                <h4 className="font-serif font-semibold text-foreground">Sklepy</h4>
+                <h4 className="font-serif font-semibold text-foreground">{t("contact.shops")}</h4>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Lista sklepów w okolicy">
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label={t("contact.shops")}>
                 <li>Lidl, Dino: <span className="font-medium text-foreground">150m</span></li>
                 <li>Biedronka: <span className="font-medium text-foreground">1 km</span></li>
               </ul>
@@ -139,9 +141,9 @@ const Contact = () => {
                 <div className="p-2 bg-accent/10 rounded-lg">
                   <UtensilsCrossed className="w-5 h-5 text-accent" aria-hidden="true" />
                 </div>
-                <h4 className="font-serif font-semibold text-foreground">Gastronomia</h4>
+                <h4 className="font-serif font-semibold text-foreground">{t("contact.gastronomy")}</h4>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Lista restauracji w okolicy">
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label={t("contact.gastronomy")}>
                 <li>Kabaczek Pico Bello: <span className="font-medium text-foreground">1 km</span></li>
               </ul>
             </article>
@@ -152,9 +154,9 @@ const Contact = () => {
                 <div className="p-2 bg-accent/10 rounded-lg">
                   <Waves className="w-5 h-5 text-accent" aria-hidden="true" />
                 </div>
-                <h4 className="font-serif font-semibold text-foreground">Plaża</h4>
+                <h4 className="font-serif font-semibold text-foreground">{t("contact.beach")}</h4>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Odległość do plaży">
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label={t("contact.beach")}>
                 <li>Zejście nr 5: <span className="font-medium text-foreground">1 km</span></li>
               </ul>
             </article>
@@ -165,9 +167,9 @@ const Contact = () => {
                 <div className="p-2 bg-accent/10 rounded-lg">
                   <TreePine className="w-5 h-5 text-accent" aria-hidden="true" />
                 </div>
-                <h4 className="font-serif font-semibold text-foreground">Rekreacja</h4>
+                <h4 className="font-serif font-semibold text-foreground">{t("contact.recreation")}</h4>
               </div>
-              <ul className="space-y-2 text-sm text-muted-foreground" aria-label="Miejsca rekreacyjne">
+              <ul className="space-y-2 text-sm text-muted-foreground" aria-label={t("contact.recreation")}>
                 <li>Pola Golfowe: <span className="font-medium text-foreground">3 km</span></li>
               </ul>
             </article>

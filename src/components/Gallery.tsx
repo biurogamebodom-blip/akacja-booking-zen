@@ -1,6 +1,7 @@
 import { useState, useCallback, memo } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Gallery images
 import gallery01 from "@/assets/gallery/01-widok-zewnetrzny-new.jpg";
@@ -14,67 +15,32 @@ import gallery08 from "@/assets/gallery/08-plac-zabaw.png";
 import gallery09 from "@/assets/gallery/09-jacuzzi.jpg";
 
 const galleryImages = [
-  {
-    id: 1,
-    src: gallery01,
-    alt: "Widok zewnętrzny apartamentów Akacja",
-  },
-  {
-    id: 2,
-    src: gallery02,
-    alt: "Salon z aneksem kuchennym i drewnianymi belkami",
-  },
-  {
-    id: 3,
-    src: gallery03,
-    alt: "Przestronny salon z drewnianymi ścianami i schodami na piętro",
-  },
-  {
-    id: 4,
-    src: gallery04,
-    alt: "Kuchnia z jadalnią w drewnianym stylu",
-  },
-  {
-    id: 5,
-    src: gallery05,
-    alt: "Sypialnia na poddaszu z dwoma łóżkami",
-  },
-  {
-    id: 6,
-    src: gallery06,
-    alt: "Taras z meblami ogrodowymi",
-  },
-  {
-    id: 7,
-    src: gallery07,
-    alt: "Pergola z ławką i widok na osiedle",
-  },
-  {
-    id: 8,
-    src: gallery08,
-    alt: "Plac zabaw dla dzieci z huśtawkami i altaną",
-  },
-  {
-    id: 9,
-    src: gallery09,
-    alt: "Jacuzzi zewnętrzne",
-  },
+  { id: 1, src: gallery01, altPL: "Widok zewnętrzny apartamentów Akacja", altEN: "Exterior view of Akacja apartments" },
+  { id: 2, src: gallery02, altPL: "Salon z aneksem kuchennym i drewnianymi belkami", altEN: "Living room with kitchenette and wooden beams" },
+  { id: 3, src: gallery03, altPL: "Przestronny salon z drewnianymi ścianami i schodami na piętro", altEN: "Spacious living room with wooden walls and stairs" },
+  { id: 4, src: gallery04, altPL: "Kuchnia z jadalnią w drewnianym stylu", altEN: "Kitchen with dining area in wooden style" },
+  { id: 5, src: gallery05, altPL: "Sypialnia na poddaszu z dwoma łóżkami", altEN: "Attic bedroom with two beds" },
+  { id: 6, src: gallery06, altPL: "Taras z meblami ogrodowymi", altEN: "Terrace with garden furniture" },
+  { id: 7, src: gallery07, altPL: "Pergola z ławką i widok na osiedle", altEN: "Pergola with bench and estate view" },
+  { id: 8, src: gallery08, altPL: "Plac zabaw dla dzieci z huśtawkami i altaną", altEN: "Children's playground with swings and gazebo" },
+  { id: 9, src: gallery09, altPL: "Jacuzzi zewnętrzne", altEN: "Outdoor jacuzzi" },
 ];
 
 // Memoized gallery image component for performance
-const GalleryImage = memo(({ image, index, onClick }: { 
+const GalleryImage = memo(({ image, index, onClick, language }: { 
   image: typeof galleryImages[0]; 
   index: number; 
   onClick: (index: number) => void;
+  language: string;
 }) => (
   <button
     onClick={() => onClick(index)}
     className="relative aspect-[4/3] overflow-hidden rounded-xl group focus-ring touch-target"
-    aria-label={`Otwórz zdjęcie: ${image.alt}`}
+    aria-label={`Open photo: ${language === "pl" ? image.altPL : image.altEN}`}
   >
     <img
       src={image.src}
-      alt={image.alt}
+      alt={language === "pl" ? image.altPL : image.altEN}
       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-focus:scale-105"
       loading="lazy"
       decoding="async"
@@ -87,6 +53,7 @@ const GalleryImage = memo(({ image, index, onClick }: {
 GalleryImage.displayName = "GalleryImage";
 
 const Gallery = () => {
+  const { t, language } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const openLightbox = useCallback((index: number) => {
@@ -114,13 +81,13 @@ const Gallery = () => {
       <div className="container-wide mx-auto">
         <div className="text-center mb-6 sm:mb-8 md:mb-12">
           <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-accent bg-accent/10 rounded-full">
-            Galeria
+            {t("gallery.badge")}
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
-            Zobacz nasze apartamenty
+            {t("gallery.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-2">
-            Zapoznaj się z wnętrzami i otoczeniem Apartamentów Akacja
+            {t("gallery.subtitle")}
           </p>
         </div>
 
@@ -132,6 +99,7 @@ const Gallery = () => {
               image={image} 
               index={index} 
               onClick={openLightbox}
+              language={language}
             />
           ))}
         </div>
@@ -142,14 +110,14 @@ const Gallery = () => {
             className="fixed inset-0 z-50 bg-foreground/95 flex items-center justify-center p-4"
             role="dialog"
             aria-modal="true"
-            aria-label="Powiększone zdjęcie"
+            aria-label={t("gallery.badge")}
           >
             <Button
               variant="ghost"
               size="icon"
               onClick={closeLightbox}
               className="absolute top-4 right-4 text-background hover:text-accent hover:bg-background/10"
-              aria-label="Zamknij galerię"
+              aria-label={t("gallery.close")}
             >
               <X className="w-8 h-8" />
             </Button>
@@ -159,14 +127,14 @@ const Gallery = () => {
               size="icon"
               onClick={() => navigateLightbox("prev")}
               className="absolute left-4 text-background hover:text-accent hover:bg-background/10"
-              aria-label="Poprzednie zdjęcie"
+              aria-label={t("gallery.prev")}
             >
               <ChevronLeft className="w-8 h-8" />
             </Button>
 
             <img
               src={galleryImages[selectedImage].src}
-              alt={galleryImages[selectedImage].alt}
+              alt={language === "pl" ? galleryImages[selectedImage].altPL : galleryImages[selectedImage].altEN}
               className="max-w-full max-h-[85vh] object-contain rounded-lg"
             />
 
@@ -175,7 +143,7 @@ const Gallery = () => {
               size="icon"
               onClick={() => navigateLightbox("next")}
               className="absolute right-4 text-background hover:text-accent hover:bg-background/10"
-              aria-label="Następne zdjęcie"
+              aria-label={t("gallery.next")}
             >
               <ChevronRight className="w-8 h-8" />
             </Button>
