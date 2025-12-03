@@ -1,10 +1,20 @@
 import { Phone, MapPin, Heart } from "lucide-react";
-import { globalSettings, navItems } from "@/lib/siteData";
+import { globalSettings } from "@/lib/siteData";
+import { useLanguage } from "@/contexts/LanguageContext";
 import logoAkacjaWhite from "@/assets/logo-akacja-white.jpg";
 import euFundingLogos from "@/assets/logos/eu-funding-logos.png";
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+
+  const navItems = [
+    { href: "#apartamenty", label: t("nav.apartments") },
+    { href: "#galeria", label: t("nav.gallery") },
+    { href: "#cennik", label: t("nav.pricing") },
+    { href: "#opinie", label: t("nav.reviews") },
+    { href: "#kontakt", label: t("nav.contact") },
+  ];
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -21,15 +31,14 @@ const Footer = () => {
               />
             </a>
             <p className="text-primary-foreground/80 mb-4 text-sm sm:text-base">
-              Komfortowe apartamenty dwupoziomowe nad Bałtykiem. 
-              Idealne miejsce na wypoczynek dla całej rodziny.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="font-serif text-base sm:text-lg font-semibold mb-3 md:mb-4">
-              Szybkie linki
+              {t("footer.quickLinks")}
             </h4>
             <nav aria-label="Stopka - nawigacja">
               <ul className="space-y-1 sm:space-y-2">
@@ -49,7 +58,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="sm:col-span-2 md:col-span-1">
-            <h4 className="font-serif text-base sm:text-lg font-semibold mb-3 md:mb-4">Kontakt</h4>
+            <h4 className="font-serif text-base sm:text-lg font-semibold mb-3 md:mb-4">{t("footer.contact")}</h4>
             <address className="not-italic space-y-2 sm:space-y-3">
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-sea-light shrink-0" />
@@ -97,17 +106,17 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-4 md:pt-6 border-t border-primary-foreground/20 text-center">
           <p className="text-primary-foreground/60 text-xs sm:text-sm">
-            © {currentYear} Apartamenty Akacja. Wszelkie prawa zastrzeżone.
+            © {currentYear} Apartamenty Akacja. {t("footer.rights")}
           </p>
           <p className="text-primary-foreground/40 text-xs mt-2 flex items-center justify-center gap-1">
-            Stworzone z <Heart className="w-3 h-3 text-sea-light" /> nad Bałtykiem
+            {t("footer.madeWith")} <Heart className="w-3 h-3 text-sea-light" /> {t("footer.byBaltic")}
           </p>
         </div>
 
         {/* Legal Disclaimer */}
         <div className="pt-4 md:pt-6 mt-4 border-t border-primary-foreground/10 text-center">
           <p className="text-primary-foreground/40 text-[10px] sm:text-xs leading-relaxed max-w-3xl mx-auto">
-            Prezentowane treści mają charakter wyłącznie informacyjny i nie stanowią oferty handlowej w rozumieniu art. 66 § 1 Kodeksu cywilnego.
+            {t("footer.disclaimer")}
           </p>
         </div>
       </div>
