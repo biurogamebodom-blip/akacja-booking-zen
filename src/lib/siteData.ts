@@ -7,13 +7,13 @@ export const globalSettings = {
   audioWelcomeUrl: "", // Placeholder for Eleven Labs MP3
   siteName: "Apartamenty Akacja",
   siteDescription: "Apartamenty Akacja w Sianożętach/Ustroniu Morskim. Sprawdź dostępność i cennik na sezon 2024/2025. Komfortowe domki dla rodzin.",
-  address: "ul. Akacjowa 4 i 6, Ustronie Morskie / Sianożęty",
+  address: "ul. Akacjowa 6, Ustronie Morskie / Sianożęty",
 };
 
 export const apartment = {
   namePL: "Odkryj Swój Nadmorski Azyl: Apartamenty Akacja!",
   addressLabel: "Adres Twojego wymarzonego wypoczynku:",
-  addressValue: "Ustronie Morskie / Sianożęty, ul. Akacjowa 4 i 6",
+  addressValue: "Ustronie Morskie / Sianożęty, ul. Akacjowa 6",
   descriptionPL: `Oderwij się od codzienności i poczuj prawdziwy relaks! Apartamenty Akacja to nie tylko nocleg – to Twoja przestrzeń wypoczynku, dwupoziomowy apartament stworzony z myślą o pełnym komforcie Twojej rodziny lub grupy przyjaciół (idealne dla 4-5 osób).
 
 Na Parterze, Sercu Domu: Przywita Cię przestronny salon. W pełni wyposażony aneks kuchenny (z płytą indukcyjną jednopalnikową, ekspresem, mikrofalową i lodówką). Wieczorem czeka na Was relaks przy smart TV 32" i Wi-fi 5G.
