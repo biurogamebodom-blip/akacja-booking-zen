@@ -135,15 +135,13 @@ const Header = () => {
           {/* Right Side Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Language Switcher */}
-            <Button
-              variant="outline"
-              size="lg"
+            <button
               onClick={toggleLanguage}
               aria-label={`Change language to ${language === "pl" ? "English" : "Polish"}`}
-              className="focus-ring bg-card/90 hover:bg-card active:bg-card text-foreground border-2 border-border/50 shadow-soft h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 p-0 flex items-center justify-center [&>span]:pointer-events-none"
+              className="focus-ring bg-card/90 hover:bg-card active:bg-card/80 border-2 border-border/50 shadow-soft h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 flex items-center justify-center rounded-lg transition-all"
             >
-              <span className="font-bold text-xs sm:text-sm md:text-base select-none">{language.toUpperCase()}</span>
-            </Button>
+              <span className="font-bold text-xs sm:text-sm md:text-base text-foreground select-none">{language.toUpperCase()}</span>
+            </button>
 
             {/* Accessibility Widget - Large for visually impaired */}
             <DropdownMenu>
