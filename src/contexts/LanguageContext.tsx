@@ -36,7 +36,7 @@ const translations: Record<Language, Record<string, string>> = {
     "apartment.badge": "O nas",
     "apartment.title": "Odkryj Swój Nadmorski Azyl: Apartamenty Akacja!",
     "apartment.addressLabel": "Adres Twojego wymarzonego wypoczynku:",
-    "apartment.addressValue": "Ustronie Morskie / Sianożęty, ul. Akacjowa 4 i 6",
+    "apartment.addressValue": "Ustronie Morskie / Sianożęty, ul. Akacjowa 6",
     "apartment.description": `Oderwij się od codzienności i poczuj prawdziwy relaks! Apartamenty Akacja to nie tylko nocleg – to Twoja przestrzeń wypoczynku, dwupoziomowy apartament stworzony z myślą o pełnym komforcie Twojej rodziny lub grupy przyjaciół (idealne dla 4-5 osób).
 
 Na Parterze, Sercu Domu: Przywita Cię przestronny salon. W pełni wyposażony aneks kuchenny (z płytą indukcyjną jednopalnikową, ekspresem, mikrofalową i lodówką). Wieczorem czeka na Was relaks przy smart TV 32" i Wi-fi 5G.
@@ -173,7 +173,7 @@ Nie czekaj! Zarezerwuj już teraz swój pobyt nad Bałtykiem!`,
     "apartment.badge": "About Us",
     "apartment.title": "Discover Your Seaside Retreat: Apartments Akacja!",
     "apartment.addressLabel": "Address of your dream vacation:",
-    "apartment.addressValue": "Ustronie Morskie / Sianożęty, ul. Akacjowa 4 & 6",
+    "apartment.addressValue": "Ustronie Morskie / Sianożęty, ul. Akacjowa 6",
     "apartment.description": `Escape the everyday and experience true relaxation! Apartments Akacja is not just accommodation – it's your relaxation space, a two-story apartment designed with complete comfort for your family or group of friends (ideal for 4-5 people).
 
 On the Ground Floor, the Heart of the Home: You'll be greeted by a spacious living room. A fully equipped kitchenette (with a single-burner induction stove, coffee maker, microwave, and refrigerator). In the evening, relax with a 32" smart TV and 5G Wi-Fi.
