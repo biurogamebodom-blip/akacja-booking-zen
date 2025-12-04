@@ -140,9 +140,9 @@ const Header = () => {
               size="lg"
               onClick={toggleLanguage}
               aria-label={`Change language to ${language === "pl" ? "English" : "Polish"}`}
-              className="focus-ring bg-card/90 hover:bg-card text-foreground border-2 border-border/50 shadow-soft h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 p-0 flex items-center justify-center"
+              className="focus-ring bg-card/90 hover:bg-card active:bg-card text-foreground border-2 border-border/50 shadow-soft h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 p-0 flex items-center justify-center [&>span]:pointer-events-none"
             >
-              <span className="font-bold text-xs sm:text-sm md:text-base">{language.toUpperCase()}</span>
+              <span className="font-bold text-xs sm:text-sm md:text-base select-none">{language.toUpperCase()}</span>
             </Button>
 
             {/* Accessibility Widget - Large for visually impaired */}
