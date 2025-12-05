@@ -40,6 +40,7 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 - Internet WiFi
 - Czystość i porządek
 - Ładne, zadbane wnętrza
+- Przystosowane dla osób niepełnosprawnych (dostępność dla osób z niepełnosprawnościami)
 
 ### CENNIK (sezon 2025/2026 - ceny orientacyjne):
 1. SEZON NISKI (wrzesień-maj, poza świętami): od 200 zł/noc, minimum 2 noce
