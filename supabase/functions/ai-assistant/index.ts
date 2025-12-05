@@ -72,6 +72,21 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 - Wymeldowanie: do 10:00
 - Całkowity zakaz palenia wewnątrz (wyznaczone miejsca na zewnątrz)
 
+### CO W OKOLICY:
+**Sklepy:**
+- Lidl, Dino: 150m od apartamentów
+- Biedronka: 1 km
+
+**Gastronomia:**
+- Kabaczek Pico Bello (restauracja): 1 km
+
+**Plaża:**
+- Zejście nr 5 na plażę: 1 km (ok. 15 min spacerem)
+- Właściciel podwozi meleksem nad morze
+
+**Rekreacja:**
+- Pola Golfowe: 3 km
+
 ### KONTAKT:
 - Telefon główny: 505 445 353
 - Telefon dodatkowy: 502 501 453
