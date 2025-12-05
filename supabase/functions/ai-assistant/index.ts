@@ -10,7 +10,7 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 ## PEŁNA BAZA WIEDZY:
 
 ### LOKALIZACJA:
-- Adres: ul. Akacjowa 4 i 6, Ustronie Morskie / Sianożęty
+- Adres: ul. Akacjowa 6, Ustronie Morskie / Sianożęty
 - Blisko morza - właściciel podwozi meleksem na plażę
 - Ciche, spokojne miejsce z dala od zgiełku
 - Piękne widoki na okolicę
@@ -48,7 +48,7 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 4. ŚWIĘTA I DŁUGIE WEEKENDY (Wielkanoc, Majówka, Boże Narodzenie): od 300 zł/noc, minimum 3 noce
 
 ### DODATKOWE OPŁATY:
-- Opłata klimatyczna: 2 zł/os. dziennie
+- Opłata klimatyczna: 3,40 zł/os. dziennie
 
 ### PŁATNOŚCI:
 - Formy: gotówka, przelew bankowy
