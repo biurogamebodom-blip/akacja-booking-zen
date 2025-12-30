@@ -81,7 +81,7 @@ const SYSTEM_PROMPT = `Jesteś asystentem klienta dla Apartamenty Akacja - komfo
 - Kabaczek Pico Bello (restauracja): 1 km
 
 **Plaża:**
-- Zejście nr 5 na plażę: 1 km (ok. 15 min spacerem)
+- Zejście nr 5 na plażę: 950m (ok. 15 min spacerem)
 - Właściciel podwozi meleksem nad morze
 
 **Rekreacja:**
