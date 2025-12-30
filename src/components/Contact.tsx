@@ -157,7 +157,7 @@ const Contact = () => {
                 <h4 className="font-serif font-semibold text-foreground">{t("contact.beach")}</h4>
               </div>
               <ul className="space-y-2 text-sm text-muted-foreground" aria-label={t("contact.beach")}>
-                <li>Zejście nr 5: <span className="font-medium text-foreground">1 km</span></li>
+                <li>Zejście nr 5: <span className="font-medium text-foreground">950m</span></li>
               </ul>
             </article>
 
