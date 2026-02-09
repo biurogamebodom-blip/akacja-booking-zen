@@ -90,7 +90,7 @@ const Footer = () => {
 
         {/* EU Funding Section */}
         <div className="pt-6 md:pt-8 border-t border-primary-foreground/20">
-          <div className="bg-white rounded-lg p-4 md:p-6 mb-6">
+          <a href="/fundusze-europejskie" className="block bg-white rounded-lg p-4 md:p-6 mb-6 hover:shadow-elevated transition-shadow cursor-pointer">
             <img 
               src={euFundingLogos} 
               alt="Logotypy: Krajowy Plan Odbudowy, Unia Europejska NextGenerationEU, PARP Grupa PFR, Polska Fundacja Przedsiębiorczości" 
@@ -100,7 +100,7 @@ const Footer = () => {
             <p className="text-gray-700 text-xs sm:text-sm text-center mt-4 leading-relaxed">
               Przedsięwzięcie MŚP sfinansowane przez Unię Europejską ze środków Krajowego Planu Odbudowy i Zwiększania Odporności.
             </p>
-          </div>
+          </a>
         </div>
 
         {/* Bottom Bar */}
