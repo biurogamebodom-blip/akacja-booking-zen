@@ -158,10 +158,22 @@ serve(async (req) => {
       throw new Error("ELEVEN_LABS_API_KEY is not configured");
     }
 
-    const { text, voice } = await req.json();
+    const body = await req.json();
+    const text = body?.text;
+    const voice = body?.voice;
 
-    if (!text) {
-      throw new Error("Text is required");
+    if (!text || typeof text !== "string" || text.trim().length === 0) {
+      return new Response(JSON.stringify({ error: "Text is required" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (text.length > 5000) {
+      return new Response(JSON.stringify({ error: "Text too long" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     // Przetwórz tekst dla lepszej wymowy polskiej

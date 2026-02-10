@@ -48,10 +48,21 @@ serve(async (req) => {
       throw new Error("ELEVEN_LABS_API_KEY is not configured");
     }
 
-    const { audio } = await req.json();
+    const body = await req.json();
+    const audio = body?.audio;
 
-    if (!audio) {
-      throw new Error("No audio data provided");
+    if (!audio || typeof audio !== "string") {
+      return new Response(JSON.stringify({ error: "No audio data provided" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (audio.length > 10_000_000) {
+      return new Response(JSON.stringify({ error: "Audio file too large" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     console.log("Processing audio for STT, length:", audio.length);
