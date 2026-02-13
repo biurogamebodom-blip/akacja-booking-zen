@@ -93,6 +93,36 @@ const EuFunding = () => {
               <p className="text-accent font-semibold text-lg text-center !mt-8">
                 Atrakcje są w trakcie realizacji i będą dostępne już wiosną. Serdecznie zapraszamy!
               </p>
+
+              {/* Second Article */}
+              <div className="!mt-16 border-t border-border pt-12">
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-foreground !mb-4 text-center">
+                  ZIELONE APARTAMENTY AKACJA
+                </h2>
+                <p className="text-lg md:text-xl text-accent font-semibold text-center !mb-8">
+                  Więcej przyrody, więcej słońca, więcej zdrowia
+                </p>
+
+                <p>
+                  Jednym z istotnych założeń projektu wdrażanego w ramach konkursu PARP HoReCa jest tzw. „zielona transformacja" naszego ośrodka. Służą temu, między innymi, inwestycje w urządzany dzięki unijnemu wsparciu Ogród Wypoczynkowy. Zagospodarowujemy teren, przestrzegając wszystkich zasad ochrony przyrody po to, ażeby nasi goście mogli spędzać pod gołym niebem jak najwięcej czasu, nawet i w mniej pogodne dni.
+                </p>
+
+                <p>
+                  Staramy się, by wokół obiektów noclegowych było zielono, a przy tym kolorowo, stąd starannie utrzymany trawnik oraz nasadzenia krzewów i kwiatów, które pełnego uroku nabiorą, kiedy zrobi się wiosennie. Nasi goście będą mieli do dyspozycji doskonale wyposażone wanny SPA. Schronienia przed słońcem, a nawet i deszczem dostarczą pergole z markizami. W naszym ogrodzie wypoczynkowym do dyspozycji gości ustawione zostaną stoły i krzesła. Będzie można nie tylko posiedzieć, ale i zjeść, jako że w pobliżu ulokujemy funkcjonalne grille gazowe. Z myślą o umożliwieniu miłośnikom dwóch kółek dłuższych i dalszych wędrówek po urokliwych okolicach Sianożęt, zakupiliśmy rowery elektryczne.
+                </p>
+
+                <p>
+                  Zielona transformacja Apartamentów Akacja polegała będzie także na dbałości o czyste powietrze. Wybór nowoczesnych urządzeń elektrycznych odbył się według kryteriów ich maksymalnej bezemisyjności. Mamy już gotową fotowoltaikę jako źródło zasilania pracujących w ośrodku urządzeń w słoneczne dni. Już od początku sezonu wiosenno-letniego w segmentach noclegowych pracowała będzie wydajna klimatyzacja oraz elektryczne podgrzewacze wody z technologią hybrydową. Teren ośrodka oświetlą niewymagające zasilania zewnętrznego lampy solarne z wiatrakami. Już niedługo, jeszcze zanim zrobi się ciepło, goście aktualnie szukający wypoczynku nad morzem będą mieli ciepło dzięki zainstalowaniu w domkach mat grzewczych na podczerwień.
+                </p>
+
+                <p>
+                  Wykorzystywane oraz udostępniane osobom korzystającym z oferty noclegowej urządzenia elektryczne cechuje niska energooszczędność. Ponadto we wszystkich prowadzonych przez nas pracach, w tym także budowlanych, wykorzystywane są surowce oraz materiały biodegradowalne lub też poddające się recyklingowi.
+                </p>
+
+                <p className="text-accent font-semibold text-lg text-center !mt-8">
+                  Z nami wypoczywa się zdrowo!
+                </p>
+              </div>
             </div>
           </div>
         </section>
