@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import welcomeAudio from "@/assets/audio/welcome-message.mp3";
-import logoAkacja from "@/assets/logo-akacja.png";
+import logoAkacja from "@/assets/logo-akacja.png?format=webp&w=200";
 
 // Icon mapping for nav items
 const navIcons: Record<string, React.ComponentType<{ className?: string }>> = {

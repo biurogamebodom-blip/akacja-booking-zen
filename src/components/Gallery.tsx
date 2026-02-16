@@ -4,15 +4,15 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Gallery images
-import gallery01 from "@/assets/gallery/01-widok-zewnetrzny-new.jpg";
-import gallery02 from "@/assets/gallery/02-salon-kuchnia-new.png";
-import gallery03 from "@/assets/gallery/03-salon-schody.jpeg";
-import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg";
-import gallery05 from "@/assets/gallery/05-sypialnia.jpeg";
-import gallery06 from "@/assets/gallery/06-taras.png";
-import gallery07 from "@/assets/gallery/07-pergola-new.jpg";
-import gallery08 from "@/assets/gallery/08-plac-zabaw.png";
-import gallery09 from "@/assets/gallery/09-jacuzzi.jpg";
+import gallery01 from "@/assets/gallery/01-widok-zewnetrzny-new.jpg?format=webp&w=800";
+import gallery02 from "@/assets/gallery/02-salon-kuchnia-new.png?format=webp&w=800";
+import gallery03 from "@/assets/gallery/03-salon-schody.jpeg?format=webp&w=800";
+import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg?format=webp&w=800";
+import gallery05 from "@/assets/gallery/05-sypialnia.jpeg?format=webp&w=800";
+import gallery06 from "@/assets/gallery/06-taras.png?format=webp&w=800";
+import gallery07 from "@/assets/gallery/07-pergola-new.jpg?format=webp&w=800";
+import gallery08 from "@/assets/gallery/08-plac-zabaw.png?format=webp&w=800";
+import gallery09 from "@/assets/gallery/09-jacuzzi.jpg?format=webp&w=800";
 
 const galleryImages = [
   { id: 1, src: gallery01, altPL: "Widok zewnętrzny apartamentów Akacja", altEN: "Exterior view of Akacja apartments" },
