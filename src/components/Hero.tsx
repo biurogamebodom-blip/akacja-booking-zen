@@ -2,7 +2,7 @@ import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { globalSettings } from "@/lib/siteData";
 import { useLanguage } from "@/contexts/LanguageContext";
-import heroBackground from "@/assets/hero-beach.jpg";
+import heroBackground from "@/assets/hero-beach.jpg?format=webp&w=1920";
 
 const Hero = () => {
   const { t } = useLanguage();

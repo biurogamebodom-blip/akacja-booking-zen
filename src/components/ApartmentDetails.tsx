@@ -2,7 +2,7 @@ import { Users, Bike, DoorOpen, Sun, UtensilsCrossed, Bed, Car, Phone, CreditCar
 import { globalSettings } from "@/lib/siteData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
-import jacuzziIcon from "@/assets/icons/jacuzzi-icon.png";
+import jacuzziIcon from "@/assets/icons/jacuzzi-icon.png?format=webp&w=48";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }> | string> = {
   users: Users,

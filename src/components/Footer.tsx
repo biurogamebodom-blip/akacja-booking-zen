@@ -1,8 +1,8 @@
 import { Phone, MapPin, Heart } from "lucide-react";
 import { globalSettings } from "@/lib/siteData";
 import { useLanguage } from "@/contexts/LanguageContext";
-import logoAkacjaWhite from "@/assets/logo-akacja-white.jpg";
-import euFundingLogos from "@/assets/logos/eu-funding-logos.png";
+import logoAkacjaWhite from "@/assets/logo-akacja-white.jpg?format=webp&w=200";
+import euFundingLogos from "@/assets/logos/eu-funding-logos.png?format=webp&w=900";
 
 const Footer = () => {
   const { t } = useLanguage();
