@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ApartmentDetails from "@/components/ApartmentDetails";
-import Gallery from "@/components/Gallery";
-import Pricing from "@/components/Pricing";
-import Reviews from "@/components/Reviews";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import AIChatAssistant from "@/components/AIChatAssistant";
-import CookieConsent from "@/components/CookieConsent";
+
+// Lazy load below-the-fold components to reduce initial JS bundle
+const Gallery = lazy(() => import("@/components/Gallery"));
+const Pricing = lazy(() => import("@/components/Pricing"));
+const Reviews = lazy(() => import("@/components/Reviews"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+const AIChatAssistant = lazy(() => import("@/components/AIChatAssistant"));
+const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 
 const Index = () => {
   useEffect(() => {
@@ -29,14 +31,18 @@ const Index = () => {
       <main id="main-content">
         <Hero />
         <ApartmentDetails />
-        <Gallery />
-        <Pricing />
-        <Reviews />
-        <Contact />
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <Gallery />
+          <Pricing />
+          <Reviews />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      <AIChatAssistant />
-      <CookieConsent />
+      <Suspense fallback={null}>
+        <Footer />
+        <AIChatAssistant />
+        <CookieConsent />
+      </Suspense>
     </div>
   );
 };

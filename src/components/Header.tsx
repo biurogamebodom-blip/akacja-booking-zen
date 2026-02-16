@@ -116,6 +116,8 @@ const Header = () => {
               src={logoAkacja} 
               alt="Apartamenty Akacja - Logo" 
               className="h-12 md:h-16 w-auto"
+              width={160}
+              height={64}
             />
           </a>
 

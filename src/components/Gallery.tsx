@@ -44,7 +44,8 @@ const GalleryImage = memo(({ image, index, onClick, language }: {
       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-focus:scale-105"
       loading="lazy"
       decoding="async"
-      fetchPriority={index < 4 ? "high" : "low"}
+      width={600}
+      height={450}
     />
     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 group-focus:bg-navy/20 transition-colors duration-300" />
   </button>
