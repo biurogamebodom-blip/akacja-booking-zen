@@ -28,6 +28,8 @@ const Footer = () => {
                 alt="Apartamenty Akacja - Logo" 
                 className="h-16 sm:h-18 md:h-20 lg:h-24 w-auto rounded-lg"
                 loading="lazy"
+                width={200}
+                height={96}
               />
             </a>
             <p className="text-primary-foreground/80 mb-4 text-sm sm:text-base">
@@ -96,6 +98,8 @@ const Footer = () => {
               alt="Logotypy: Krajowy Plan Odbudowy, Unia Europejska NextGenerationEU, PARP Grupa PFR, Polska Fundacja Przedsiębiorczości" 
               className="w-full max-w-3xl mx-auto h-auto"
               loading="lazy"
+              width={900}
+              height={120}
             />
             <p className="text-gray-700 text-xs sm:text-sm text-center mt-4 leading-relaxed">
               Przedsięwzięcie MŚP sfinansowane przez Unię Europejską ze środków Krajowego Planu Odbudowy i Zwiększania Odporności.
