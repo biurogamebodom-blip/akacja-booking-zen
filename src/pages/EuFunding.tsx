@@ -123,6 +123,32 @@ const EuFunding = () => {
                   Z nami wypoczywa się zdrowo!
                 </p>
               </div>
+
+              {/* Third Article */}
+              <div className="!mt-16 border-t border-border pt-12">
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-foreground !mb-4 text-center">
+                  APARTAMENTY AKACJA DLA KAŻDEGO
+                </h2>
+                <p className="text-lg md:text-xl text-accent font-semibold text-center !mb-8">
+                  Traktujemy gości jak przyjaciół
+                </p>
+
+                <p>
+                  Apartamenty Akacja funkcjonują zgodnie z zasadą społecznej odpowiedzialności biznesu, a więc według kanonów: szacunku, empatii oraz poszanowania wszelkiej inności. Mamy nadzieję, że właśnie z tego powodu osoby szukające u nas relaksu dobrze się w naszym ośrodku czują. Jesteśmy przekonani, że był to także ważny argument przesądzający o przyznaniu nam dotacji w konkursie HoReCa.
+                </p>
+
+                <p>
+                  Modernizacja Apartamentów Akacja prowadzona jest z poszanowaniem zasady równej dostępności dla wszystkich osób, które chcą skorzystać z oferty noclegowej oraz innych atrakcji. Inwestycje ułatwiające poruszanie się w obiektach oraz na terenie ośrodka przez osoby w różnym wieku, o zróżnicowanej mobilności, jak również z niepełnosprawnością, realizujemy zgodnie z wymogami przedstawionymi w „Konwencji o prawach osób niepełnosprawnych".
+                </p>
+
+                <p>
+                  W kontaktach z gośćmi przestrzegamy zasady równości kobiet i mężczyzn. Nie wykluczamy i nie dyskryminujemy nikogo ze względu na płeć, wiek, rasę, cechy genetyczne, religię, majątek, język, kolor skóry, wyznawane poglądy, pochodzenie, orientację seksualną i wszelkie inne cechy mogące być przyczyną wykluczenia. Umożliwiamy obecnie, a dzięki wdrożeniu projektu jeszcze pełniej umożliwimy wszystkim gościom równy udział w oferowanych przez nas usługach. Wykonanie zadań inwestycyjnych ułatwi dostępność ośrodka, zwłaszcza dla osób niepełnosprawnych i starszych oraz dzieci. Stanie się to dzięki likwidacji barier architektonicznych oraz poprzez udostępnienie informacji dla osób niewidomych i niedowidzących. Również zakupione środki trwałe będą mogły być używane zarówno przez wymienione osoby, jak i gości pełnosprawnych. Wszelkie produkty oraz usługi zakupione i wykonane w ramach projektu będą zgodne z unijną zasadą uniwersalnego projektowania, a więc dostępne dla ogółu wypoczywających.
+                </p>
+
+                <p>
+                  Pochwalimy się przy okazji, że nasza firma od początku swej działalności, a więc od ponad 20 lat, ma charakter antydyskryminacyjny. Stosujemy elastyczny czas pracy, urlopy opiekuńcze, a także politykę równościową w procesie rekrutacji pracownic i pracowników, jak również w systemie wynagrodzeń oraz premiowania. Kierowanie się zasadą społecznej odpowiedzialności biznesu (CSR) znajduje swój wyraz nie tylko w relacjach z pracownicami i pracownikami, ale także we współpracy z otoczeniem społecznym w postaci sąsiadów, innych firm oraz samorządów w każdym z miejsc, w których prowadzimy działalność gospodarczą.
+                </p>
+              </div>
             </div>
           </div>
         </section>
