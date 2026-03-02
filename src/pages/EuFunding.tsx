@@ -149,6 +149,36 @@ const EuFunding = () => {
                   Pochwalimy się przy okazji, że nasza firma od początku swej działalności, a więc od ponad 20 lat, ma charakter antydyskryminacyjny. Stosujemy elastyczny czas pracy, urlopy opiekuńcze, a także politykę równościową w procesie rekrutacji pracownic i pracowników, jak również w systemie wynagrodzeń oraz premiowania. Kierowanie się zasadą społecznej odpowiedzialności biznesu (CSR) znajduje swój wyraz nie tylko w relacjach z pracownicami i pracownikami, ale także we współpracy z otoczeniem społecznym w postaci sąsiadów, innych firm oraz samorządów w każdym z miejsc, w których prowadzimy działalność gospodarczą.
                 </p>
               </div>
+
+              {/* Fourth Article */}
+              <div className="!mt-16 border-t border-border pt-12">
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-foreground !mb-4 text-center">
+                  INTELIGENTNE APARTAMENTY AKACJA
+                </h2>
+                <p className="text-lg md:text-xl text-accent font-semibold text-center !mb-8">
+                  Nowe rozwiązania IT są wygodne i dla Was, i dla nas
+                </p>
+
+                <p>
+                  „Cyfrowa transformacja" ośrodka dostarcza kolejnego kompletu usprawnień w obsłudze gości, wdrażanego dzięki dotacyjnemu wsparciu uzyskanemu w konkursie PARP HoReCa za pośrednictwem Polskiej Fundacji Przedsiębiorczości w Szczecinie.
+                </p>
+
+                <p>
+                  Zaczęliśmy od udostępnienia nowego komputerowego systemu informacji o możliwościach i atrakcjach wypoczynku w Apartamentach Akacja, w Sianożętach. Nowatorska aplikacja ułatwia również rezerwowanie miejsc noclegowych. Wystarczy wejść na naszą stronę internetową: www.apartamentyakacja.pl, ażeby dowiedzieć się wszystkiego o ośrodku oraz ustalić okres i warunki pobytu. Dodatkowym usprawnieniem jest zainstalowanie modułu informacyjno-rezerwacyjnego dla osób słabowidzących. Towarzyszy temu oznakowanie ośrodka w sposób ułatwiający poruszanie się osobom mającym problemy ze wzrokiem.
+                </p>
+
+                <p>
+                  Modernizacja Apartamentów Akacja wiąże się z wprowadzeniem wielu innowacji nazwanych ogólne „rozwiązaniami domu inteligentnego". Właściwie już wszystkie urządzenia o charakterze automatyki obsługiwane są w nowoczesnym standardzie cyfrowym. Elektronika pozwala na intuicyjne sterowanie nimi najczęściej bez ruszania się z fotela. Ma to związek z jednym z głównych celów naszego projektu, polegającego na umożliwieniu komfortowego pobytu osobom niepełnosprawnym i starszym, które mają trudności w poruszaniu się, a także dzieciom, również najmłodszym. Nasi goście mogą, posługując się przyciskami pilota, zmieniać temperaturę dostarczaną do pomieszczeń przez maty grzewcze na podczerwień, przełączać telewizory, regulować podgrzewacze wody w łazienkach, zwiększać lub zmniejszać natężenie oświetlenia, kontrolować parametry działania klimatyzacji wewnątrz domków.
+                </p>
+
+                <p>
+                  Rozwiązania IT pozwalają kierować pracą będących do dyspozycji gości wanien SPA, ładować silniki rowerów elektrycznych z instalacji fotowoltaicznej, ustawiać system alarmowy oraz oświetlenie ogrodu wypoczynkowego pod gołym niebem.
+                </p>
+
+                <p className="text-accent font-semibold text-lg text-center !mt-8">
+                  Dzięki realizacji projektu, Apartamenty Akacja stały się ośrodkiem cyfrowo inteligentnym!
+                </p>
+              </div>
             </div>
           </div>
         </section>
