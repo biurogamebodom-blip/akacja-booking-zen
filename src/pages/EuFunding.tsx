@@ -179,6 +179,44 @@ const EuFunding = () => {
                   Dzięki realizacji projektu, Apartamenty Akacja stały się ośrodkiem cyfrowo inteligentnym!
                 </p>
               </div>
+
+              {/* Fifth Article */}
+              <div className="!mt-16 border-t border-border pt-12">
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-foreground !mb-4 text-center">
+                  ZMODERNIZOWANE APARTAMENTY AKACJA
+                </h2>
+                <p className="text-lg md:text-xl text-accent font-semibold text-center !mb-8">
+                  Nowe okno-drzwi, łazienki i cała reszta
+                </p>
+
+                <p>
+                  Wykonywanie zadań, które wyznaczyliśmy sobie w projekcie wdrażanym dzięki wsparciu Programu HoReCa, weszło w decydującą fazę. Dzięki temu, że w ostatnich dniach temperatury, przynajmniej w dzień, są stale powyżej zera, mogliśmy rozpocząć prace budowlane. Także i te, które wymagają robót pod gołym niebem.
+                </p>
+
+                <p>
+                  Jednym z priorytetów naszych przedsięwzięć jest dostosowanie apartamentów do potrzeb gości niepełnosprawnych, jak również mających trudności w poruszaniu, a także dzieci. Nową funkcjonalność pomieszczeń uzyskujemy, prowadząc inwestycje zgodnie z wymogami wskazanymi w „Ustawie z 19 lipca 2019 r. o zapewnianiu dostępności osobom ze szczególnymi potrzebami". Podjazdy dla wózków inwalidzkich zainstalowane zostały już w zeszłym roku, obecnie przyszedł czas na wymianę okno-drzwi o powiększonej szerokości, dzięki czemu wjazd do domków oraz wyjazd z nich stał się bezproblemowy. Pozwala to na pełną mobilność osób, które poruszają się z wykorzystaniem wózków.
+                </p>
+
+                <p>
+                  Bliskie finiszu są także prace polegające na przebudowie oraz wymianie wyposażenia łazienek. Połączony z modernizacją remont obejmuje kompletną wymianę dotychczasowych elementów wnętrz. Zakładamy między innymi wsporniki i uchwyty, pozwalające podtrzymać się lub podeprzeć osobom z trudnościami w samodzielnym poruszaniu się.
+                </p>
+
+                <p>
+                  Trwa montaż tabliczek ułatwiających gościom niewidomym i słabowidzącym korzystanie z atrakcji ośrodka, zwłaszcza z ogrodu wypoczynkowego.
+                </p>
+
+                <p>
+                  Wdrażane udogodnienia należą do całego zespołu ułatwień, które czynią z Apartamentów Akacja miejsce wyjątkowo przyjazne osobom niepełnosprawnym, które mają trudności w poruszaniu się, a także dla dzieci.
+                </p>
+
+                <p>
+                  Wszystko, co z myślą o Was robimy, wynika z zasady uniwersalnego projektowania. Jej priorytetowym założeniem jest tworzenie produktów i środowisk użytecznych dla wszystkich ludzi, niezależnie od ich zdolności lub ograniczeń.
+                </p>
+
+                <p>
+                  Do zakończenia projektu pozostał niespełna miesiąc. Zdążymy! Składając tę obietnicę, zapraszamy wszystkich, którzy zechcą przyjechać. Apartamenty Akacja są tej wiosny nowe i nowocześniejsze, a przy tym jak zawsze gościnne i przyjazne. Gwarantujemy komfortowy i sympatyczny wypoczynek!
+                </p>
+              </div>
             </div>
           </div>
         </section>
