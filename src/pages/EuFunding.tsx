@@ -217,6 +217,102 @@ const EuFunding = () => {
                   Do zakończenia projektu pozostał niespełna miesiąc. Zdążymy! Składając tę obietnicę, zapraszamy wszystkich, którzy zechcą przyjechać. Apartamenty Akacja są tej wiosny nowe i nowocześniejsze, a przy tym jak zawsze gościnne i przyjazne. Gwarantujemy komfortowy i sympatyczny wypoczynek!
                 </p>
               </div>
+
+              {/* Sixth Article */}
+              <div className="!mt-16 border-t border-border pt-12">
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-foreground !mb-4 text-center">
+                  NOWY SEZON W NOWEJ SCENERII
+                </h2>
+                <p className="text-lg md:text-xl text-accent font-semibold text-center !mb-8">
+                  Wiosenne Apartamenty Akacja zapraszają
+                </p>
+
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground !mt-10 !mb-4">
+                  APARTAMENTY GOTOWE
+                </h3>
+
+                <p>
+                  Odmieniliśmy nasz ośrodek z myślą o uatrakcyjnieniu Waszego pobytu. W ostatnim dniu marca zakończył się projekt wdrożony dzięki dotacji z unijnego programu Horeca. Przedsięwzięcie obejmowało szereg zróżnicowanych inwestycji.
+                </p>
+
+                <p className="font-medium text-foreground !mt-6">
+                  1. Przystosowaliśmy ośrodek dla potrzeb osób niepełnosprawnych:
+                </p>
+                <ul className="list-disc list-outside pl-6 space-y-2">
+                  <li>wykonaliśmy podjazdy umożliwiające wjazd wózkami inwalidzkimi do domków</li>
+                  <li>wymieniliśmy okno-drzwi do obiektów, pozwalające na wjazd wózkami</li>
+                  <li>przystosowaliśmy łazienki dla potrzeb osób niepełnosprawnych oraz starszych, mających trudności w poruszaniu się</li>
+                  <li>zamontowaliśmy klimatyzację</li>
+                  <li>uzupełniliśmy stronę internetową Apartamentów Akacja o program informacyjny dla osób niewidomych i słabowidzących</li>
+                  <li>udostępniliśmy brajlowskie ulotki informacyjne dla niewidomych i słabowidzących</li>
+                  <li>zamontowaliśmy na terenie ośrodka tabliczki ułatwiające osobom niewidomym i słabowidzącym znalezienie domków</li>
+                </ul>
+
+                <p className="font-medium text-foreground !mt-6">
+                  2. Przygotowaliśmy ośrodek do prowadzenia działalności całorocznej dzięki:
+                </p>
+                <ul className="list-disc list-outside pl-6 space-y-2">
+                  <li>zainstalowaniu energooszczędnych mat grzewczych na podczerwień</li>
+                  <li>zamontowaniu instalacji fotowoltaicznej o mocy 6 kW zasilającej system ogrzewania, służącej grzaniu wody użytkowej, zasilaniu wanien SPA i ładowaniu rowerów elektrycznych</li>
+                  <li>zastosowaniu elektrycznych podgrzewaczy wody z energooszczędną technologią hybrydową</li>
+                </ul>
+
+                <p className="font-medium text-foreground !mt-6">
+                  3. Uatrakcyjniliśmy pobyt gości urządzając dla Was „ogród wypoczynkowy" pod gołym niebem. Na jego wyposażenie składają się:
+                </p>
+                <ul className="list-disc list-outside pl-6 space-y-2">
+                  <li>wanny ogrodowe SPA</li>
+                  <li>pergole ogrodowe z markizami</li>
+                  <li>stoły z krzesłami będące głównym elementem jadalni ogrodowej</li>
+                  <li>grille ogrodowe</li>
+                  <li>wysokiej klasy rowery elektryczne</li>
+                  <li>hybrydowe lampy solarne z wiatrakiem umożliwiające rekreację na świeżym powietrzu również po zapadnięciu zmroku</li>
+                </ul>
+
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground !mt-12 !mb-4">
+                  APARTAMENTY NOWOCZESNE
+                </h3>
+
+                <p>
+                  Wykonanie założonych w projekcie zadań pozwala na przyjmowanie w Apartamentach Akacja nowych grup gości, także osób niepełnosprawnych i w wieku starszym oraz dzieci (w tym grup zorganizowanych wymienionych trzech kategorii gości). Mamy już wstępne rezerwacje części miejsc noclegowych na najbliższe wiosenne tygodnie. Mogą Państwo przyjeżdżać na wypoczynek już teraz, a to dzięki funkcjonowaniu efektywnej energooszczędnej instalacji grzewczej w domkach. Zastosowanie także i innych nowoczesnych, energooszczędnych urządzeń przyczyniło się do „zielonej" transformacji ośrodka. W efekcie wdrożenia wielu rozwiązań „domu inteligentnego", jak również wspomnianego programu komputerowego do informowania klientów niepełnosprawnych (zwłaszcza niewidomych i niedowidzących), uzyskaliśmy transformację cyfrową świadczonych przez nas usług.
+                </p>
+
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground !mt-12 !mb-4">
+                  APARTAMENTY EKOLOGICZNE
+                </h3>
+
+                <p>
+                  Wykonanie projektu wpływa na łagodzenie zmian klimatu dzięki zamontowaniu instalacji fotowoltaicznej oraz zainstalowaniu mat grzewczych na podczerwień, elektrycznych podgrzewaczy wody z technologią hybrydową i lamp solarnych z wiatrakami (pracują bez konieczności zasilania zewnętrznego). Do dyspozycji gości oddajemy wysokiej klasy rowery elektryczne. Wszystkie te urządzenia cechuje bezemisyjność pracy, stanowią zatem dodatkowe elementy „zielonej" transformacji firmy. Dzięki zakupowi grilli gazowych zlikwidowaliśmy emisję dymów z węgla drzewnego spalanego w grillach tradycyjnych.
+                </p>
+
+                <p>
+                  Realizacja projektu nie wiązała się z betonowaniem powierzchni parcel ani zajmowaniem powierzchni biologicznie czynnej. Wszystkie dostępne urządzenia i udogodnienia nie są trwale związane z gruntem, tak więc w razie potrzeby będzie je można bezproblemowo usunąć i utylizować, bądź poddać recyklingowi. Ośrodek wykorzystuje funkcjonującą w Sianożętach sieć wodociągową i kanalizacyjną, nie stwarza zatem zagrożeń dla zasobów wodnych i morskich. Powstające wskutek użytkowania przez gości odpady są na terenie ośrodka segregowane i odbierane przez służby komunalne. Odtwarzanie bioróżnorodności odbywa się dzięki rezygnacji z systematycznego koszenia otoczenia domków. Część parceli zagospodarowana jest jako łąka kwietna.
+                </p>
+
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground !mt-12 !mb-4">
+                  APARTAMENTY PRZYJAZNE
+                </h3>
+
+                <p>
+                  Działamy zgodnie z zasadą społecznej odpowiedzialności biznesu. Wykonanie działań projektowych skutkuje efektem równościowym, ze szczególnym uwzględnieniem zasad określonych w „Konwencji o prawach osób niepełnosprawnych", gdyż inwestycje, które wykonaliśmy, są szczególnie przyjazne dla tych osób. Wszystkie poczynania prowadzimy, przestrzegając kryterium równości kobiet i mężczyzn. Nie wykluczamy i nie dyskryminujemy nikogo ze względu na płeć, wiek, rasę, cechy genetyczne, religię, majątek, język, kolor skóry, wyznawanie, pochodzenie, orientację seksualną i wszelkie inne różnice, które mogłyby skutkować społeczną ekskluzją kogokolwiek. Umożliwiamy wszystkim gościom równy udział w oferowanych przez nas usługach. Wykonanie projektu Horeca zdecydowanie usprawniło dostępność ośrodka, zwłaszcza dla osób niepełnosprawnych i starszych z trudnościami w poruszaniu się, a także dla dzieci.
+                </p>
+
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground !mt-12 !mb-4">
+                  APARTAMENTY OTWARTE
+                </h3>
+
+                <p>
+                  Apartamenty Akacja oferują nie tylko noclegi. Postaraliśmy się, żeby w tym sezonie wypoczynek był atrakcyjny także i na terenie ośrodka. Stworzony dzięki dotacji Horeca „ogród wypoczynkowy" pozwala gościom każdej płci, w każdym wieku oraz w każdej kondycji zdrowotnej na uprawianie zróżnicowanych form rekreacji pod gołym niebem. Nowe zagospodarowanie działki jest wyjątkowo przyjazne również i dla osób niepełnosprawnych, starszych i dzieci, gdyż wykonane zostało bez żadnych barier architektonicznych. Zamontowaliśmy mobilne wanny SPA, grille gazowe, pergole i markizy, stoły i krzesła jadalni ogrodowej i hybrydowe lampy solarne do oświetlenia ogrodu po zmroku. SERDECZNIE ZAPRASZAMY!
+                </p>
+
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-foreground !mt-12 !mb-4">
+                  PODZIĘKOWANIA
+                </h3>
+
+                <p>
+                  Wykonanie tak wielu zróżnicowanych przedsięwzięć jest efektem naszego udziału w konkursie pod nazwą: Inwestycje w dywersyfikację sektora działalności HoReCa – oferta dla przedsiębiorców. Wydarzeniu patronowała Polska Agencja Rozwoju Przedsiębiorczości, natomiast moderatorem dla firm funkcjonujących na terenie województwa zachodniopomorskiego była Polska Fundacja Przedsiębiorczości w Szczecinie. Obu instytucjom jesteśmy wdzięczni za wsparcie zarówno finansowe, jak i organizacyjne. Szczególne podziękowania kierujemy do tych pań i panów z PFP, z którymi mieliśmy bieżący kontakt na różnych etapach prac projektowych. Wspomagali nas dobrą radą oraz pomocnymi wskazówkami, kreując jednocześnie sympatyczną atmosferę współpracy. Serdecznie pozdrawiamy!
+                </p>
+              </div>
             </div>
           </div>
         </section>
