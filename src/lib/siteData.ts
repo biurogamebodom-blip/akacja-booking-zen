@@ -102,6 +102,7 @@ export const navItems = [
   { href: "#apartamenty", label: "Apartamenty" },
   { href: "#galeria", label: "Galeria" },
   { href: "#cennik", label: "Cennik" },
+  { href: "#rezerwacja", label: "Rezerwacja" },
   { href: "#opinie", label: "Opinie" },
   { href: "#kontakt", label: "Kontakt" },
 ];

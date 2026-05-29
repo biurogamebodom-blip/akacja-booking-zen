@@ -17,8 +17,12 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.apartments": "Apartamenty",
     "nav.gallery": "Galeria",
     "nav.pricing": "Cennik",
+    "nav.booking": "Rezerwacja",
     "nav.reviews": "Opinie",
     "nav.contact": "Kontakt",
+    "booking.badge": "Rezerwacja online",
+    "booking.title": "Sprawdź dostępność i zarezerwuj",
+    "booking.subtitle": "Wybierz termin pobytu i zarezerwuj apartament bezpośrednio online.",
     
     // Hero
     "hero.location": "Sianożęty / Ustronie Morskie",
@@ -154,8 +158,12 @@ Nie czekaj! Zarezerwuj już teraz swój pobyt nad Bałtykiem!`,
     "nav.apartments": "Apartments",
     "nav.gallery": "Gallery",
     "nav.pricing": "Pricing",
+    "nav.booking": "Booking",
     "nav.reviews": "Reviews",
     "nav.contact": "Contact",
+    "booking.badge": "Online booking",
+    "booking.title": "Check availability and book",
+    "booking.subtitle": "Pick your dates and reserve the apartment directly online.",
     
     // Hero
     "hero.location": "Sianożęty / Ustronie Morskie",

@@ -6,6 +6,7 @@ import ApartmentDetails from "@/components/ApartmentDetails";
 // Lazy load below-the-fold components to reduce initial JS bundle
 const Gallery = lazy(() => import("@/components/Gallery"));
 const Pricing = lazy(() => import("@/components/Pricing"));
+const BookingWidget = lazy(() => import("@/components/BookingWidget"));
 const Reviews = lazy(() => import("@/components/Reviews"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -34,6 +35,7 @@ const Index = () => {
         <Suspense fallback={<div className="min-h-[200px]" />}>
           <Gallery />
           <Pricing />
+          <BookingWidget />
           <Reviews />
           <Contact />
         </Suspense>
