@@ -17,6 +17,7 @@ const navIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "#apartamenty": Home,
   "#galeria": Images,
   "#cennik": CreditCard,
+  "#rezerwacja": CreditCard,
   "#opinie": MessageSquare,
   "#kontakt": MapPin,
 };
@@ -36,6 +37,7 @@ const Header = () => {
     { href: "#apartamenty", label: t("nav.apartments") },
     { href: "#galeria", label: t("nav.gallery") },
     { href: "#cennik", label: t("nav.pricing") },
+    { href: "#rezerwacja", label: t("nav.booking") },
     { href: "#opinie", label: t("nav.reviews") },
     { href: "#kontakt", label: t("nav.contact") },
   ];
