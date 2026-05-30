@@ -42,7 +42,7 @@ const BookingWidget = () => {
           </p>
         </div>
 
-        <div className="bg-card rounded-2xl shadow-soft border border-border/50 p-4 md:p-6">
+        <div className="bg-card rounded-2xl shadow-soft border border-border/50 p-4 md:p-6 mcbe-themed">
           <div
             ref={containerRef}
             className="mcbe-widget-searchbar"
@@ -50,6 +50,33 @@ const BookingWidget = () => {
             data-room-id="25374,25375,25378,25379,25380"
           />
         </div>
+        <style>{`
+          .mcbe-themed .mcbe-widget-searchbar,
+          .mcbe-themed .mcbe-widget-searchbar * {
+            font-family: 'Lato', system-ui, sans-serif !important;
+          }
+          .mcbe-themed .mcbe-widget-searchbar {
+            background: hsl(var(--secondary)) !important;
+            border-radius: var(--radius) !important;
+          }
+          .mcbe-themed .mcbe-widget-searchbar button,
+          .mcbe-themed .mcbe-widget-searchbar .btn,
+          .mcbe-themed .mcbe-widget-searchbar [class*="search"],
+          .mcbe-themed .mcbe-widget-searchbar [class*="submit"],
+          .mcbe-themed .mcbe-widget-searchbar [type="submit"] {
+            background: hsl(var(--accent)) !important;
+            background-color: hsl(var(--accent)) !important;
+            border-color: hsl(var(--accent)) !important;
+            color: hsl(var(--accent-foreground)) !important;
+          }
+          .mcbe-themed .mcbe-widget-searchbar button:hover,
+          .mcbe-themed .mcbe-widget-searchbar .btn:hover,
+          .mcbe-themed .mcbe-widget-searchbar [type="submit"]:hover {
+            background: hsl(var(--sea-turquoise-dark)) !important;
+            background-color: hsl(var(--sea-turquoise-dark)) !important;
+            border-color: hsl(var(--sea-turquoise-dark)) !important;
+          }
+        `}</style>
       </div>
     </section>
   );
