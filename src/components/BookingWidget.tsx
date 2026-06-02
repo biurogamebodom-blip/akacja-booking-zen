@@ -42,7 +42,7 @@ const BookingWidget = () => {
           </p>
         </div>
 
-        <div className="bg-card rounded-2xl shadow-soft border border-border/50 p-4 md:p-6 mcbe-themed">
+        <div className="bg-card rounded-2xl shadow-soft border border-border/50 p-2 md:p-3 mcbe-themed overflow-hidden max-w-3xl mx-auto">
           <div
             ref={containerRef}
             className="mcbe-widget-searchbar"
@@ -56,25 +56,60 @@ const BookingWidget = () => {
             font-family: 'Lato', system-ui, sans-serif !important;
           }
           .mcbe-themed .mcbe-widget-searchbar {
-            background: hsl(var(--secondary)) !important;
-            border-radius: var(--radius) !important;
+            background: hsl(var(--accent)) !important;
+            border-radius: calc(var(--radius) - 4px) !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: stretch !important;
+            gap: 8px !important;
+            padding: 10px !important;
+            min-height: 72px !important;
           }
+          .mcbe-themed .mcbe-widget-searchbar > *:first-child {
+            flex: 1 1 auto;
+          }
+          /* Date pickers — white pill */
+          .mcbe-themed .mcbe-widget-searchbar [class*="date"],
+          .mcbe-themed .mcbe-widget-searchbar [class*="picker"]:not(button),
+          .mcbe-themed .mcbe-widget-searchbar [class*="calendar"]:not(button) {
+            background: hsl(var(--card)) !important;
+            border-radius: 10px !important;
+          }
+          /* Search button — white pill with accent text, clearly distinct */
           .mcbe-themed .mcbe-widget-searchbar button,
           .mcbe-themed .mcbe-widget-searchbar .btn,
           .mcbe-themed .mcbe-widget-searchbar [class*="search"],
           .mcbe-themed .mcbe-widget-searchbar [class*="submit"],
           .mcbe-themed .mcbe-widget-searchbar [type="submit"] {
-            background: hsl(var(--accent)) !important;
-            background-color: hsl(var(--accent)) !important;
-            border-color: hsl(var(--accent)) !important;
-            color: hsl(var(--accent-foreground)) !important;
+            background: hsl(var(--card)) !important;
+            background-color: hsl(var(--card)) !important;
+            border: none !important;
+            color: hsl(var(--accent)) !important;
+            border-radius: 10px !important;
+            font-weight: 700 !important;
+            padding: 0 28px !important;
+            min-width: 160px !important;
+            flex: 0 0 auto !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
           }
           .mcbe-themed .mcbe-widget-searchbar button:hover,
           .mcbe-themed .mcbe-widget-searchbar .btn:hover,
           .mcbe-themed .mcbe-widget-searchbar [type="submit"]:hover {
-            background: hsl(var(--sea-turquoise-dark)) !important;
-            background-color: hsl(var(--sea-turquoise-dark)) !important;
-            border-color: hsl(var(--sea-turquoise-dark)) !important;
+            background: hsl(var(--card)) !important;
+            background-color: hsl(var(--card)) !important;
+            color: hsl(var(--sea-turquoise-dark)) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px hsl(0 0% 0% / 0.15) !important;
+          }
+          @media (max-width: 640px) {
+            .mcbe-themed .mcbe-widget-searchbar {
+              flex-direction: column !important;
+            }
+            .mcbe-themed .mcbe-widget-searchbar button,
+            .mcbe-themed .mcbe-widget-searchbar [type="submit"] {
+              width: 100% !important;
+              min-height: 48px !important;
+            }
           }
         `}</style>
       </div>
