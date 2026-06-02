@@ -233,8 +233,26 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Offset for fixed header (h-16 mobile = 64px, h-20 desktop = 80px) */
+    scroll-padding-top: 80px;
     /* Domyślny rozmiar czcionki na mobile = A+ kliknięte 3x (~130%) */
     font-size: 130%;
+  }
+
+  @media (max-width: 767px) {
+    html {
+      scroll-padding-top: 72px;
+    }
+  }
+
+  /* Apply offset to all anchor targets as fallback */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+  @media (max-width: 767px) {
+    section[id] {
+      scroll-margin-top: 72px;
+    }
   }
 
   /* Na tabletach i większych - standardowy rozmiar */
