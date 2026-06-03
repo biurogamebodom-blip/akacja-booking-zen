@@ -104,11 +104,26 @@ const BookingWidget = () => {
           @media (max-width: 640px) {
             .mcbe-themed .mcbe-widget-searchbar {
               flex-direction: column !important;
+              padding: 8px !important;
+              min-height: 0 !important;
             }
             .mcbe-themed .mcbe-widget-searchbar button,
             .mcbe-themed .mcbe-widget-searchbar [type="submit"] {
               width: 100% !important;
-              min-height: 48px !important;
+              min-height: 52px !important;
+              font-size: 17px !important;
+              min-width: 0 !important;
+            }
+            /* Boost readability — dates were faded/low-contrast on mobile */
+            .mcbe-themed .mcbe-widget-searchbar,
+            .mcbe-themed .mcbe-widget-searchbar * {
+              color: hsl(var(--foreground)) !important;
+              opacity: 1 !important;
+            }
+            .mcbe-themed .mcbe-widget-searchbar [class*="search"],
+            .mcbe-themed .mcbe-widget-searchbar [class*="submit"],
+            .mcbe-themed .mcbe-widget-searchbar [type="submit"] {
+              color: hsl(var(--accent)) !important;
             }
           }
         `}</style>
