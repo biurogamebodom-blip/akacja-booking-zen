@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,12 +9,16 @@ import euFundingLogos from "@/assets/logos/eu-funding-logos.png";
 
 const EuFunding = () => {
   useEffect(() => {
-    document.title = "Przyjazne Apartamenty Akacja - Fundusze Europejskie";
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Fundusze Europejskie - Apartamenty Akacja Sianożęty</title>
+        <meta name="description" content="Apartamenty Akacja: przedsięwzięcie MŚP sfinansowane przez Unię Europejską ze środków Krajowego Planu Odbudowy i Zwiększania Odporności (NextGenerationEU)." />
+        <link rel="canonical" href="https://apartamentyakacja.pl/fundusze-europejskie" />
+      </Helmet>
       <Header />
       <main className="pt-20 md:pt-24">
         {/* EU Banner - repeated from footer */}

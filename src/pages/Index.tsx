@@ -1,4 +1,5 @@
-import { useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ApartmentDetails from "@/components/ApartmentDetails";
@@ -14,13 +15,17 @@ const AIChatAssistant = lazy(() => import("@/components/AIChatAssistant"));
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 
 const Index = () => {
-  useEffect(() => {
-    // Update document title for SEO
-    document.title = "Apartamenty Akacja Sianożęty - Komfortowe Noclegi nad Morzem";
-  }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Apartamenty Akacja Sianożęty - Komfortowe Noclegi nad Morzem</title>
+        <meta name="description" content="Apartamenty Akacja w Sianożętach/Ustroniu Morskim. Sprawdź dostępność i cennik na sezon 2025/2026. Komfortowe domki dla rodzin." />
+        <link rel="canonical" href="https://apartamentyakacja.pl/" />
+        <meta property="og:title" content="Apartamenty Akacja Sianożęty - Komfortowe Noclegi nad Morzem" />
+        <meta property="og:description" content="Apartamenty Akacja w Sianożętach/Ustroniu Morskim. Komfortowe domki nad Bałtykiem dla rodzin." />
+        <meta property="og:url" content="https://apartamentyakacja.pl/" />
+      </Helmet>
       {/* Skip to main content link for keyboard/screen reader users */}
       <a
         href="#main-content"
