@@ -1,9 +1,16 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Polityka Prywatności - Apartamenty Akacja Sianożęty</title>
+        <meta name="description" content="Polityka prywatności i informacje o przetwarzaniu danych osobowych oraz wykorzystaniu plików cookies w serwisie Apartamenty Akacja." />
+        <link rel="canonical" href="https://apartamentyakacja.pl/polityka-prywatnosci" />
+        <meta name="robots" content="noindex,follow" />
+      </Helmet>
       <Header />
       <main className="container mx-auto px-4 py-24 max-w-4xl">
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
