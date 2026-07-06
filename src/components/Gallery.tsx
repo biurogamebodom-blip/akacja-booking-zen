@@ -22,7 +22,7 @@ const galleryImages = [
   { id: 5, src: gallery05, altPL: "Sypialnia na poddaszu z dwoma łóżkami", altEN: "Attic bedroom with two beds" },
   { id: 6, src: gallery06, altPL: "Taras z meblami ogrodowymi", altEN: "Terrace with garden furniture" },
   { id: 7, src: gallery07, altPL: "Pergola z ławką i widok na osiedle", altEN: "Pergola with bench and estate view" },
-  { id: 8, src: gallery08, altPL: "Plac zabaw dla dzieci z huśtawkami i altaną", altEN: "Children's playground with swings and gazebo" },
+  
   { id: 9, src: gallery09, altPL: "Jacuzzi zewnętrzne", altEN: "Outdoor jacuzzi" },
 ];
 
