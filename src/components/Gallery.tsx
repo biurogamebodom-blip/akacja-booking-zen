@@ -11,7 +11,7 @@ import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg?format=webp&w=8
 import gallery05 from "@/assets/gallery/05-sypialnia.jpeg?format=webp&w=800";
 import gallery06 from "@/assets/gallery/06-taras.png?format=webp&w=800";
 import gallery07 from "@/assets/gallery/07-pergola-new.jpg?format=webp&w=800";
-import gallery08 from "@/assets/gallery/08-plac-zabaw.png?format=webp&w=800";
+
 import gallery09 from "@/assets/gallery/09-jacuzzi.jpg?format=webp&w=800";
 
 const galleryImages = [
@@ -22,7 +22,7 @@ const galleryImages = [
   { id: 5, src: gallery05, altPL: "Sypialnia na poddaszu z dwoma łóżkami", altEN: "Attic bedroom with two beds" },
   { id: 6, src: gallery06, altPL: "Taras z meblami ogrodowymi", altEN: "Terrace with garden furniture" },
   { id: 7, src: gallery07, altPL: "Pergola z ławką i widok na osiedle", altEN: "Pergola with bench and estate view" },
-  { id: 8, src: gallery08, altPL: "Plac zabaw dla dzieci z huśtawkami i altaną", altEN: "Children's playground with swings and gazebo" },
+  
   { id: 9, src: gallery09, altPL: "Jacuzzi zewnętrzne", altEN: "Outdoor jacuzzi" },
 ];
 
