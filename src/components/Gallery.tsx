@@ -21,14 +21,15 @@ const galleryImages = [
   { id: 7, src: gallery07, altPL: "Pergola z ławką i widok na osiedle", altEN: "Pergola with bench and estate view" },
   { id: 9, src: gallery09, altPL: "Jacuzzi zewnętrzne", altEN: "Outdoor jacuzzi" },
   // Salon
-  { id: 2, src: gallery02, altPL: "Salon z aneksem kuchennym i drewnianymi belkami", altEN: "Living room with kitchenette and wooden beams" },
   { id: 3, src: gallery03, altPL: "Przestronny salon z drewnianymi ścianami i schodami na piętro", altEN: "Spacious living room with wooden walls and stairs" },
-  // Jadalnia
-  { id: 4, src: gallery04, altPL: "Kuchnia z jadalnią w drewnianym stylu", altEN: "Kitchen with dining area in wooden style" },
   // Sypialnia
   { id: 5, src: gallery05, altPL: "Sypialnia na poddaszu z dwoma łóżkami", altEN: "Attic bedroom with two beds" },
   // Łazienka
   { id: 10, src: gallery10, altPL: "Łazienka przystosowana dla osób z niepełnosprawnościami z uchwytami i taboretem prysznicowym", altEN: "Accessible bathroom with grab bars and shower stool" },
+  // Kuchnia (przed ostatnie)
+  { id: 2, src: gallery02, altPL: "Salon z aneksem kuchennym i drewnianymi belkami", altEN: "Living room with kitchenette and wooden beams" },
+  // Jadalnia (ostatnie)
+  { id: 4, src: gallery04, altPL: "Kuchnia z jadalnią w drewnianym stylu", altEN: "Kitchen with dining area in wooden style" },
 ];
 
 // Memoized gallery image component for performance
