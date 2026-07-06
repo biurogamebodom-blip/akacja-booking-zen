@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 // Gallery images
 import gallery01 from "@/assets/gallery/01-widok-zewnetrzny-v2.jpg?format=webp&w=800";
-import gallery02 from "@/assets/gallery/02-salon-kuchnia-new.png?format=webp&w=800";
+import gallery02 from "@/assets/gallery/02-kuchnia-v2.jpeg?format=webp&w=800";
 import gallery03 from "@/assets/gallery/03-salon-schody-new.jpeg?format=webp&w=800";
 import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg?format=webp&w=800";
 import gallery05 from "@/assets/gallery/05-sypialnia.jpeg?format=webp&w=800";
