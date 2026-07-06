@@ -11,7 +11,7 @@ import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg?format=webp&w=8
 import gallery05 from "@/assets/gallery/05-sypialnia.jpeg?format=webp&w=800";
 import gallery06 from "@/assets/gallery/06-taras.png?format=webp&w=800";
 import gallery07 from "@/assets/gallery/07-pergola-new.jpg?format=webp&w=800";
-import gallery08 from "@/assets/gallery/08-plac-zabaw.png?format=webp&w=800";
+
 import gallery09 from "@/assets/gallery/09-jacuzzi.jpg?format=webp&w=800";
 
 const galleryImages = [
