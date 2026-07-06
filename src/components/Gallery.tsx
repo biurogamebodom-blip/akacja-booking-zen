@@ -11,8 +11,8 @@ import gallery04 from "@/assets/gallery/04-kuchnia-jadalnia.jpeg?format=webp&w=8
 import gallery05 from "@/assets/gallery/05-sypialnia.jpeg?format=webp&w=800";
 import gallery06 from "@/assets/gallery/06-taras.png?format=webp&w=800";
 import gallery07 from "@/assets/gallery/07-pergola-new.jpg?format=webp&w=800";
-
 import gallery09 from "@/assets/gallery/09-jacuzzi.jpg?format=webp&w=800";
+import gallery10 from "@/assets/gallery/10-lazienka.jpeg?format=webp&w=800";
 
 const galleryImages = [
   { id: 1, src: gallery01, altPL: "Widok zewnętrzny apartamentów Akacja", altEN: "Exterior view of Akacja apartments" },
@@ -22,8 +22,8 @@ const galleryImages = [
   { id: 5, src: gallery05, altPL: "Sypialnia na poddaszu z dwoma łóżkami", altEN: "Attic bedroom with two beds" },
   { id: 6, src: gallery06, altPL: "Taras z meblami ogrodowymi", altEN: "Terrace with garden furniture" },
   { id: 7, src: gallery07, altPL: "Pergola z ławką i widok na osiedle", altEN: "Pergola with bench and estate view" },
-  
   { id: 9, src: gallery09, altPL: "Jacuzzi zewnętrzne", altEN: "Outdoor jacuzzi" },
+  { id: 10, src: gallery10, altPL: "Łazienka przystosowana dla osób z niepełnosprawnościami z uchwytami i taboretem prysznicowym", altEN: "Accessible bathroom with grab bars and shower stool" },
 ];
 
 // Memoized gallery image component for performance
